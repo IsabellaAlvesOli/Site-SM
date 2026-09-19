@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Voluntários - Apoio à Saúde Mental</title>
+    <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="./css/lume-header.css">
+<script src="./js/lume-header.js" data-root="./" defer></script>
+</head>
+<body class="inscricao">
+
+    <!-- HEADER SEM BOTÃO -->
+<!-- CONTEÚDO PRINCIPAL -->
+    <section class="Iconteudo">
+        <h2>Formulário de Inscrição de Voluntários</h2>
+        <p>Preencha o formulário abaixo para participar dos nossos projetos de apoio à saúde mental.</p>
+
+        <form name="IformVoluntario" class="Iformulario" method="post" action="#">
+            <label for="Inome">Nome completo:</label>
+            <input type="text" id="Inome" name="Inome" placeholder="Digite seu nome" required>
+
+            <label for="Iemail">E-mail:</label>
+            <input type="email" id="Iemail" name="Iemail" placeholder="exemplo@email.com" required>
+
+            <label for="Itelefone">Telefone:</label>
+            <input type="tel" id="Itelefone" name="Itelefone" placeholder="(99) 99999-9999" pattern="\(\d{2}\)\s\d{5}-\d{4}" required>
+
+            <label>Áreas de Interesse:</label>
+            <div class="Iareas">
+                <label><input type="checkbox" name="Iarea" value="atendimento"> Atendimento e escuta emocional</label>
+                <label><input type="checkbox" name="Iarea" value="campanhas"> Campanhas e eventos</label>
+                <label><input type="checkbox" name="Iarea" value="comunicacao"> Comunicação e mídias</label>
+                <label><input type="checkbox" name="Iarea" value="logistica"> Apoio logístico</label>
+            </div>
+
+            <label>Disponibilidade:</label>
+            <div class="Idisponibilidade">
+                <label><input type="radio" name="Idisponibilidade" value="manha"> Manhã</label>
+                <label><input type="radio" name="Idisponibilidade" value="tarde"> Tarde</label>
+                <label><input type="radio" name="Idisponibilidade" value="noite"> Noite</label>
+            </div>
+
+            <label for="Iexperiencia">Experiência ou formação na área:</label>
+            <textarea id="Iexperiencia" name="Iexperiencia" rows="5" placeholder="Conte-nos sobre suas experiências..."></textarea>
+
+            <label for="Imotivacao">Por que deseja ser voluntário?</label>
+            <textarea id="Imotivacao" name="Imotivacao" rows="5" placeholder="Escreva sua motivação..."></textarea>
+
+            <div class="Ibotoes">
+                <input type="submit" value="Enviar Inscrição">
+                <input type="reset" value="Limpar Campos">
+            </div>
+        </form>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="Irodape">
+        <div class="Iredes">
+            <a href="#">Facebook</a> |
+            <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
+        </div>
+        <div class="Ilinks">
+            <a href="#">Política de Privacidade</a> |
+            <a href="#">Termos de Uso</a>
+        </div>
+        <p>Contato: apoio@saudemental.org.br | (18) 99999-9999</p>
+        <p class="Imissao">Nossa missão é oferecer acolhimento e apoio psicológico acessível a todos.</p>
+    </footer>
+
+</body>
+</html>

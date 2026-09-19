@@ -1,0 +1,203 @@
+/* ESTILO GERAL */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body{
+    background-color: black;
+    height: 100vh;
+}
+
+.interface{
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.flex{
+    display: flex;
+}
+
+button:hover{
+    box-shadow: 0px 0px 8px rgb(216, 10, 216);
+    transform: scale(1.05);
+    transition: .2s;
+}
+
+h2.titulo{
+    color: white;
+    font-size: 38px;
+    text-align: center;
+}
+
+h2.titulo span
+{
+    color: blueviolet;
+}
+
+/* ESTILO DO CABEÇALHO */
+header{
+    padding: 40px 4%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+header > .interface{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header a{
+    color: rgba(255, 255, 255, 0.612);
+    text-decoration: none;
+    display: inline-block;
+    transition: .2s;
+}
+header a:hover{
+    color: blueviolet;
+    transform: scale(1.05);
+    
+}
+
+header nav ul{
+    list-style-type: none;
+}
+
+header nav ul li{
+    display: inline-block;
+    padding: 0 40px;
+}
+.logo{
+    width: 140px;
+    height: 140px;
+}
+
+/* ESTILO TOPO DO SITE */
+
+section.topo-do-site{
+    padding: 40px 4%;
+    padding-top: 200px;
+}
+
+section.topo-do-site .flex{
+    align-items: center;
+    justify-content: center;
+    gap: 90px;
+}
+
+.topo-do-site h1{
+    color: white;
+    font-size: 38px;
+
+}
+.topo-do-site .txt-topo-site h1 span{
+    color: blueviolet;
+}
+
+.topo-do-site .txt-topo-site p{
+    color: white;
+    margin: 40px 0;
+}
+
+.topo-do-site .img-topo-site img{
+    position: relative;
+    animation: flutuar 2s ease-in-out infinite alternate;
+    
+}
+
+.sobre .img-sobre img{
+    width: 300px;
+    height: 500px;
+    border-radius: 25px;
+}
+
+
+@keyframes flutuar{
+    0%{
+        top: 0;
+    }
+    100%{
+        top: 30px;
+    }
+}
+
+/* ESTILO SOBRE */
+section.sobre{
+    padding: 40px 4%;
+}
+
+section.sobre .flex{
+    align-items: center;
+    gap: 60px;
+}
+.sobre .txt-sobre{
+    color: white;
+}
+
+.sobre .txt-sobre h2{
+    font-size: 40px;
+    line-height: 40px;
+    margin-bottom: 30px;
+}
+
+.sobre .txt-sobre h2 span{
+    color: blueviolet;
+    display: block;
+}
+
+.sobre .txt-sobre p{
+    margin: 20px 0;
+    text-align: justify;
+}
+
+.sobre .txt-sobre .btn-social button{
+    width: 60px;
+    height: 60px;
+    border-radius: 50px;
+    border: none;
+    background-color: blueviolet;
+    font-size: 30px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+/* ESTILO HOBBIES */
+
+section.hobbies{
+    padding: 40px 4%;
+}
+
+section.hobbies .flex{
+    gap: 60px;
+}
+.hobbies .hobbies-box{
+    color: white;
+    padding: 40px;
+    margin-top: 45px;
+    border-radius: 20px;
+    transition: .2s;
+}
+
+.hobbies .hobbies-box i{
+    font-size: 70px;
+    color: blueviolet;
+}
+
+.hobbies .hobbies-box h3{
+    font-size: 28px;
+    margin: 15px 0;
+}
+
+.hobbies .hobbies-box:hover{
+    transform: scale(1.05);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.412); 
+    
+}
