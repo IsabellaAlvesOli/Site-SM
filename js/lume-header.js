@@ -62,7 +62,7 @@
 
     var userImg = document.createElement('img');
     userImg.className = 'lume-user-avatar';
-    userImg.src = root + 'assets/avatar-padrao.svg';
+    userImg.src = root + 'avatar-padrao.svg';
     userImg.alt = 'Imagem padrão do usuário';
 
     var userName = document.createElement('span');
@@ -110,7 +110,7 @@
             loginLink.hidden = true;
             userArea.hidden = false;
             userName.textContent = session.name || 'Usuário';
-            userImg.src = root + 'assets/avatar-padrao.svg';
+            userImg.src = root + 'avatar-padrao.svg';
             userImg.alt = 'Imagem padrão de ' + (session.name || 'usuário');
         } else {
             c.hidden = false;
