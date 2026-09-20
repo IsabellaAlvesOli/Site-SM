@@ -33,7 +33,22 @@ body.lume-sof{
 .lume-role{text-align:center;color:var(--pink-dark);font-weight:700;margin:8px 0}
 .lume-desc{line-height:1.55;color:#6d6673;min-height:75px}
 .lume-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
-.lume-btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 17px;border-radius:14px;text-decoration:none;border:0;font-weight:800;cursor:pointer}
+.lume-btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 17px;border-radius:14px;text-decoration:none;border:0;font-weight:800;cursor:pointer;line-height:1.2;transition:all .2s ease}
+button.lume-btn.lume-primary,
+a.lume-btn.lume-primary,
+input[type="submit"].lume-btn.lume-primary{
+  background:linear-gradient(135deg,#8e70b7,#a66dc4);
+  color:#fff!important;
+  border:1px solid rgba(110,86,160,.15);
+  box-shadow:0 10px 22px rgba(142,112,183,.22);
+  opacity:1;
+}
+button.lume-btn.lume-primary:hover,
+a.lume-btn.lume-primary:hover,
+input[type="submit"].lume-btn.lume-primary:hover{
+  background:var(--purple-dark);
+  color:#fff!important;
+}
 .lume-primary{background:var(--purple);color:white}
 .lume-primary:hover{background:var(--purple-dark)}
 .lume-secondary{background:#f7edf5;color:var(--purple-dark)}
