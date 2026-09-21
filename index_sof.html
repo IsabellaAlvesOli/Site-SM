@@ -79,30 +79,37 @@ body.lume-sof{
 <section class="lume-wide-action"><div><h3>Ainda não sabe com quem agendar?</h3><p>Comece escolhendo uma data e um horário. O profissional pode ser definido na próxima etapa.</p></div><a class="lume-btn lume-primary" href="index.html">Começar agendamento →</a></section>
 </main>
 <div class="acessibilidade">
-    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade">
+    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
         ♿
     </button>
 
     <div id="menuAcessibilidade" class="menu-acessibilidade">
         <h2>Acessibilidade</h2>
-        <button id="aumentarFonte">
+
+        <button id="aumentarFonte" onclick="aumentarFonte()">
             A+ Aumentar fonte
         </button>
-        <button id="diminuirFonte">
+
+        <button id="diminuirFonte" onclick="diminuirFonte()">
             A- Diminuir fonte
         </button>
-        <button id="altoContraste">
+
+        <button id="altoContraste" onclick="altoContraste()">
             ◐ Alto contraste
         </button>
-        <button id="cinza">
+
+        <button id="cinza" onclick="escalaCinza()">
             Escala de cinza
         </button>
-        <button id="reduzirMovimento">
+
+        <button id="reduzirMovimento" onclick="reduzirMovimento()">
             Reduzir animações
         </button>
-        <button id="restaurarAcessibilidade">
+
+        <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
             ↻ Restaurar
         </button>
     </div>
+</div>
 </div>
 </body></html>
