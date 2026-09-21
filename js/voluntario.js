@@ -1,6 +1,7 @@
+
 function enviarInscricao() {
     let f = document.IformVoluntario;
-
+ 
     let areas = [];
     for (let i = 0; i < f.Iarea.length; i++) {
         if (f.Iarea[i].checked) {
@@ -11,7 +12,7 @@ function enviarInscricao() {
         alert("Escolha pelo menos uma área de interesse.");
         return false;
     }
-
+ 
     let disponibilidade = "";
     for (let i = 0; i < f.Idisponibilidade.length; i++) {
         if (f.Idisponibilidade[i].checked) {
@@ -22,7 +23,7 @@ function enviarInscricao() {
         alert("Escolha uma disponibilidade.");
         return false;
     }
-
+ 
     let voluntario = {
         nome: f.Inome.value,
         email: f.Iemail.value,
@@ -32,16 +33,16 @@ function enviarInscricao() {
         experiencia: f.Iexperiencia.value,
         motivacao: f.Imotivacao.value
     };
-
+ 
     let lista = JSON.parse(localStorage.getItem("voluntarios")) || [];
     lista.push(voluntario);
     localStorage.setItem("voluntarios", JSON.stringify(lista));
-
+ 
     alert("Inscrição enviada com sucesso!");
     f.reset();
     return false;
 }
-
+ 
 function mascaraTelefone(campo) {
     let n = campo.value.replace(/\D/g, "").substring(0, 11);
     if (n.length > 10) {
@@ -55,3 +56,4 @@ function mascaraTelefone(campo) {
     }
     campo.value = n;
 }
+ 
