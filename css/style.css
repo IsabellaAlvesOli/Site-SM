@@ -1274,3 +1274,122 @@ body.faq footer h3 {
     margin-bottom: 10px;
 }
 
+.acessibilidade {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+}
+
+#btnAcessibilidade {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background-color: #cb344d;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+#btnAcessibilidade:hover {
+    transform: scale(1.05);
+}
+
+.menu-acessibilidade {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 65px;
+
+    width: 230px;
+    padding: 15px;
+
+    background-color: white;
+    border: 2px solid #cb344d;
+    border-radius: 12px;
+
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+}
+
+.menu-acessibilidade.aberto {
+    display: block;
+}
+
+.menu-acessibilidade h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+
+    font-size: 20px;
+    color: #cb344d;
+}
+
+.menu-acessibilidade button {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 10px;
+
+    border: 1px solid #cb344d;
+    border-radius: 6px;
+
+    background-color: white;
+    color: #333;
+
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu-acessibilidade button:hover {
+    background-color: #cb344d;
+    color: white;
+}
+
+body.alto-contraste {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+body.alto-contraste p,
+body.alto-contraste h1,
+body.alto-contraste h2,
+body.alto-contraste h3,
+body.alto-contraste h4,
+body.alto-contraste h5,
+body.alto-contraste h6,
+body.alto-contraste a,
+body.alto-contraste li {
+    color: #fff !important;
+}
+
+body.alto-contraste header,
+body.alto-contraste footer,
+body.alto-contraste section {
+    background-color: #000 !important;
+}
+
+body.alto-contraste a {
+    text-decoration: underline;
+}
+
+body.escala-cinza {
+    filter: grayscale(100%);
+}
+
+body.reduzir-movimento *,
+body.reduzir-movimento *::before,
+body.reduzir-movimento *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 3px solid #000;
+    outline-offset: 3px;
+}
