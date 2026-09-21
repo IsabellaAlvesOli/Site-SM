@@ -10,7 +10,7 @@
     height: 55px;
     border: none;
     border-radius: 50%;
-    background-color: #cb344d;
+    background-color: #8966b4;
     color: white;
     font-size: 27px;
     cursor: pointer;
@@ -31,7 +31,7 @@
     padding: 15px;
 
     background-color: white;
-    border: 2px solid #cb344d;
+    border: 2px solid #8966b4;
     border-radius: 12px;
 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
@@ -46,7 +46,7 @@
     margin-bottom: 12px;
 
     font-size: 20px;
-    color: #cb344d;
+    color: #8966b4;
 }
 
 .menu-acessibilidade button {
@@ -54,7 +54,7 @@
     margin-bottom: 8px;
     padding: 10px;
 
-    border: 1px solid #cb344d;
+    border: 1px solid #8966b4;
     border-radius: 6px;
 
     background-color: white;
@@ -65,12 +65,12 @@
 }
 
 .menu-acessibilidade button:hover {
-    background-color: #cb344d;
+    background-color: #8966b4;
     color: white;
 }
 
 body.alto-contraste {
-    background-color: #000 !important;
+    background-color: #4c3e5a!important;
     color: #fff !important;
 }
 
@@ -89,7 +89,7 @@ body.alto-contraste li {
 body.alto-contraste header,
 body.alto-contraste footer,
 body.alto-contraste section {
-    background-color: #000 !important;
+    background-color: #4c3e5a !important;
 }
 
 body.alto-contraste a {
@@ -114,6 +114,5 @@ a:focus,
 input:focus,
 textarea:focus,
 select:focus {
-    outline: 3px solid #000;
     outline-offset: 3px;
 }
