@@ -1,8 +1,3 @@
-function mostrarMensagem(texto, tipo) {
-    document.getElementById("mensagem").innerHTML =
-        '<div class="alert alert-' + tipo + '" role="alert">' + texto + '</div>';
-}
-
 function enviarInscricao() {
     let f = document.IformVoluntario;
 
@@ -13,7 +8,7 @@ function enviarInscricao() {
         }
     }
     if (areas.length == 0) {
-        mostrarMensagem("Escolha pelo menos uma área de interesse.", "danger");
+        alert("Escolha pelo menos uma área de interesse.");
         return false;
     }
 
@@ -24,7 +19,7 @@ function enviarInscricao() {
         }
     }
     if (disponibilidade == "") {
-        mostrarMensagem("Escolha uma disponibilidade.", "danger");
+        alert("Escolha uma disponibilidade.");
         return false;
     }
 
@@ -42,7 +37,7 @@ function enviarInscricao() {
     lista.push(voluntario);
     localStorage.setItem("voluntarios", JSON.stringify(lista));
 
-    mostrarMensagem("Inscrição enviada com sucesso!", "success");
+    alert("Inscrição enviada com sucesso!");
     f.reset();
     return false;
 }
