@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,119 +18,125 @@
 
 <body class="inscricao">
 
-<!-- HEADER SEM BOTÃO -->
+    <!-- HEADER SEM BOTÃO -->
 
-<!-- CONTEÚDO PRINCIPAL -->
-<section class="Iconteudo container">
-    <h2>Formulário de Inscrição de Voluntários</h2>
-    <p>Preencha o formulário abaixo para participar dos nossos projetos de apoio à saúde mental.</p>
+    <!-- CONTEÚDO PRINCIPAL -->
+    <section class="Iconteudo container">
+        <h2>Formulário de Inscrição de Voluntários</h2>
+        <p>Preencha o formulário abaixo para participar dos nossos projetos de apoio à saúde mental.</p>
 
-    <div id="mensagem"></div>
+        <div id="mensagem"></div>
 
-    <form id="formVoluntario" name="IformVoluntario" class="Iformulario" onsubmit="return enviarInscricao()">
+        <form id="formVoluntario" name="IformVoluntario" class="Iformulario" onsubmit="return enviarInscricao()">
 
-        <div class="row">
-            <div class="col-md-6">
-                <label for="Inome">Nome completo:</label>
-                <input type="text" id="Inome" name="Inome" placeholder="Digite seu nome" required>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="Inome">Nome completo:</label>
+                    <input type="text" id="Inome" name="Inome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="Iemail">E-mail:</label>
+                    <input type="email" id="Iemail" name="Iemail" placeholder="exemplo@email.com" required>
+                </div>
             </div>
-            <div class="col-md-6">
-                <label for="Iemail">E-mail:</label>
-                <input type="email" id="Iemail" name="Iemail" placeholder="exemplo@email.com" required>
+
+            <label for="Itelefone">Telefone:</label>
+            <input type="tel" id="Itelefone" name="Itelefone" placeholder="(99) 99999-9999" inputmode="numeric"
+                maxlength="15" pattern="\(\d{2}\) \d{4,5}-\d{4}" oninput="mascaraTelefone(this)" required>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label>Áreas de Interesse:</label>
+                    <div class="Iareas">
+                        <label><input type="checkbox" name="Iarea" value="atendimento"> Atendimento e escuta
+                            emocional</label>
+                        <label><input type="checkbox" name="Iarea" value="campanhas"> Campanhas e eventos</label>
+                        <label><input type="checkbox" name="Iarea" value="comunicacao"> Comunicação e mídias</label>
+                        <label><input type="checkbox" name="Iarea" value="logistica"> Apoio logístico</label>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>Disponibilidade:</label>
+                    <div class="Idisponibilidade">
+                        <label><input type="radio" name="Idisponibilidade" value="manha"> Manhã</label>
+                        <label><input type="radio" name="Idisponibilidade" value="tarde"> Tarde</label>
+                        <label><input type="radio" name="Idisponibilidade" value="noite"> Noite</label>
+                    </div>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="Iexperiencia">Experiência ou formação na área:</label>
+                    <textarea id="Iexperiencia" name="Iexperiencia" rows="5"
+                        placeholder="Conte-nos sobre suas experiências..." required></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label for="Imotivacao">Por que deseja ser voluntário?</label>
+                    <textarea id="Imotivacao" name="Imotivacao" rows="5" placeholder="Escreva sua motivação..."
+                        required></textarea>
+                </div>
+            </div>
+            <div class="Ibotoes">
+                <input type="submit" value="Enviar Inscrição">
+                <input type="reset" value="Limpar Campos">
+            </div>
+        </form>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer class="Irodape">
+        <div class="Iredes">
+            <a href="#">Facebook</a> |
+            <a href="#">Instagram</a> |
+            <a href="#">Twitter</a>
         </div>
-
-        <label for="Itelefone">Telefone:</label>
-        <input type="tel" id="Itelefone" name="Itelefone" placeholder="(99) 99999-9999"
-            inputmode="numeric" maxlength="15" pattern="\(\d{2}\) \d{4,5}-\d{4}"
-            oninput="mascaraTelefone(this)" required>
-
-        <div class="row">
-    <div class="col-md-6">
-        <label>Áreas de Interesse:</label>
-        <div class="Iareas">
-            <label><input type="checkbox" name="Iarea" value="atendimento"> Atendimento e escuta emocional</label>
-            <label><input type="checkbox" name="Iarea" value="campanhas"> Campanhas e eventos</label>
-            <label><input type="checkbox" name="Iarea" value="comunicacao"> Comunicação e mídias</label>
-            <label><input type="checkbox" name="Iarea" value="logistica"> Apoio logístico</label>
+        <div class="Ilinks">
+            <a href="#">Política de Privacidade</a> |
+            <a href="#">Termos de Uso</a>
         </div>
-    </div>
-    <div class="col-md-6">
-        <label>Disponibilidade:</label>
-        <div class="Idisponibilidade">
-            <label><input type="radio" name="Idisponibilidade" value="manha"> Manhã</label>
-            <label><input type="radio" name="Idisponibilidade" value="tarde"> Tarde</label>
-            <label><input type="radio" name="Idisponibilidade" value="noite"> Noite</label>
-        </div>
-    </div>
-</div>
+        <p>Contato: apoio@saudemental.org.br | (18) 99999-9999</p>
+        <p class="Imissao">Nossa missão é oferecer acolhimento e apoio psicológico acessível a todos.</p>
+    </footer>
 
-       <div class="row">
-    <div class="col-md-6">
-        <label for="Iexperiencia">Experiência ou formação na área:</label>
-        <textarea id="Iexperiencia" name="Iexperiencia" rows="5" placeholder="Conte-nos sobre suas experiências..." required></textarea>
-    </div>
-    <div class="col-md-6">
-        <label for="Imotivacao">Por que deseja ser voluntário?</label>
-        <textarea id="Imotivacao" name="Imotivacao" rows="5" placeholder="Escreva sua motivação..." required></textarea>
-    </div>
-</div>
-        <div class="Ibotoes">
-            <input type="submit" value="Enviar Inscrição">
-            <input type="reset" value="Limpar Campos">
-        </div>
-    </form>
-</section>
-
-<!-- RODAPÉ -->
-<footer class="Irodape">
-    <div class="Iredes">
-        <a href="#">Facebook</a> |
-        <a href="#">Instagram</a> |
-        <a href="#">Twitter</a>
-    </div>
-    <div class="Ilinks">
-        <a href="#">Política de Privacidade</a> |
-        <a href="#">Termos de Uso</a>
-    </div>
-    <p>Contato: apoio@saudemental.org.br | (18) 99999-9999</p>
-    <p class="Imissao">Nossa missão é oferecer acolhimento e apoio psicológico acessível a todos.</p>
-</footer>
-
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
     <div class="acessibilidade">
-    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade">
-        ♿
-    </button>
+        <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade">
+            ♿
+        </button>
 
-    <div id="menuAcessibilidade" class="menu-acessibilidade">
-        <h2>Acessibilidade</h2>
-        <button id="aumentarFonte">
-            A+ Aumentar fonte
-        </button>
-        <button id="diminuirFonte">
-            A- Diminuir fonte
-        </button>
-        <button id="altoContraste">
-            ◐ Alto contraste
-        </button>
-        <button id="cinza">
-            Escala de cinza
-        </button>
-        <button id="reduzirMovimento">
-            Reduzir animações
-        </button>
-        <button id="restaurarAcessibilidade">
-            ↻ Restaurar
-        </button>
+        <div id="menuAcessibilidade" class="menu-acessibilidade">
+            <h2>Acessibilidade</h2>
+            <button id="aumentarFonte">
+                A+ Aumentar fonte
+            </button>
+            <button id="diminuirFonte">
+                A- Diminuir fonte
+            </button>
+            <button id="altoContraste">
+                ◐ Alto contraste
+            </button>
+            <button id="cinza">
+                Escala de cinza
+            </button>
+            <button id="reduzirMovimento">
+                Reduzir animações
+            </button>
+            <button id="restaurarAcessibilidade">
+                ↻ Restaurar
+            </button>
+        </div>
     </div>
-</div>
 
 </body>
+
 </html>

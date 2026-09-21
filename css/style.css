@@ -878,18 +878,6 @@ body.sof .texto_detalhe_sof {
 
 }
 
-.img-banner {
-    width: 80%;
-    display: block;
-    margin-top: 7.5%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.socorro {
-    background: #F4E9D3;
-    background: linear-gradient(90deg, rgba(244, 233, 211, 1) 45%, rgb(252, 189, 0) 100%);
-}
 
 .logok {
     width: 12%;
@@ -1023,6 +1011,7 @@ section span h2 {
 .como-funciona .conteudo p {
     font-size: 1.1em;
     line-height: 1.6;
+    text-align: justify;
     
 }
 
@@ -1036,25 +1025,40 @@ section span h2 {
     border-radius: 10px;
     margin-left: 50px;
 }
+@media (max-width: 768px) {
+    .como-funciona {
+        flex-direction: column;
+        padding: 30px;
+    }
+
+    .como-funciona .imagem img {
+        margin-left: 0;
+        margin-top: 30px;
+    }
+}
 .projetos{
     text-align: center;
     padding: 50px 20px;
     margin-top: 10px;
+    color: #8966b4;
+
 }
 .cards {
     display: flex;
     justify-content: space-around;
     margin-left: 10px;
     padding: 50px;
+    
 }
-.card-projeto {
+.card{
+
     background: #d9a9ec;
     border-radius: 25px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: justify;
+    text-align: justify
+    /* padding: 20px;
     flex: 1;
-    margin-left: 50px;
+    margin-left: 50px; */
 }
 
 

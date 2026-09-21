@@ -5,18 +5,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <script src="./js/bemvindo.js"></script>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./css/lume-header.css">
     <link rel="stylesheet" href="css/acessibilidade.css">
-<script src="./js/lume-header.js" data-root="./" defer></script>
-<script src="js/acessibilidade.js" defer></script>
+    <script src="./js/lume-header.js" data-root="./" defer></script>
+    <script src="js/acessibilidade.js" defer></script>
 </head>
 
 <body>
-<section class="banner" id="first">
-        <div class="socorro">
+    <script>
+        bemvindo();
+    </script>
 
-            <img src="imgs/banner.png" alt="banner" class="img-banner">
+    <section class="banner" id="first">
+        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active" data-bs-interval="10000">
+                    <img src="imgs/banner.png" class="d-block w-100 h-50" alt="banner">
+                </div>
+                <div class="carousel-item" data-bs-interval="20000">
+                    <img src="imgs/banner2.png" class="d-block w-100" alt="banner 2">
+                </div>
+                <div class="carousel-item">
+                    <img src="imgs/banner3.png" class="d-block w-100" alt="banner 3">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Próximo</span>
+            </button>
         </div>
     </section>
     <section class="mission-section" id="second">
@@ -49,31 +78,65 @@
 
     <section id="project">
         <div class="projetos">
-            <span>
-                <h2>Projetos</h2>
-            </span>
-            <div class="cards">
-                <div class="card-projeto">
-                    <h3>Projeto Acolher</h3>
-                    <p>O Projeto Acolher é uma iniciativa que oferece suporte emocional gratuito para pessoas em
-                        situação de vulnerabilidade, conectando-as com voluntários treinados para ouvir e ajudar.</p>
+
+            <h2>Projetos</h2>
+
+            <div class="row justify-content-center">
+
+                <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                    <div class="card m-3" style="width: 18rem;">
+                        <img src="imgs/1.png" class="card-img-top" alt="Projeto Acolher">
+
+                        <div class="card-body">
+                            <h3>Projeto Acolher</h3>
+
+                            <p class="card-text">
+                                O Projeto Acolher é uma iniciativa que oferece suporte emocional gratuito
+                                para pessoas em situação de vulnerabilidade, conectando-as com voluntários
+                                treinados para ouvir e ajudar.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-projeto">
-                    <h3>Rede de Apoio</h3>
-                    <p>A Rede de Apoio é uma plataforma colaborativa que conecta indivíduos que precisam de suporte
-                        emocional com voluntários dispostos a oferecer ajuda, promovendo bem-estar e solidariedade.</p>
+
+                <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                    <div class="card m-3" style="width: 18rem;">
+                        <img src="imgs/2.png" class="card-img-top" alt="Rede de Apoio">
+
+                        <div class="card-body">
+                            <h3>Rede de Apoio</h3>
+
+                            <p class="card-text">
+                                A Rede de Apoio é uma plataforma colaborativa que conecta indivíduos
+                                que precisam de suporte emocional com voluntários dispostos a oferecer
+                                ajuda, promovendo bem-estar e solidariedade.
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-projeto">
-                    <h3>Escuta Amiga</h3>
-                    <p>O Escuta Amiga é um serviço de apoio emocional onde voluntários treinados oferecem um espaço
-                        seguro
-                        para pessoas compartilharem suas preocupações e receberem orientação.</p>
+
+                <div class="col-12 col-md-6 col-lg-4 d-flex justify-content-center">
+                    <div class="card m-3" style="width: 18rem;">
+                        <img src="imgs/3.png" class="card-img-top" alt="Escuta Amiga">
+
+                        <div class="card-body">
+                            <h3>Escuta Amiga</h3>
+
+                            <p class="card-text">
+                                O Escuta Amiga é um serviço de apoio emocional onde voluntários
+                                treinados oferecem um espaço seguro para pessoas compartilharem
+                                suas preocupações e receberem orientação.
+                            </p>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
+
     </section>
 
-
+    <!-- footer -->
     <footer id="contact" class="footer">
         <div class="footer-container">
             <div class="footer-missao">
@@ -110,38 +173,36 @@
         </div>
 
         <div class="footer-bottom">
-            <p>© 2025 LUME - Todos os direitos reservados.</p>
+            <p>© 2026 LUME - Todos os direitos reservados.</p>
         </div>
     </footer>
-
-
     <div class="acessibilidade">
-    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade">
-        ♿
-    </button>
+        <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade">
+            ♿
+        </button>
 
-    <div id="menuAcessibilidade" class="menu-acessibilidade">
-        <h2>Acessibilidade</h2>
-        <button id="aumentarFonte">
-            A+ Aumentar fonte
-        </button>
-        <button id="diminuirFonte">
-            A- Diminuir fonte
-        </button>
-        <button id="altoContraste">
-            ◐ Alto contraste
-        </button>
-        <button id="cinza">
-            Escala de cinza
-        </button>
-        <button id="reduzirMovimento">
-            Reduzir animações
-        </button>
-        <button id="restaurarAcessibilidade">
-            ↻ Restaurar
-        </button>
+        <div id="menuAcessibilidade" class="menu-acessibilidade">
+            <h2>Acessibilidade</h2>
+            <button id="aumentarFonte">
+                A+ Aumentar fonte
+            </button>
+            <button id="diminuirFonte">
+                A- Diminuir fonte
+            </button>
+            <button id="altoContraste">
+                ◐ Alto contraste
+            </button>
+            <button id="cinza">
+                Escala de cinza
+            </button>
+            <button id="reduzirMovimento">
+                Reduzir animações
+            </button>
+            <button id="restaurarAcessibilidade">
+                ↻ Restaurar
+            </button>
+        </div>
     </div>
-</div>
 </body>
 
 </html>
