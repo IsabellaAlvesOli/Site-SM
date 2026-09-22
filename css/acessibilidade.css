@@ -1,0 +1,600 @@
+.acessibilidade {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 9999;
+}
+
+#btnAcessibilidade {
+    width: 55px;
+    height: 55px;
+    border: none;
+    border-radius: 50%;
+    background-color: #8966b4;
+    color: #ffffff;
+    font-size: 27px;
+    cursor: pointer;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s;
+}
+
+#btnAcessibilidade:hover {
+    transform: scale(1.05);
+}
+
+.menu-acessibilidade {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 65px;
+    width: 230px;
+    padding: 15px;
+    background-color: #ffffff;
+    border: 2px solid #8966b4;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+}
+
+.menu-acessibilidade.aberto {
+    display: block;
+}
+
+.menu-acessibilidade h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 20px;
+    color: #8966b4;
+}
+
+.menu-acessibilidade button {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 10px;
+    border: 1px solid #8966b4;
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: #333333;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.menu-acessibilidade button:last-child {
+    margin-bottom: 0;
+}
+
+.menu-acessibilidade button:hover {
+    background-color: #8966b4;
+    color: #ffffff;
+}
+
+#btnAcessibilidade:focus,
+.menu-acessibilidade button:focus {
+    outline: 3px solid #c085fa;
+    outline-offset: 3px;
+}
+
+body.alto-contraste {
+    background-color: #4c3e5a !important;
+    color: #ffffff !important;
+}
+
+body.alto-contraste p,
+body.alto-contraste h1,
+body.alto-contraste h2,
+body.alto-contraste h3,
+body.alto-contraste h4,
+body.alto-contraste h5,
+body.alto-contraste h6,
+body.alto-contraste a,
+body.alto-contraste li {
+    color: #ffffff !important;
+}
+
+body.alto-contraste header,
+body.alto-contraste footer,
+body.alto-contraste section {
+    background-color: #4c3e5a !important;
+}
+
+body.alto-contraste a {
+    text-decoration: underline;
+}
+
+body.alto-contraste #btnAcessibilidade {
+    background-color: #c19ae7 !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.alto-contraste .menu-acessibilidade {
+    background-color: #000000 !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+body.alto-contraste .menu-acessibilidade h2 {
+    color: #ffffff !important;
+}
+
+body.alto-contraste .menu-acessibilidade button {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border: 1px solid #ffffff !important;
+}
+
+body.alto-contraste .menu-acessibilidade button:hover {
+    background-color: #a781ce !important;
+    color: #000000 !important;
+}
+
+body.alto-contraste #btnAcessibilidade:focus,
+body.alto-contraste .menu-acessibilidade button:focus {
+    outline: 3px solid #c085fa !important;
+    outline-offset: 3px;
+}
+
+body.escala-cinza {
+    filter: grayscale(100%);
+}
+
+body.reduzir-movimento *,
+body.reduzir-movimento *::before,
+body.reduzir-movimento *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+    outline-offset: 3px;
+}
+
+body.lume-sof.alto-contraste {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .lume-nav {
+    background: #000000 !important;
+    border-bottom: 2px solid #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .lume-brand,
+body.lume-sof.alto-contraste .lume-link {
+    color: #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .lume-brand span {
+    color: #4c3e5a !important;
+}
+
+body.lume-sof.alto-contraste .lume-title,
+body.lume-sof.alto-contraste .lume-container h1,
+body.lume-sof.alto-contraste .lume-container h2,
+body.lume-sof.alto-contraste .lume-container h3 {
+    color: #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .lume-subtitle,
+body.lume-sof.alto-contraste p,
+body.lume-sof.alto-contraste .small-note {
+    color: #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .lume-eyebrow {
+    background: #b081df !important;
+    color: #000000 !important;
+}
+
+body.lume-sof.alto-contraste .booking-card {
+    background: #111111 !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .selected {
+    background: #222222 !important;
+    border: 1px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .selected strong,
+body.lume-sof.alto-contraste .selected span {
+    color: #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .field label {
+    color: #ffffff !important;
+}
+
+body.lume-sof.alto-contraste input,
+body.lume-sof.alto-contraste select,
+body.lume-sof.alto-contraste textarea {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.lume-sof.alto-contraste input::placeholder {
+    color: #dddddd !important;
+}
+
+body.lume-sof.alto-contraste .slot {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .slot:has(input:checked) {
+    background: #4c3e5a !important;
+    color: #000000 !important;
+    border-color: #4c3e5a !important;
+}
+
+body.lume-sof.alto-contraste .lume-primary {
+    background: #c085fa !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.lume-sof.alto-contraste .lume-secondary {
+    background: #000000 !important;
+    color: #ab67f0 !important;
+    border: 2px solid #af7ae4 !important;
+}
+
+body.lume-sof.alto-contraste .highlight {
+    background: #222222 !important;
+    color: #ffffff !important;
+    border-left: 5px solid #a373d3 !important;
+}
+
+body.lume-sof.alto-contraste .success {
+    background: #4c3e5a !important;
+    color: #ffffff !important;
+    border: 2px solid #4c3e5a !important;
+}
+
+body.lume-sof.alto-contraste a {
+    color: #4c3e5a !important;
+    text-decoration: underline;
+}
+
+body.index-sof.alto-contraste {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.index-sof.alto-contraste .lume-title,
+body.index-sof.alto-contraste .lume-container h1,
+body.index-sof.alto-contraste .lume-container h2,
+body.index-sof.alto-contraste .lume-container h3 {
+    color: #ffffff !important;
+}
+
+body.index-sof.alto-contraste .lume-subtitle,
+body.index-sof.alto-contraste .lume-card p,
+body.index-sof.alto-contraste .lume-wide-action p {
+    color: #b82525 !important;
+}
+
+body.index-sof.alto-contraste .lume-eyebrow {
+    background: #b081df !important;
+    color: #000000 !important;
+}
+
+body.index-sof.alto-contraste .lume-card {
+    background: #111111 !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+body.index-sof.alto-contraste .lume-card h2 {
+    color: #ffffff !important;
+}
+
+body.index-sof.alto-contraste .lume-role {
+    color: #c085fa !important;
+}
+
+body.index-sof.alto-contraste .lume-photo {
+    border-color: #c085fa !important;
+}
+
+body.index-sof.alto-contraste .lume-primary {
+    background: #c085fa !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.index-sof.alto-contraste .lume-primary:hover {
+    background: #4c3e5a !important;
+    color: #ffffff !important;
+}
+
+body.index-sof.alto-contraste .lume-secondary {
+    background: #000000 !important;
+    color: #ab67f0 !important;
+    border: 2px solid #af7ae4 !important;
+}
+
+body.index-sof.alto-contraste .lume-secondary:hover {
+    background: #a781ce !important;
+    color: #000000 !important;
+}
+
+body.index-sof.alto-contraste .lume-wide-action {
+    background: #222222 !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+body.index-sof.alto-contraste .lume-wide-action h3 {
+    color: #ffffff !important;
+}
+
+body.index-sof.alto-contraste a {
+    color: #4c3e5a !important;
+    text-decoration: underline;
+}
+
+body.faq.alto-contraste {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.faq.alto-contraste .m-container {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.faq.alto-contraste .m-faq-container {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.faq.alto-contraste .m-faq-item {
+    background: #111111 !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+body.faq.alto-contraste .m-faq-item h2 {
+    color: #c085fa !important;
+}
+
+body.faq.alto-contraste .m-faq-item p {
+    color: #ffffff !important;
+}
+
+body.faq.alto-contraste footer {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border-top: 2px solid #ffffff !important;
+}
+
+body.faq.alto-contraste footer p {
+    color: #ffffff !important;
+}
+
+body.faq.alto-contraste a {
+    color: #c085fa !important;
+    text-decoration: underline;
+}
+
+body.blog.alto-contraste {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.blog.alto-contraste .r_container {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.blog.alto-contraste .r_titulo h1 {
+    color: #ffffff !important;
+}
+
+body.blog.alto-contraste .r_titulo h1 span {
+    color: #c085fa !important;
+}
+
+body.blog.alto-contraste .r_texto {
+    color: #ffffff !important;
+}
+
+body.blog.alto-contraste .r_texto p {
+    color: #ffffff !important;
+}
+
+body.blog.alto-contraste .r_botao {
+    background: #c085fa !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.blog.alto-contraste .r_botao:hover {
+    background: #4c3e5a !important;
+    color: #ffffff !important;
+}
+
+body.blog.alto-contraste .r_art {
+    background: #111111 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.blog.alto-contraste .r_barra {
+    background: #c085fa !important;
+}
+
+body.blog.alto-contraste .r_link {
+    color: #c085fa !important;
+}
+
+body.blog.alto-contraste .r_link .ra {
+    color: #c085fa !important;
+}
+
+body.blog.alto-contraste .r_link:hover,
+body.blog.alto-contraste .r_link:hover .ra {
+    color: #d9b8ff !important;
+}
+
+body.blog.alto-contraste .r_tam1 {
+    color: #ffffff !important;
+}
+
+body.blog.alto-contraste .r_tam2 {
+    color: #dddddd !important;
+}
+
+body.blog.alto-contraste .r_pos,
+body.blog.alto-contraste .r_pos3,
+body.blog.alto-contraste .r_pos4,
+body.blog.alto-contraste .r_pos5,
+body.blog.alto-contraste .r_pos6,
+body.blog.alto-contraste .r_pos8 {
+    color: #ffffff !important;
+}
+
+body.blog.alto-contraste a {
+    color: #c085fa !important;
+}
+
+body.blog.alto-contraste .rimg,
+body.blog.alto-contraste .rp,
+body.blog.alto-contraste .rp3,
+body.blog.alto-contraste .rp4,
+body.blog.alto-contraste .rp8 {
+    border-color: #c085fa !important;
+}
+
+body.inscricao.alto-contraste {
+    background: #000000 !important;
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Iconteudo {
+    background: #222222 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Iconteudo h2 {
+    color: #c085fa !important;
+}
+
+body.inscricao.alto-contraste .Iconteudo > p {
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Iformulario {
+    background: #222222 !important;
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Iformulario label {
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Iformulario input[type="text"],
+body.inscricao.alto-contraste .Iformulario input[type="email"],
+body.inscricao.alto-contraste .Iformulario input[type="tel"],
+body.inscricao.alto-contraste .Iformulario textarea {
+    background: #111111 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Iformulario input::placeholder,
+body.inscricao.alto-contraste .Iformulario textarea::placeholder {
+    color: #dddddd !important;
+}
+
+body.inscricao.alto-contraste .Iareas {
+    background: #111111 !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Iareas label {
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Idisponibilidade {
+    background: #111111 !important;
+    border: 2px solid #ffffff !important;
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Idisponibilidade label {
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste input[type="checkbox"],
+body.inscricao.alto-contraste input[type="radio"] {
+    accent-color: #c085fa;
+}
+
+body.inscricao.alto-contraste .Ibotoes input[type="submit"] {
+    background: #c085fa !important;
+    color: #000000 !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Ibotoes input[type="reset"] {
+    background: #000000 !important;
+    color: #c085fa !important;
+    border: 2px solid #c085fa !important;
+}
+
+body.inscricao.alto-contraste .Ibotoes input[type="submit"]:hover {
+    background: #4c3e5a !important;
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Ibotoes input[type="reset"]:hover {
+    background: #a781ce !important;
+    color: #000000 !important;
+}
+
+body.inscricao.alto-contraste #mensagem {
+    background: #111111 !important;
+    color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Irodape {
+    background: #000000 !important;
+    color: #ffffff !important;
+    border-top: 2px solid #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Irodape p {
+    color: #ffffff !important;
+}
+
+body.inscricao.alto-contraste .Irodape a {
+    color: #c085fa !important;
+    text-decoration: underline;
+}
+
+body.inscricao.alto-contraste .Imissao {
+    color: #dddddd !important;
+}
+
+body.inscricao.alto-contraste input:focus,
+body.inscricao.alto-contraste textarea:focus,
+body.inscricao.alto-contraste button:focus,
+body.inscricao.alto-contraste a:focus {
+    outline: 3px solid #c085fa !important;
+    outline-offset: 3px;
+}

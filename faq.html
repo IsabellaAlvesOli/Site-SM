@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Perguntas Frequentes</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/acessibilidade.css">
 <link rel="stylesheet" href="./css/lume-header.css">
 <script src="./js/lume-header.js" data-root="./" defer></script>
+<script src="js/acessibilidade.js" defer></script>
 </head>
 <body class="faq">
 <main>
@@ -45,31 +47,31 @@
     </footer>
 
     <div class="acessibilidade">
-    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade">
+    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
         ♿
     </button>
-
     <div id="menuAcessibilidade" class="menu-acessibilidade">
         <h2>Acessibilidade</h2>
-        <button id="aumentarFonte">
+        <button id="aumentarFonte" onclick="aumentarFonte()">
             A+ Aumentar fonte
         </button>
-        <button id="diminuirFonte">
+        <button id="diminuirFonte" onclick="diminuirFonte()">
             A- Diminuir fonte
         </button>
-        <button id="altoContraste">
+        <button id="altoContraste" onclick="altoContraste()">
             ◐ Alto contraste
         </button>
-        <button id="cinza">
+        <button id="cinza" onclick="escalaCinza()">
             Escala de cinza
         </button>
-        <button id="reduzirMovimento">
+        <button id="reduzirMovimento" onclick="reduzirMovimento()">
             Reduzir animações
         </button>
-        <button id="restaurarAcessibilidade">
+        <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
             ↻ Restaurar
         </button>
     </div>
+</div>
 </div>
 </body>
 </html>
