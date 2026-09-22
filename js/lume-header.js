@@ -10,8 +10,8 @@
         ['Projetos', root + 'home.html#project', 'project'],
         ['FAQ', root + 'faq.html', 'faq'],
         ['Blogs', root + 'html/r_index.html', 'blog'],
-        ['Agendamento', root + 'index.html', 'booking'],
-        ['Voluntários', root + 'index_sof.html', 'volunteers']
+        ['Agendamento', root + 'html/index.html', 'booking'],
+        ['Voluntários', root + 'html/index_sof.html', 'volunteers']
     ];
 
     var h = document.createElement('header');
@@ -27,7 +27,7 @@
     b.setAttribute('aria-label', 'Lume - Página inicial');
 
     var img = document.createElement('img');
-    img.src = root + 'imgs/logo.png';
+    img.src = root + 'images/logo.png';
     img.alt = 'Lume';
     b.appendChild(img);
 
@@ -53,7 +53,7 @@
 
     var loginLink = document.createElement('a');
     loginLink.className = 'lume-login-link';
-    loginLink.href = root + 'login.html';
+    loginLink.href = root + (root === './' ? 'html/login.html' : 'html/login.html');
     loginLink.textContent = 'Entrar';
 
     var userArea = document.createElement('div');
@@ -62,7 +62,7 @@
 
     var userImg = document.createElement('img');
     userImg.className = 'lume-user-avatar';
-    userImg.src = root + 'avatar-padrao.svg';
+    userImg.src = root + 'images/avatar-padrao.svg';
     userImg.alt = 'Imagem padrão do usuário';
 
     var userName = document.createElement('span');
@@ -85,8 +85,8 @@
     var p = location.pathname.toLowerCase();
     var cur = 'home';
 
-    if (p.indexOf('index.html') !== -1 && p.indexOf('/html/') === -1) cur = 'booking';
-    if (p.indexOf('index_sof') !== -1) cur = 'volunteers';
+    if (p.endsWith('html/index.html')) cur = 'booking';
+    if (p.indexOf('html/index_sof') !== -1) cur = 'volunteers';
     if (p.indexOf('faq.html') !== -1) cur = 'faq';
     if (p.indexOf('r_index.html') !== -1) cur = 'blog';
 
@@ -110,7 +110,7 @@
             loginLink.hidden = true;
             userArea.hidden = false;
             userName.textContent = session.name || 'Usuário';
-            userImg.src = root + 'avatar-padrao.svg';
+            userImg.src = root + 'images/avatar-padrao.svg';
             userImg.alt = 'Imagem padrão de ' + (session.name || 'usuário');
         } else {
             c.hidden = false;

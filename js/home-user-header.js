@@ -9,9 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    const avatarPath = window.location.pathname.includes("/html/")
+        ? "../images/avatar-padrao.svg"
+        : "images/avatar-padrao.svg";
+
     userArea.innerHTML = `
         <img
-            src="assets/avatar-padrao.svg"
+            src="${avatarPath}"
             alt="Imagem do usuário"
             class="lume-user-avatar"
         >

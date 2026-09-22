@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lume — Agendamento</title>
+  <style>
+    :root {
+      --lilac: #cbb7e9;
+      --purple: #8e70b7;
+      --purple-dark: #624a83;
+      --pink: #f2c4d7;
+      --pink-dark: #b96f91;
+      --yellow: #f7df9b;
+      --cream: #fffaf5;
+      --ink: #4d4656;
+      --white: #fff;
+      --shadow: 0 14px 35px rgba(98, 74, 131, .14);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    body.lume-sof {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(135deg, #fbf5ff 0%, #fff9f1 55%, #fff3f7 100%);
+    }
+
+    .lume-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 18px 7%;
+      background: rgba(255, 255, 255, .9);
+      border-bottom: 1px solid #eadff0;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(10px);
+    }
+
+    .lume-brand {
+      font-size: 25px;
+      font-weight: 800;
+      color: var(--purple-dark);
+      text-decoration: none
+    }
+
+    .lume-brand span {
+      color: var(--pink-dark)
+    }
+
+    .lume-link {
+      color: var(--purple-dark);
+      text-decoration: none;
+      font-weight: 700
+    }
+
+    .lume-container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+      padding: 58px 0
+    }
+
+    .lume-eyebrow {
+      display: inline-block;
+      padding: 7px 13px;
+      border-radius: 30px;
+      background: var(--yellow);
+      font-weight: 700;
+      font-size: 13px
+    }
+
+    .lume-title {
+      font-size: clamp(30px, 5vw, 48px);
+      line-height: 1.1;
+      margin: 16px 0 12px;
+      color: var(--purple-dark)
+    }
+
+    .lume-subtitle {
+      max-width: 720px;
+      line-height: 1.65;
+      font-size: 17px;
+      color: #716979
+    }
+
+    .lume-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 35px
+    }
+
+    .lume-card {
+      background: rgba(255, 255, 255, .94);
+      border: 1px solid #eee3f2;
+      border-radius: 25px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      transition: .2s
+    }
+
+    .lume-card:hover {
+      transform: translateY(-4px)
+    }
+
+    .lume-photo {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 18px;
+      border: 6px solid var(--pink)
+    }
+
+    .lume-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .lume-card h2 {
+      margin: 5px 0;
+      color: var(--purple-dark);
+      text-align: center
+    }
+
+    .lume-role {
+      text-align: center;
+      color: var(--pink-dark);
+      font-weight: 700;
+      margin: 8px 0
+    }
+
+    .lume-desc {
+      line-height: 1.55;
+      color: #6d6673;
+      min-height: 75px
+    }
+
+    .lume-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 20px
+    }
+
+    .lume-btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      padding: 12px 17px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 0;
+      font-weight: 800;
+      cursor: pointer;
+      line-height: 1.2;
+      transition: all .2s ease
+    }
+
+    button.lume-btn.lume-primary,
+    a.lume-btn.lume-primary,
+    input[type="submit"].lume-btn.lume-primary {
+      background: linear-gradient(135deg, #8e70b7, #a66dc4);
+      color: #fff !important;
+      border: 1px solid rgba(110, 86, 160, .15);
+      box-shadow: 0 10px 22px rgba(142, 112, 183, .22);
+      opacity: 1;
+    }
+
+    button.lume-btn.lume-primary:hover,
+    a.lume-btn.lume-primary:hover,
+    input[type="submit"].lume-btn.lume-primary:hover {
+      background: var(--purple-dark);
+      color: #fff !important;
+    }
+
+    .lume-primary {
+      background: var(--purple);
+      color: white
+    }
+
+    .lume-primary:hover {
+      background: var(--purple-dark)
+    }
+
+    .lume-secondary {
+      background: #f7edf5;
+      color: var(--purple-dark)
+    }
+
+    .lume-wide-action {
+      margin-top: 34px;
+      background: linear-gradient(90deg, var(--pink), var(--yellow));
+      padding: 22px 25px;
+      border-radius: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap
+    }
+
+    .lume-wide-action h3 {
+      margin: 0;
+      color: var(--purple-dark)
+    }
+
+    .lume-wide-action p {
+      margin: 5px 0 0
+    }
+
+    .lume-back {
+      display: inline-block;
+      margin-bottom: 25px;
+      color: var(--purple-dark);
+      font-weight: 700;
+      text-decoration: none
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 330px 1fr;
+      gap: 32px;
+      align-items: start
+    }
+
+    .profile-side {
+      text-align: center;
+      background: white;
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid #eee3f2
+    }
+
+    .profile-side .lume-photo {
+      width: 190px;
+      height: 190px;
+      border-width: 8px
+    }
+
+    .profile-main {
+      background: white;
+      border-radius: 28px;
+      padding: 35px;
+      box-shadow: var(--shadow);
+      border: 1px solid #eee3f2
+    }
+
+    .profile-main h1 {
+      color: var(--purple-dark);
+      font-size: 38px;
+      margin: 0 0 5px
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin: 25px 0
+    }
+
+    .info {
+      background: #fcf7fb;
+      border-radius: 18px;
+      padding: 17px
+    }
+
+    .info strong {
+      display: block;
+      color: var(--purple-dark);
+      margin-bottom: 5px
+    }
+
+    .profile-main p {
+      line-height: 1.7
+    }
+
+    .highlight {
+      background: #fff7d9;
+      border-left: 5px solid var(--yellow);
+      padding: 17px 18px;
+      border-radius: 14px;
+      margin: 20px 0
+    }
+
+    .booking-layout {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 25px;
+      align-items: start
+    }
+
+    .booking-card {
+      background: white;
+      border: 1px solid #eee3f2;
+      border-radius: 26px;
+      padding: 30px;
+      box-shadow: var(--shadow)
+    }
+
+    .booking-card h1 {
+      color: var(--purple-dark);
+      margin-top: 0
+    }
+
+    .field {
+      margin: 18px 0
+    }
+
+    .field label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--purple-dark)
+    }
+
+    .field input,
+    .field textarea,
+    .field select {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #ded2e4;
+      border-radius: 12px;
+      font: inherit;
+      color: var(--ink);
+      background: #fff
+    }
+
+    .slots {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px
+    }
+
+    .slot {
+      padding: 13px;
+      border: 1px solid #dfd2e6;
+      border-radius: 12px;
+      text-align: center;
+      cursor: pointer;
+      background: #fff
+    }
+
+    .slot input {
+      margin-right: 6px
+    }
+
+    .slot:has(input:checked) {
+      background: var(--pink);
+      border-color: var(--pink-dark);
+      font-weight: 700
+    }
+
+    .selected {
+      background: #f6effb;
+      padding: 17px;
+      border-radius: 16px;
+      margin-bottom: 20px
+    }
+
+    .success {
+      display: none;
+      background: #e9f7e8;
+      border: 1px solid #b8dcb5;
+      padding: 15px;
+      border-radius: 14px;
+      margin-top: 15px
+    }
+
+    .small-note {
+      font-size: 13px;
+      color: #7b7380
+    }
+
+    @media(max-width:800px) {
+
+      .lume-grid,
+      .profile,
+      .booking-layout {
+        grid-template-columns: 1fr
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr
+      }
+
+      .slots {
+        grid-template-columns: 1fr
+      }
+
+      .lume-nav {
+        padding: 16px 4%
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../css/lume-header.css">
+  <script src="../js/lume-header.js" data-root="../" defer></script>
+</head>
+
+<body class="lume-sof">
+  <main class="lume-container">
+    <span class="lume-eyebrow">Agendamento</span>
+    <h1 class="lume-title">Escolha seu melhor horário</h1>
+    <p class="lume-subtitle">Você pode agendar com um profissional específico ou começar sem escolher alguém. Nesse
+      caso, a escolha do profissional fica para a próxima etapa.</p>
+    <div class="booking-layout">
+      <section class="booking-card">
+        <h1>Agendar atendimento</h1>
+        <div id="selectedProfessional" class="selected"></div>
+        <form id="bookingForm">
+          <div class="field"><label for="professional">Profissional</label><select id="professional">
+              <option value="">Selecione um profissional</option>
+            </select>
+            <p class="small-note">Se preferir, selecione agora. O link de um perfil específico já deixa esta opção
+              preenchida.</p>
+          </div>
+          <div class="field"><label for="date">Data</label><input id="date" type="date" required></div>
+          <div class="field"><label>Horário disponível</label>
+            <div id="slots" class="slots"></div>
+          </div>
+          <div class="field"><label for="name">Nome completo</label><input id="name" type="text"
+              placeholder="Digite seu nome" required></div>
+          <div class="field"><label for="contact">E-mail ou telefone</label><input id="contact" type="text"
+              placeholder="Como podemos confirmar seu agendamento?" required></div>
+          <button class="lume-btn lume-primary" type="submit">Confirmar agendamento</button>
+          <div id="success" class="success"></div>
+        </form>
+      </section>
+      <aside class="booking-card">
+        <h2 style="color:var(--purple-dark)">Como funciona?</h2>
+        <p>1. Escolha um profissional ou comece sem seleção.</p>
+        <p>2. Informe a data desejada.</p>
+        <p>3. Selecione um horário disponível.</p>
+        <p>4. Preencha seus dados para confirmar.</p>
+        <div class="highlight">Seu agendamento é pensado para tornar o primeiro passo mais simples e acolhedor.</div><a
+          class="lume-btn lume-secondary" href="index_sof.html">← Voltar aos profissionais</a>
+      </aside>
+    </div>
+  </main>
+  <script>
+    (function () {
+      const professionals = {
+        "Ana Souza": { role: "Psicóloga Clínica", times: ["09:00", "14:00", "18:30"] },
+        "Bruno Lima": { role: "Terapeuta de Grupo", times: ["10:30", "16:00"] },
+        "Camila Torres": { role: "Psicóloga Infantil", times: ["08:00", "12:00", "19:30"] }
+      };
+      const params = new URLSearchParams(location.search);
+      const selected = params.get("profissional");
+      const box = document.getElementById("selectedProfessional");
+      const select = document.getElementById("professional");
+      const slots = document.getElementById("slots");
+      const form = document.getElementById("bookingForm");
+      const success = document.getElementById("success");
+
+      function showProfessional(name) {
+        if (!box) return;
+        if (name && professionals[name]) {
+          box.innerHTML = "<strong>" + name + "</strong><br><span>" + professionals[name].role + "</span>";
+          if (select) select.value = name;
+          renderSlots(name);
+        } else {
+          box.innerHTML = "<strong>Escolha um profissional</strong><br><span>Você pode começar o agendamento sem escolher alguém antes.</span>";
+          renderSlots("");
+        }
+      }
+      function renderSlots(name) {
+        if (!slots) return;
+        slots.innerHTML = "";
+        const list = professionals[name]?.times || ["08:00", "09:00", "10:30", "12:00", "14:00", "16:00", "18:30", "19:30"];
+        list.forEach(t => {
+          const label = document.createElement("label");
+          label.className = "slot";
+          label.innerHTML = '<input type="radio" name="horario" value="' + t + '" required> ' + t;
+          slots.appendChild(label);
+        });
+      }
+      if (select) {
+        Object.keys(professionals).forEach(name => {
+          const option = document.createElement("option"); option.value = name; option.textContent = name; select.appendChild(option);
+        });
+        select.addEventListener("change", () => showProfessional(select.value));
+      }
+      if (box) showProfessional(selected);
+      if (form) form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const name = select?.value || selected || "";
+        const date = document.getElementById("date")?.value;
+        const checked = document.querySelector('input[name="horario"]:checked');
+        if (!name) { alert("Selecione um profissional para continuar."); return; }
+        if (!date || !checked) { alert("Escolha a data e o horário."); return; }
+        success.style.display = "block";
+        success.innerHTML = "<strong>Agendamento pré-confirmado!</strong><br>" + name + " — " + date.split("-").reverse().join("/") + " às " + checked.value + ".";
+        success.scrollIntoView({ behavior: "smooth", block: "center" });
+      });
+    })();
+  </script>
+</body>
+
+</html>

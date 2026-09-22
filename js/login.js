@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             setTimeout(() => {
-                location.href = "home.html";
+                location.href = window.location.pathname.includes("/html/") ? "../home.html" : "home.html";
             }, 600);
         });
     }
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             setTimeout(() => {
-                location.href = "login.html";
+                location.href = window.location.pathname.includes("/html/") ? "login.html" : "html/login.html";
             }, 800);
         });
     }
