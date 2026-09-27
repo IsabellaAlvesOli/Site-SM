@@ -1,4 +1,4 @@
-/* ESTILO GERAL */
+
 *{
     margin: 0;
     padding: 0;
@@ -37,7 +37,6 @@ h2.titulo span
     color: blueviolet;
 }
 
-/* ESTILO DO CABEÇALHO */
 header{
     padding: 40px 4%;
     position: fixed;
@@ -80,7 +79,6 @@ header nav ul li{
     height: 140px;
 }
 
-/* ESTILO TOPO DO SITE */
 
 section.topo-do-site{
     padding: 40px 4%;
@@ -129,7 +127,6 @@ section.topo-do-site .flex{
     }
 }
 
-/* ESTILO SOBRE */
 section.sobre{
     padding: 40px 4%;
 }
@@ -168,8 +165,6 @@ section.sobre .flex{
     cursor: pointer;
     margin: 0 10px;
 }
-
-/* ESTILO HOBBIES */
 
 section.hobbies{
     padding: 40px 4%;
