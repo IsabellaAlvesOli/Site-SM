@@ -1145,7 +1145,6 @@ footer {
 
 body.faq * {
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
 }
 
@@ -1387,7 +1386,8 @@ body.faq footer h3 {
 
 .m-faq-botoes button,
 .m-botao-avaliar {
-    padding: 12px 20px;
+    height: 45px;
+    padding: 0 20px;
     border: none;
     border-radius: 8px;
     background-color: #8e70b7;
@@ -1397,6 +1397,9 @@ body.faq footer h3 {
     font-family: inherit;
     text-decoration: none;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .m-faq-botoes button:hover,
@@ -1442,7 +1445,6 @@ body.faq footer h3 {
     border-radius: 15px;
     text-align: center;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
-    box-sizing: border-box;
 }
 
 .caixa-avaliacao h2 {
@@ -1573,10 +1575,6 @@ body.faq footer h3 {
     .m-botao-avaliar {
         width: 100%;
         text-align: center;
-    }
-
-    .caixa-avaliacao {
-        padding: 25px 15px;
     }
 
     .estrelas {
