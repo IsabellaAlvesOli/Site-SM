@@ -1,77 +1,212 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Perguntas Frequentes</title>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/acessibilidade.css">
-<link rel="stylesheet" href="./css/lume-header.css">
-<script src="./js/lume-header.js" data-root="./" defer></script>
-<script src="js/acessibilidade.js" defer></script>
+    <link rel="stylesheet" href="./css/lume-header.css">
+
+    <script src="./js/lume-header.js" data-root="./" defer></script>
+    <script src="js/acessibilidade.js" defer></script>
+    <script src="js/faq.js" defer></script>
 </head>
+
 <body class="faq">
-<main>
+
+    <main>
+
         <div class="m-container">
+
             <section class="m-faq-container" aria-label="Perguntas Frequentes">
-                <article class="m-faq-item">
-                    <h2>Como funciona a plataforma?</h2>
-                    <p>A plataforma conecta pessoas em busca de acolhimento emocional com voluntários cadastrados (psicólogos, terapeutas e grupos de apoio). Você pode navegar, conhecer os perfis e agendar um horário disponível diretamente pela página do voluntário.</p>
-                </article>
-                
-                <article class="m-faq-item">
-                    <h2>Os atendimentos são gratuitos?</h2>
-                    <p>Sim. Este é um projeto acadêmico e todos os atendimentos disponibilizados pelos voluntários aqui são gratuitos e voluntários. Não há cobrança ou intermediação financeira pela plataforma.</p>
-                </article>
-                
-                <article class="m-faq-item">
-                    <h2>Como faço para me cadastrar como voluntário?</h2>
-                    <p>Acesse a Home e clique em “Ser voluntário”. Você será direcionado a um formulário simples para informar seus dados profissionais, disponibilidade e formas de contato. Após o envio, seu perfil fica visível para quem busca atendimento.</p>
-                </article>
-                
-                <article class="m-faq-item">
-                    <h2>O site garante o anonimato dos usuários?</h2>
-                    <p>Sim. Não solicitamos dados sensíveis para navegação e você pode usar um apelido ao realizar o contato inicial. Os dados compartilhados diretamente com o voluntário ficam sob responsabilidade das partes, sem armazenamento público pela plataforma.</p>
-                </article>
-                
-                <article class="m-faq-item">
-                    <h2>Há atendimento para emergências psicológicas?</h2>
-                    <p>Não. Em casos de risco imediato, busque ajuda de emergência na sua região ou ligue para o CVV (188) ou serviços locais equivalentes. A plataforma é destinada a acolhimento não emergencial e orientação inicial.</p>
-                </article>
-            </section>
+
+                <h1>Perguntas Frequentes</h1>
+
+                <p class="m-faq-introducao">
+                    Encontre respostas para as principais dúvidas sobre a plataforma.
+                </p>
+
+                <details class="m-faq-item">
+
+                    <summary>
+                        Como funciona a plataforma?
+                    </summary>
+
+                    <p>
+                        A plataforma conecta pessoas em busca de acolhimento emocional com voluntários cadastrados,
+                        como psicólogos, terapeutas e grupos de apoio. Você pode navegar, conhecer os perfis e
+                        agendar um horário disponível diretamente pela página do voluntário.
+                    </p>
+
+                </details>
+
+                <details class="m-faq-item">
+
+                    <summary>
+                        Os atendimentos são gratuitos?
+                    </summary>
+
+                    <p>
+                        Sim. Este é um projeto acadêmico e todos os atendimentos disponibilizados pelos voluntários
+                        aqui são gratuitos e voluntários. Não há cobrança ou intermediação financeira pela
+                        plataforma.
+                    </p>
+
+                </details>
+
+                <details class="m-faq-item">
+
+                    <summary>
+                        Como faço para me cadastrar como voluntário?
+                    </summary>
+
+                    <p>
+                        Acesse a Home e clique em “Ser voluntário”. Você será direcionado a um formulário para
+                        informar seus dados profissionais, disponibilidade e formas de contato. Após o envio, seu
+                        perfil poderá ficar disponível para pessoas que buscam atendimento.
+                    </p>
+
+                </details>
+
+                <details class="m-faq-item">
+
+                    <summary>
+                        O site garante o anonimato dos usuários?
+                    </summary>
+
+                    <p>
+                        Sim. Não solicitamos dados sensíveis para navegação e você pode usar um apelido ao realizar
+                        o contato inicial. Os dados compartilhados diretamente com o voluntário ficam sob
+                        responsabilidade das partes, sem armazenamento público pela plataforma.
+                    </p>
+
+                </details>
+
+                <details class="m-faq-item">
+
+                    <summary>
+                        Há atendimento para emergências psicológicas?
+                    </summary>
+
+                    <p>
+                        Não. Em casos de risco imediato, busque ajuda de emergência na sua região ou ligue para o
+                        CVV (188) ou serviços locais equivalentes. A plataforma é destinada a acolhimento não
+                        emergencial e orientação inicial.
+                    </p>
+
+                    <button class="m-faq-emergencia" onclick="avisoEmergencia()">
+                        Ver orientação para emergências
+                    </button>
+
+                </details>
+
+                <div class="m-faq-botoes">
+
+                    <button onclick="procurarPergunta()">
+                        Pesquisar pergunta
+                    </button>
+
+                    <label for="mostrarAvaliacao" class="m-botao-avaliar">
+                        Avaliar FAQ
+                    </label>
+
+                    <button onclick="contatoVoluntario()">
+                        Quero falar com um voluntário
+                    </button>
+
+                </div>
+
+                <input type="checkbox" id="mostrarAvaliacao" class="controle-avaliacao">
+
+                <div class="janela-avaliacao">
+
+    <div class="caixa-avaliacao">
+
+        <label for="mostrarAvaliacao" class="fechar-avaliacao">
+            ×
+        </label>
+
+        <h2>Avaliar FAQ</h2>
+
+        <p>Como você avalia esta página?</p>
+
+        <div class="estrelas">
+
+            <input type="radio" name="avaliacao" id="estrela1">
+            <label for="estrela1" onclick="avaliarFAQ(1)">★</label>
+
+            <input type="radio" name="avaliacao" id="estrela2">
+            <label for="estrela2" onclick="avaliarFAQ(2)">★</label>
+
+            <input type="radio" name="avaliacao" id="estrela3">
+            <label for="estrela3" onclick="avaliarFAQ(3)">★</label>
+
+            <input type="radio" name="avaliacao" id="estrela4">
+            <label for="estrela4" onclick="avaliarFAQ(4)">★</label>
+
+            <input type="radio" name="avaliacao" id="estrela5">
+            <label for="estrela5" onclick="avaliarFAQ(5)">★</label>
+
         </div>
+
+    </div>
+
+</div>
+            </section>
+
+        </div>
+
     </main>
-    
+
     <footer>
+
         <p>&copy; 2025 - Todos os direitos reservados</p>
+
     </footer>
 
     <div class="acessibilidade">
-    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
-        ♿
-    </button>
-    <div id="menuAcessibilidade" class="menu-acessibilidade">
-        <h2>Acessibilidade</h2>
-        <button id="aumentarFonte" onclick="aumentarFonte()">
-            A+ Aumentar fonte
+
+        <button id="btnAcessibilidade"
+            aria-label="Abrir opções de acessibilidade"
+            onclick="abrirMenu()">
+            ♿
         </button>
-        <button id="diminuirFonte" onclick="diminuirFonte()">
-            A- Diminuir fonte
-        </button>
-        <button id="altoContraste" onclick="altoContraste()">
-            ◐ Alto contraste
-        </button>
-        <button id="cinza" onclick="escalaCinza()">
-            Escala de cinza
-        </button>
-        <button id="reduzirMovimento" onclick="reduzirMovimento()">
-            Reduzir animações
-        </button>
-        <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
-            ↻ Restaurar
-        </button>
+
+        <div id="menuAcessibilidade" class="menu-acessibilidade">
+
+            <h2>Acessibilidade</h2>
+
+            <button id="aumentarFonte" onclick="aumentarFonte()">
+                A+ Aumentar fonte
+            </button>
+
+            <button id="diminuirFonte" onclick="diminuirFonte()">
+                A- Diminuir fonte
+            </button>
+
+            <button id="altoContraste" onclick="altoContraste()">
+                ◐ Alto contraste
+            </button>
+
+            <button id="cinza" onclick="escalaCinza()">
+                Escala de cinza
+            </button>
+
+            <button id="reduzirMovimento" onclick="reduzirMovimento()">
+                Reduzir animações
+            </button>
+
+            <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
+                ↻ Restaurar
+            </button>
+
+        </div>
+
     </div>
-</div>
-</div>
+
 </body>
+
 </html>

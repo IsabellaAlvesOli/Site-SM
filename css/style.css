@@ -1278,3 +1278,313 @@ body.faq footer h3 {
     margin-bottom: 10px;
 }
 
+.m-container {
+    width: 100%;
+}
+
+.m-faq-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.m-faq-container h1 {
+    text-align: center;
+    margin: 0 0 10px 0;
+    color: #624a83;
+}
+
+.m-faq-introducao {
+    text-align: center;
+    margin: 0 0 30px 0;
+    color: #4d4656;
+    line-height: 1.5;
+}
+
+.m-faq-item {
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+.m-faq-item summary {
+    padding: 20px;
+    background-color: #ffffff;
+    color: #4d4656;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.m-faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.m-faq-item summary::after {
+    content: "+";
+    float: right;
+    color: #8e70b7;
+    font-size: 24px;
+    line-height: 20px;
+}
+
+.m-faq-item[open] summary::after {
+    content: "−";
+}
+
+.m-faq-item summary:hover {
+    background-color: #f2c4d7;
+}
+
+.m-faq-item p {
+    margin: 0;
+    padding: 20px;
+    color: #4d4656;
+    line-height: 1.6;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+
+.m-faq-emergencia {
+    display: block;
+    margin: 0 20px 20px 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #8e70b7;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.m-faq-emergencia:hover {
+    background-color: #624a83;
+}
+
+.m-faq-emergencia:focus {
+    outline: 3px solid #c085fa;
+    outline-offset: 3px;
+}
+
+.m-faq-botoes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.m-faq-botoes button,
+.m-botao-avaliar {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #8e70b7;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: inherit;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+.m-faq-botoes button:hover,
+.m-botao-avaliar:hover {
+    background-color: #624a83;
+}
+
+.m-faq-botoes button:focus,
+.m-botao-avaliar:focus {
+    outline: 3px solid #c085fa;
+    outline-offset: 3px;
+}
+
+.controle-avaliacao {
+    display: none;
+}
+
+.janela-avaliacao {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 9998;
+}
+
+#mostrarAvaliacao:checked ~ .janela-avaliacao {
+    display: flex;
+}
+
+.caixa-avaliacao {
+    position: relative;
+    width: 100%;
+    max-width: 430px;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    box-sizing: border-box;
+}
+
+.caixa-avaliacao h2 {
+    margin: 0 0 10px 0;
+    color: #624a83;
+}
+
+.caixa-avaliacao p {
+    margin: 0 0 20px 0;
+    color: #4d4656;
+}
+
+.estrelas {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    margin: 10px 0 25px 0;
+}
+
+.estrelas input {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+}
+
+.estrelas label {
+    display: inline-block;
+    padding: 2px;
+    color: #bdbdbd;
+    font-size: 45px;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.estrelas label:hover {
+    color: #f2c94c;
+    transform: scale(1.1);
+}
+
+.estrelas:has(#estrela1:checked) label:nth-of-type(1),
+.estrelas:has(#estrela2:checked) label:nth-of-type(1),
+.estrelas:has(#estrela2:checked) label:nth-of-type(2),
+.estrelas:has(#estrela3:checked) label:nth-of-type(1),
+.estrelas:has(#estrela3:checked) label:nth-of-type(2),
+.estrelas:has(#estrela3:checked) label:nth-of-type(3),
+.estrelas:has(#estrela4:checked) label:nth-of-type(1),
+.estrelas:has(#estrela4:checked) label:nth-of-type(2),
+.estrelas:has(#estrela4:checked) label:nth-of-type(3),
+.estrelas:has(#estrela4:checked) label:nth-of-type(4),
+.estrelas:has(#estrela5:checked) label:nth-of-type(1),
+.estrelas:has(#estrela5:checked) label:nth-of-type(2),
+.estrelas:has(#estrela5:checked) label:nth-of-type(3),
+.estrelas:has(#estrela5:checked) label:nth-of-type(4),
+.estrelas:has(#estrela5:checked) label:nth-of-type(5) {
+    color: #f2c94c;
+}
+
+.fechar-avaliacao {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #624a83;
+    font-size: 28px;
+    font-weight: bold;
+    line-height: 1;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.fechar-avaliacao:hover {
+    background-color: #f2c4d7;
+    color: #b96f91;
+}
+
+.fechar-avaliacao:focus {
+    outline: 3px solid #c085fa;
+    outline-offset: 2px;
+}
+@media (max-width: 600px) {
+
+    .m-faq-container {
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .m-faq-container h1 {
+        font-size: 25px;
+    }
+
+    .m-faq-introducao {
+        font-size: 15px;
+        margin-bottom: 25px;
+    }
+
+    .m-faq-item {
+        margin-bottom: 12px;
+    }
+
+    .m-faq-item summary {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .m-faq-item p {
+        padding: 15px;
+        font-size: 15px;
+    }
+
+    .m-faq-emergencia {
+        margin: 0 15px 15px 15px;
+    }
+
+    .m-faq-botoes {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .m-faq-botoes button,
+    .m-botao-avaliar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .caixa-avaliacao {
+        padding: 25px 15px;
+    }
+
+    .estrelas {
+        gap: 1px;
+    }
+
+    .estrelas label {
+        font-size: 38px;
+    }
+
+}
