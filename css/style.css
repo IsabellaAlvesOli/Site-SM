@@ -1143,126 +1143,6 @@ footer {
   color: #9aa1af;
 }
 
-body.faq * {
-    margin: 0;
-    box-sizing: border-box;
-}
-
-body.faq {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    color: #383504;
-    background-color: #fdfdc9;
-    margin: 0;
-    padding: 0;
-}
-
-body.faq header {
-    background-color: rgb(244, 245, 233);
-    color: #8966b4;
-    text-align: center;
-    padding: 30px 0;
-}
-
-body.faq header h1 {
-    font-size: 40px;
-    margin-bottom: 15px;
-}
-
-body.faq nav {
-    margin-top: 15px;
-}
-
-body.faq .m-back-link {
-    color: #8966b4;
-    text-decoration: none;
-    padding: 8px 16px;
-    background-color: #b287e660;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    font-weight: 500;
-}
-
-body.faq .m-back-link:hover {
-    background-color: #d9a9ec;
-    color: white;
-}
-
-body.faq main {
-    max-width: 800px;
-    margin: 30px auto;
-    padding: 0 20px;
-}
-
-
-
-body.faq .m-container {
-    background: #d9a9ec;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(137, 102, 180, 0.2);
-}
-
-body.faq .m-faq-container {
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-body.faq .m-faq-item {
-    margin-bottom: 30px;
-    padding: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid rgba(137, 102, 180, 0.3);
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 8px;
-    transition: transform 0.2s ease;
-}
-
-body.faq .m-faq-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-}
-
-
-body.faq .m-faq-item h2 {
-    color: #8966b4;
-    font-size: 20px;
-    margin-bottom: 15px;
-    font-weight: 600;
-}
-
-body.faq .m-faq-item p {
-    color: #383504;
-    font-size: 16px;
-    line-height: 1.7;
-    font-style: italic;
-}
-
-body.faq .m-link-container {
-    text-align: center;
-    margin-top: 30px;
-}
-
-body.faq .m-faq-link {
-    display: inline-block;
-    background: #fdfdc9;
-    color: #b963db;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    border: 2px solid #8966b4;
-}
-
-body.faq .m-faq-link:hover {
-    background-color: #8966b4;
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(137, 102, 180, 0.4);
-}
-
 body.faq footer {
     background-color: #b287e660;
     color: #8966b4;
@@ -1271,10 +1151,15 @@ body.faq footer {
     margin-top: 50px;
 }
 
+body.faq {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+}
 
-body.faq footer h3 {
-    color: #d9a9ec;
-    margin-bottom: 10px;
+body.faq main {
+    flex: 1;
 }
 
 .m-container {
