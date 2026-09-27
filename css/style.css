@@ -1156,6 +1156,7 @@ body.faq {
     display: flex;
     flex-direction: column;
     margin: 0;
+    background: linear-gradient(90deg, #dcc2fa93, #faebc293, #fac2f193);
 }
 
 body.faq main {
