@@ -8,10 +8,41 @@
     <title>Blogs/Artigos</title>
 <link rel="stylesheet" href="../css/lume-header.css">
 <script src="../js/acessibilidade.js" defer></script>
-<script src="../js/lume-header.js" data-root="../" defer></script>
 
 </head>
 <body class="blog">
+
+    <header class="lume-header" aria-label="Cabeçalho principal do Lume">
+        <div class="lume-header-inner">
+            <a class="lume-brand" href="../home.html" aria-label="Lume - Página inicial">
+                <img src="../images/logo.png" alt="Lume">
+            </a>
+
+            <input type="checkbox" id="lume-menu-toggle" class="lume-menu-toggle">
+
+            <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="lume-nav" aria-label="Navegação principal">
+                <a href="../home.html">Início</a>
+                <a href="../home.html#function">Como funciona</a>
+                <a href="../home.html#project">Projetos</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../r_index.html" class="active" aria-current="page">Blogs</a>
+                <a href="index.html">Agendamento</a>
+                <a href="index_sof.html">Voluntários</a>
+            </nav>
+
+            <div class="lume-auth-area">
+                <a class="lume-cta" href="../formularios.html">Ser voluntário</a>
+                <a class="lume-login-link" href="../html/login.html">Entrar</a>
+            </div>
+        </div>
+    </header>
+
     <div class="r_container">
         <div class="r_titulo">
             <h1>Cuidando da sua <span style="color: rgb(107, 54, 157);">Saúde Mental</span></h1>

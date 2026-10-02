@@ -1,43 +1,316 @@
-/* CSS do login sem uso de DOM no JavaScript */
+/* =========================================
+   LOGIN E CADASTRO - LUME
+   Sem necessidade de DOM no JavaScript
+   ========================================= */
+
+:root {
+    --purple: #8d7bb8;
+    --purple-dark: #66558f;
+    --purple-light: #eee8f8;
+    --pink-light: #f9edf3;
+    --yellow-light: #f8e9ae;
+    --text: #40394b;
+    --muted: #756d7e;
+    --border: rgba(141, 123, 184, .24);
+    --error: #c85c70;
+    --success: #6c9b79;
+    --white: #fffdfd;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body.auth-page {
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 18px;
+    background:
+        radial-gradient(circle at top left, #f9edf3 0, transparent 38%),
+        radial-gradient(circle at bottom right, #eee8f8 0, transparent 42%),
+        #fffafa;
+    color: var(--text);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 520px;
+}
+
+.auth-card {
+    width: 100%;
+    padding: 38px;
+    background: rgba(255, 253, 253, .96);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    box-shadow: 0 20px 55px rgba(92, 72, 116, .14);
+}
+
+.brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--purple-dark);
+    text-decoration: none;
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin-bottom: 28px;
+}
+
+.brand-mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    color: #fff;
+    background: linear-gradient(135deg, var(--purple), #a88dbd);
+    box-shadow: 0 7px 18px rgba(141, 123, 184, .24);
+}
+
+.auth-heading {
+    margin-bottom: 26px;
+}
+
+.eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--purple-dark);
+    font-size: .85rem;
+    font-weight: 750;
+}
+
+.auth-heading h1 {
+    margin: 0 0 9px;
+    color: #332d3b;
+    font-size: clamp(1.7rem, 4vw, 2.15rem);
+    line-height: 1.15;
+}
+
+.auth-heading p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.field {
+    margin-bottom: 18px;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--text);
+    font-size: .92rem;
+    font-weight: 700;
+}
+
+.label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 7px;
+}
+
+.label-row label {
+    margin-bottom: 0;
+}
+
+.label-row a {
+    color: var(--purple-dark);
+    font-size: .84rem;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.label-row a:hover {
+    text-decoration: underline;
+}
+
+.field input,
+.field select {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    outline: none;
+    background: #fff;
+    color: var(--text);
+    font: inherit;
+    transition: border-color .2s, box-shadow .2s, background .2s;
+}
+
+.field input::placeholder {
+    color: #aaa3b0;
+}
+
+.field input:focus,
+.field select:focus {
+    border-color: var(--purple);
+    box-shadow: 0 0 0 4px rgba(141, 123, 184, .13);
+}
+
+.field input:invalid:not(:placeholder-shown) {
+    border-color: var(--error);
+}
+
+.field input:valid:not(:placeholder-shown) {
+    border-color: var(--success);
+}
+
+.error {
+    display: block;
+    min-height: 0;
+    margin-top: 5px;
+    color: var(--error);
+    font-size: .8rem;
+}
+
+.form-message {
+    min-height: 20px;
+    margin: 6px 0 12px;
+    color: var(--error);
+    font-size: .88rem;
+}
+
+.primary-button {
+    width: 100%;
+    min-height: 49px;
+    border: 0;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--purple), #a88dbd);
+    color: #fff;
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(141, 123, 184, .23);
+    transition: transform .2s, box-shadow .2s;
+}
+
+.primary-button:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 11px 24px rgba(141, 123, 184, .29);
+}
+
+.primary-button:focus-visible,
+.home-link:focus-visible,
+.switch-auth a:focus-visible,
+.label-row a:focus-visible,
+.brand:focus-visible {
+    outline: 3px solid var(--yellow-light);
+    outline-offset: 3px;
+}
+
+/* Campo de senha com mostrar/esconder usando somente HTML + CSS */
 
 .password-wrapper {
     position: relative;
 }
 
-.password-wrapper > #loginPassword {
-    padding-right: 84px;
+.password-wrapper input {
+    padding-right: 86px;
+}
+
+/*
+   O input de senha das versões sem DOM usa type="text".
+   Esta propriedade faz o navegador visualizá-lo como senha.
+*/
+.password-wrapper input[type="text"] {
     -webkit-text-security: disc;
 }
 
 .password-check {
     position: absolute;
-    opacity: 0;
     width: 1px;
     height: 1px;
+    opacity: 0;
     pointer-events: none;
 }
 
 .password-toggle {
-    position: absolute;
-    z-index: 2;
+    position: absolute !important;
     top: 50%;
     right: 9px;
+    z-index: 2;
     transform: translateY(-50%);
-    margin: 0;
-    padding: 7px;
-    color: var(--purple-dark);
-    font-weight: 650;
+    margin: 0 !important;
+    padding: 7px !important;
+    color: var(--purple-dark) !important;
+    font-size: .82rem !important;
+    font-weight: 750 !important;
     cursor: pointer;
 }
 
-.password-check:checked ~ #loginPassword {
+.password-check:checked ~ input[type="text"] {
     -webkit-text-security: none;
 }
 
-input:invalid:not(:placeholder-shown) {
-    border-color: var(--error);
+.switch-auth {
+    margin: 20px 0 0;
+    color: var(--muted);
+    text-align: center;
+    font-size: .9rem;
 }
 
-input:valid:not(:placeholder-shown) {
-    border-color: var(--success);
+.switch-auth a {
+    color: var(--purple-dark);
+    font-weight: 750;
+    text-decoration: none;
+}
+
+.switch-auth a:hover {
+    text-decoration: underline;
+}
+
+.home-link {
+    display: block;
+    margin-top: 20px;
+    color: var(--purple-dark);
+    text-align: center;
+    font-size: .88rem;
+    font-weight: 650;
+    text-decoration: none;
+}
+
+.home-link:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 560px) {
+    body.auth-page {
+        padding: 18px 12px;
+        align-items: flex-start;
+    }
+
+    .auth-card {
+        margin-top: 12px;
+        padding: 28px 21px;
+        border-radius: 21px;
+    }
+
+    .brand {
+        margin-bottom: 23px;
+    }
+
+    .auth-heading h1 {
+        font-size: 1.65rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .field input,
+    .field select,
+    .primary-button {
+        transition: none;
+    }
 }

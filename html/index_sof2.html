@@ -385,11 +385,42 @@
     }
   </style>
   <link rel="stylesheet" href="../css/lume-header.css">
-  <script src="../js/lume-header.js" data-root="../" defer></script>
 </head>
 
 <body class="lume-sof">
-  <nav class="lume-nav"><a class="lume-brand" href="index_sof1.html">L<span>u</span>me</a><a class="lume-link"
+
+    <header class="lume-header" aria-label="Cabeçalho principal do Lume">
+        <div class="lume-header-inner">
+            <a class="lume-brand" href="../home.html" aria-label="Lume - Página inicial">
+                <img src="../images/logo.png" alt="Lume">
+            </a>
+
+            <input type="checkbox" id="lume-menu-toggle" class="lume-menu-toggle">
+
+            <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="lume-nav" aria-label="Navegação principal">
+                <a href="../home.html">Início</a>
+                <a href="../home.html#function">Como funciona</a>
+                <a href="../home.html#project">Projetos</a>
+                <a href="../faq.html">FAQ</a>
+                <a href="../r_index.html">Blogs</a>
+                <a href="index.html">Agendamento</a>
+                <a href="index_sof.html" class="active" aria-current="page">Voluntários</a>
+            </nav>
+
+            <div class="lume-auth-area">
+                <a class="lume-cta" href="../formularios.html">Ser voluntário</a>
+                <a class="lume-login-link" href="../html/login.html">Entrar</a>
+            </div>
+        </div>
+    </header>
+
+  <nav class="profile-nav"><a class="profile-brand" href="index_sof1.html">L<span>u</span>me</a><a class="lume-link"
       href="index_sof1.html">← Voltar aos profissionais</a></nav>
   <main class="lume-container">
     <a class="lume-back" href="index_sof1.html">← Conhecer outros profissionais</a>
