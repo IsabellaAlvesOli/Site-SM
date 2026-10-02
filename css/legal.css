@@ -386,13 +386,6 @@ body {
 }
 
 
-.legal-top.visible {
-    opacity: 1;
-
-    visibility: visible;
-
-    transform: translateY(0);
-}
 
 
 .legal-top:hover {
