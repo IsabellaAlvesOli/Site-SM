@@ -1,100 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desenvolvedores</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Desenvolvedores | Lume</title>
+
+    <link rel="stylesheet" href="css/lume-header.css">
+    <link rel="stylesheet" href="css/portfolios.css">
     <link rel="stylesheet" href="css/acessibilidade.css">
+
     <script src="js/acessibilidade.js" defer></script>
 </head>
+
 <body class="devs">
-    <header class="headerk">
-        <img src="imgs/logo.png" alt="logo" class="logok">
-        <nav class="navbar" style=" flex-wrap: nowrap;">
-            <a href="home.html#first">Início</a>
-            <a href="home.html#second">Missão</a>
-            <a href="home.html#function">Como funciona</a>
-            <a href="home.html#project">Projetos</a>
-            <a href="faq.html">FAQ</a>
-            <a href="html/index.html">Agendamento</a>
-            <a href="html/index_sof.html">Voluntários</a>
-        </nav>
-        <button class="voluntário"><a href="formularios.html" style="color: rgb(239, 240, 215)">Ser voluntário</a></button>
+
+    <header class="lume-header" aria-label="Cabeçalho principal do Lume">
+        <div class="lume-header-inner">
+            <a class="lume-brand" href="home.html" aria-label="Lume - Página inicial">
+                <img src="images/logo.png" alt="Lume">
+            </a>
+
+            <input type="checkbox" id="lume-menu-toggle" class="lume-menu-toggle">
+
+            <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="lume-nav" aria-label="Navegação principal">
+                <a href="home.html">Início</a>
+                <a href="home.html#function">Como funciona</a>
+                <a href="home.html#project">Projetos</a>
+                <a href="faq.html">FAQ</a>
+                <a href="html/r_index.html">Blogs</a>
+                <a href="html/index.html">Agendamento</a>
+                <a href="html/index_sof.html">Voluntários</a>
+            </nav>
+
+            <div class="lume-auth-area">
+                <a class="lume-cta" href="formularios.html">Ser voluntário</a>
+                <a class="lume-login-link" href="html/login.html">Entrar</a>
+            </div>
+        </div>
     </header>
 
     <main class="devs-main">
+
         <section class="devs-hero">
-            <h1>Portfólios dos Desenvolvedores</h1>
-            <p>Conheça quem construiu este projeto acadêmico.</p>
+            <h1>Quem está por trás do Lume?</h1>
+            <p>
+                Conheça a equipe responsável pelo desenvolvimento deste projeto acadêmico
+                e descubra um pouco mais sobre cada integrante.
+            </p>
         </section>
 
-        <section class="devs-grid">
+        <section class="devs-intro" aria-labelledby="equipe-titulo">
+            <h2 id="equipe-titulo">Conheça nossa equipe</h2>
+            <p>
+                Cada integrante contribuiu para transformar a ideia do Lume em uma plataforma
+                voltada ao acolhimento, à conexão e ao apoio emocional.
+            </p>
+        </section>
+
+        <section class="devs-grid" aria-label="Portfólios dos desenvolvedores">
+
             <a class="dev-card" href="p_isa/index.html">
                 <h3>Isabella</h3>
                 <p>Ver portfólio</p>
             </a>
+
             <a class="dev-card" href="p_kauana/indexk.html">
                 <h3>Kauana</h3>
                 <p>Ver portfólio</p>
             </a>
-            <a class="dev-card" href="p_laura/index.html">
-                <h3>Laura</h3>
-                <p>Ver portfólio</p>
-            </a>
+
             <a class="dev-card" href="p_miguel/html.html">
                 <h3>Miguel</h3>
                 <p>Ver portfólio</p>
             </a>
+
             <a class="dev-card" href="p_rafa/portifolio rafa/r_indexp.html">
                 <h3>Rafaela</h3>
                 <p>Ver portfólio</p>
             </a>
-            <a class="dev-card" href="p_sofia/index_sof_portfolio.html">
+
+            <a class="dev-card" href="p_sofia/index.html">
                 <h3>Sofia</h3>
                 <p>Ver portfólio</p>
             </a>
+
         </section>
+
+        <section class="devs-closing">
+            <h2>Construído com propósito</h2>
+            <p>
+                O Lume foi desenvolvido como um projeto acadêmico que une tecnologia,
+                acessibilidade e acolhimento para criar uma experiência mais humana e acolhedora.
+            </p>
+        </section>
+
     </main>
 
     <footer class="footer-simple">
-        <p>© 2026 LUME</p>
+        <p>© 2026 LUME — Todos os direitos reservados.</p>
     </footer>
 
-
     <div class="acessibilidade">
-    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
-        ♿
-    </button>
-
-    <div id="menuAcessibilidade" class="menu-acessibilidade">
-        <h2>Acessibilidade</h2>
-
-        <button id="aumentarFonte" onclick="aumentarFonte()">
-            A+ Aumentar fonte
+        <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
+            ♿
         </button>
 
-        <button id="diminuirFonte" onclick="diminuirFonte()">
-            A- Diminuir fonte
-        </button>
+        <div id="menuAcessibilidade" class="menu-acessibilidade">
+            <h2>Acessibilidade</h2>
 
-        <button id="altoContraste" onclick="altoContraste()">
-            ◐ Alto contraste
-        </button>
+            <button id="aumentarFonte" onclick="aumentarFonte()">
+                A+ Aumentar fonte
+            </button>
 
-        <button id="cinza" onclick="escalaCinza()">
-            Escala de cinza
-        </button>
+            <button id="diminuirFonte" onclick="diminuirFonte()">
+                A- Diminuir fonte
+            </button>
 
-        <button id="reduzirMovimento" onclick="reduzirMovimento()">
-            Reduzir animações
-        </button>
+            <button id="altoContraste" onclick="altoContraste()">
+                ◐ Alto contraste
+            </button>
 
-        <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
-            ↻ Restaurar
-        </button>
+            <button id="cinza" onclick="escalaCinza()">
+                Escala de cinza
+            </button>
+
+            <button id="reduzirMovimento" onclick="reduzirMovimento()">
+                Reduzir animações
+            </button>
+
+            <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
+                ↻ Restaurar
+            </button>
+        </div>
     </div>
-    </div>
-</div>
+
 </body>
 </html>
