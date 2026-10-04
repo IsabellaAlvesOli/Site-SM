@@ -38,7 +38,7 @@ body.devs .dev-card:hover {
 body.devs .footer-simple { 
   text-align: center;
   color: #8966b4; padding: 20px; }
-body.blog {
+.blog {
     margin: 0;
     padding: 0;
     font-family: poppins, sans-serif;
@@ -75,7 +75,7 @@ body.blog .rp8{
   margin-left: 10px; 
 }
 body.blog .ra{ 
-  margin-left: 10px; 
+  margin-left: 10px;
 }
 body.blog .r_pos{ 
   margin-top: 30px; 
@@ -139,7 +139,7 @@ body.blog .r_botao:hover{
   box-shadow: 1px 1px 5px rgba(0,0,0,0.6); 
 }
 body.blog .r_art{ 
-  width: 560px; 
+  width: 50%; 
   height: 230px; 
   background-color: rgb(240, 246, 129); 
   margin-right: 50px; border-radius: 20px; 
@@ -178,51 +178,53 @@ body.blog .r_cont{
   background-color: rgb(240, 246, 129); 
   border-radius: 20px; 
 }
-body.blog .r_tamtexto{ 
+.blog .r_tamtexto{ 
   font-size: 18px; 
   margin-left: 30px; 
   margin-right: 30px; 
   text-align: justify; 
 }
-body.blog .r_titulo{ 
+.blog .r_titulo{ 
   font-size: 30px; 
   margin-left: 30px; 
   margin-top: 30px; 
 }
-body.blog .r_espart1{ 
-  margin-top: 220px; margin-left: 20px;
-}
-body.blog .r_espart2{ 
-  margin-top: 320px;
-  margin-left: 20px; 
-}
-body.blog .r_espart3{ 
-  margin-top: 320px; 
-  margin-left: 20px; 
-}
-body.blog .r_espart4{ 
-  margin-top: 340px; 
-  margin-left: 20px; 
-}
-body.blog .r_espart5{ 
-  margin-top: 320px; 
-  margin-left: 20px; 
-}
-body.blog .r_espart6{ 
-  margin-top: 380px; 
+.blog .r_espart1{ 
+  margin-top: 20px;
   margin-left: 20px;
 }
-body.blog .r_espart7{ 
-  margin-top: 340px;
+.blog .r_espart2{ 
+  margin-top: 20px;
   margin-left: 20px; 
 }
-body.blog .r_espart8{ 
-  margin-top: 400px; 
+.blog .r_espart3{ 
+  margin-top: 20px; 
   margin-left: 20px; 
 }
-body.blog .r_espa{
+.blog .r_espart4{ 
+  margin-top: 40px; 
+  margin-left: 20px; 
+}
+.blog .r_espart5{ 
+  margin-top: 20px; 
+  margin-left: 20px; 
+}
+.blog .r_espart6{ 
+  margin-top: 80px; 
+  margin-left: 20px;
+}
+.blog .r_espart7{ 
+  margin-top: 40px;
+  margin-left: 20px; 
+}
+.blog .r_espart8{ 
+  margin-top: 40px; 
+  margin-left: 20px; 
+}
+.blog .r_espa{
   margin-left: 30px; 
 }
+
 
 body.inscricao .headerk {
     position: fixed;
