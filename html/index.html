@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,8 +18,10 @@
       --shadow: 0 14px 35px rgba(98, 74, 131, .14);
     }
 
-    * {
+    \* {
+
       box-sizing: border-box
+
     }
 
     body.lume-sof {
@@ -77,6 +78,7 @@
       font-size: 13px
     }
 
+
     .lume-title {
       font-size: clamp(30px, 5vw, 48px);
       line-height: 1.1;
@@ -91,12 +93,15 @@
       color: #716979
     }
 
+
     .lume-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 35px
     }
+
+
 
     .lume-card {
       background: rgba(255, 255, 255, .94);
@@ -383,10 +388,7 @@
     }
 
     @media(max-width:800px) {
-
-      .lume-grid,
-      .profile,
-      .booking-layout {
+      .lume-grid, .profile, .booking-layout {
         grid-template-columns: 1fr
       }
 
@@ -407,35 +409,66 @@
   <script src="../js/lume-header.js" data-root="../" defer></script>
 </head>
 
+
 <body class="lume-sof">
+
   <main class="lume-container">
+
     <span class="lume-eyebrow">Agendamento</span>
+
     <h1 class="lume-title">Escolha seu melhor horário</h1>
+
     <p class="lume-subtitle">Você pode agendar com um profissional específico ou começar sem escolher alguém. Nesse
+
       caso, a escolha do profissional fica para a próxima etapa.</p>
+
     <div class="booking-layout">
+
       <section class="booking-card">
+
         <h1>Agendar atendimento</h1>
+
         <div id="selectedProfessional" class="selected"></div>
+
         <form id="bookingForm">
-          <div class="field"><label for="professional">Profissional</label><select id="professional">
-              <option value="">Selecione um profissional</option>
-            </select>
-            <p class="small-note">Se preferir, selecione agora. O link de um perfil específico já deixa esta opção
-              preenchida.</p>
-          </div>
-          <div class="field"><label for="date">Data</label><input id="date" type="date" required></div>
-          <div class="field"><label>Horário disponível</label>
-            <div id="slots" class="slots"></div>
-          </div>
-          <div class="field"><label for="name">Nome completo</label><input id="name" type="text"
-              placeholder="Digite seu nome" required></div>
-          <div class="field"><label for="contact">E-mail ou telefone</label><input id="contact" type="text"
-              placeholder="Como podemos confirmar seu agendamento?" required></div>
-          <button class="lume-btn lume-primary" type="submit">Confirmar agendamento</button>
-          <div id="success" class="success"></div>
-        </form>
+            <div class="field">
+              <label for="professional">Profissional</label>
+              <select id="professional" required>
+                <option value="">Selecione um profissional</option>
+              </select>
+              <p class="small-note">Se preferir, selecione agora. O link de um perfil específico já deixa esta opção preenchida.</p>
+            </div>
+
+            <div class="field">
+              <label for="date">Data</label>
+              <input id="date" type="date" required>
+            </div>
+
+            <div class="field">
+              <label>Horário disponível</label>
+              <div id="slots" class="slots"></div>
+            </div>
+
+            <div class="field">
+              <label for="name">Nome completo</label>
+              <input id="name" type="text" placeholder="Digite seu nome" required 
+                oninput="this.value = this.value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '')">
+            </div>
+
+            <div class="field">
+              <label for="contact">E-mail ou telefone</label>
+              <input id="contact" type="text"
+                placeholder="Como podemos confirmar seu agendamento?"
+                minlength="5"
+                title="Digite um e-mail válido ou um telefone com DDD." required>
+            </div>
+
+            <button class="lume-btn lume-primary" type="submit">Confirmar agendamento</button>
+            <div id="success" class="success"></div>
+          </form>
+
       </section>
+
       <aside class="booking-card">
         <h2 style="color:var(--purple-dark)">Como funciona?</h2>
         <p>1. Escolha um profissional ou comece sem seleção.</p>
@@ -447,6 +480,7 @@
       </aside>
     </div>
   </main>
+
   <script>
     (function () {
       const professionals = {
@@ -454,6 +488,7 @@
         "Bruno Lima": { role: "Terapeuta de Grupo", times: ["10:30", "16:00"] },
         "Camila Torres": { role: "Psicóloga Infantil", times: ["08:00", "12:00", "19:30"] }
       };
+
       const params = new URLSearchParams(location.search);
       const selected = params.get("profissional");
       const box = document.getElementById("selectedProfessional");
@@ -461,9 +496,20 @@
       const slots = document.getElementById("slots");
       const form = document.getElementById("bookingForm");
       const success = document.getElementById("success");
+      const dateInput = document.getElementById("date");
+      const nameInput = document.getElementById("name");
+      const contactInput = document.getElementById("contact");
+
+      // Impede selecionar uma data anterior ao dia atual.
+      const hoje = new Date();
+      const ano = hoje.getFullYear();
+      const mes = String(hoje.getMonth() + 1).padStart(2, "0");
+      const dia = String(hoje.getDate()).padStart(2, "0");
+      dateInput.min = ano + "-" + mes + "-" + dia;
 
       function showProfessional(name) {
         if (!box) return;
+
         if (name && professionals[name]) {
           box.innerHTML = "<strong>" + name + "</strong><br><span>" + professionals[name].role + "</span>";
           if (select) select.value = name;
@@ -473,10 +519,13 @@
           renderSlots("");
         }
       }
+
       function renderSlots(name) {
         if (!slots) return;
+
         slots.innerHTML = "";
         const list = professionals[name]?.times || ["08:00", "09:00", "10:30", "12:00", "14:00", "16:00", "18:30", "19:30"];
+
         list.forEach(t => {
           const label = document.createElement("label");
           label.className = "slot";
@@ -484,26 +533,81 @@
           slots.appendChild(label);
         });
       }
+
       if (select) {
         Object.keys(professionals).forEach(name => {
-          const option = document.createElement("option"); option.value = name; option.textContent = name; select.appendChild(option);
+          const option = document.createElement("option");
+          option.value = name;
+          option.textContent = name;
+          select.appendChild(option);
         });
+
         select.addEventListener("change", () => showProfessional(select.value));
       }
+
       if (box) showProfessional(selected);
-      if (form) form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        const name = select?.value || selected || "";
-        const date = document.getElementById("date")?.value;
-        const checked = document.querySelector('input[name="horario"]:checked');
-        if (!name) { alert("Selecione um profissional para continuar."); return; }
-        if (!date || !checked) { alert("Escolha a data e o horário."); return; }
-        success.style.display = "block";
-        success.innerHTML = "<strong>Agendamento pré-confirmado!</strong><br>" + name + " — " + date.split("-").reverse().join("/") + " às " + checked.value + ".";
-        success.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      if (form) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = select?.value || selected || "";
+          const date = dateInput.value;
+          const checked = document.querySelector('input[name="horario"]:checked');
+
+          if (!name || !professionals[name]) {
+            alert("Selecione um profissional para continuar.");
+            select.focus();
+            return;
+          }
+
+          if (!date) {
+            alert("Informe a data do atendimento.");
+            dateInput.focus();
+            return;
+          }
+
+          if (date < dateInput.min) {
+            alert("A data do atendimento não pode ser anterior a hoje.");
+            dateInput.focus();
+            return;
+          }
+
+          if (!checked) {
+            alert("Escolha um horário disponível.");
+            return;
+          }
+
+          if (!nameInput.checkValidity()) {
+            nameInput.reportValidity();
+            nameInput.focus();
+            return;
+          }
+
+          const contact = contactInput.value.trim();
+          const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(contact);
+          const telefoneValido = /^\(?\d{2}\)?\s?9?\d{4}-?\d{4}$/.test(contact);
+
+          if (!emailValido && !telefoneValido) {
+            contactInput.setCustomValidity("Digite um e-mail válido ou um telefone com DDD.");
+            contactInput.reportValidity();
+            contactInput.focus();
+            return;
+          }
+
+          contactInput.setCustomValidity("");
+
+          success.style.display = "block";
+          success.innerHTML = "<strong>Agendamento pré-confirmado!</strong><br>" + name + " — " + date.split("-").reverse().join("/") + " às " + checked.value + ".";
+          success.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      }
+
+      contactInput.addEventListener("input", function () {
+        contactInput.setCustomValidity("");
       });
     })();
   </script>
-</body>
 
+  </body>
 </html>
