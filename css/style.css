@@ -1,3 +1,4 @@
+
 body.devs {
     background: #F4E9D3;
 }
@@ -38,6 +39,7 @@ body.devs .dev-card:hover {
 body.devs .footer-simple { 
   text-align: center;
   color: #8966b4; padding: 20px; }
+
 body.blog {
     margin: 0;
     padding: 0;
@@ -224,6 +226,8 @@ body.blog .r_espa{
   margin-left: 30px; 
 }
 
+/* FORMULÁRIO DE INSCRIÇÃO */
+
 body.inscricao .headerk {
     position: fixed;
     top: 0;
@@ -283,11 +287,13 @@ body.inscricao .Iconteudo {
     border-radius: 12px;
     box-shadow: 0 0 12px rgba(0,0,0,0.1);
 }
+
 body.inscricao .Iconteudo h2 {
     text-align: center;
     color: #4a3a72;
     margin-bottom: 10px;
 }
+
 body.inscricao .Iconteudo p {
     text-align: center;
     color: #555;
@@ -298,22 +304,40 @@ body.inscricao .Iformulario {
     flex-direction: column;
     gap: 15px;
 }
+
 body.inscricao .Iformulario label {
     font-weight: bold;
     color: #4a3a72;
 }
+
 body.inscricao .Iformulario input[type="text"],
 body.inscricao .Iformulario input[type="email"],
 body.inscricao .Iformulario input[type="tel"],
+body.inscricao .Iformulario input[type="date"],
+body.inscricao .Iformulario input[type="number"],
+body.inscricao .Iformulario select,
 body.inscricao .Iformulario textarea {
+    display: block;
+    width: 100%;
+    height: 44px;
     padding: 10px;
     border: 1px solid #c9b4f2;
     border-radius: 8px;
     font-size: 1em;
-    width: 100%;
+    font-family: inherit;
+    color: #333;
     background-color: #faf8ff;
+    box-sizing: border-box;
 }
+
+body.inscricao .Iformulario input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
 body.inscricao .Iformulario input:focus,
+body.inscricao .Iformulario select:focus,
 body.inscricao .Iformulario textarea:focus {
     outline: none;
     border-color: #B287E6;
@@ -329,6 +353,7 @@ body.inscricao .Iareas {
     border-radius: 8px;
     border: 1px solid #d8c6fa;
 }
+
 body.inscricao .Iareas label {
     font-weight: normal;
     display: flex;
@@ -341,6 +366,7 @@ body.inscricao .Idisponibilidade {
     gap: 25px;
     margin-top: 5px;
 }
+
 body.inscricao .Idisponibilidade label {
     display: flex;
     align-items: center;
@@ -352,6 +378,7 @@ body.inscricao .Ibotoes {
     text-align: center;
     margin-top: 20px;
 }
+
 body.inscricao .Ibotoes input[type="submit"],
 body.inscricao .Ibotoes input[type="reset"] {
     background-color: #B287E6;
@@ -363,6 +390,7 @@ body.inscricao .Ibotoes input[type="reset"] {
     font-weight: bold;
     transition: 0.3s;
 }
+
 body.inscricao .Ibotoes input[type="submit"]:hover,
 body.inscricao .Ibotoes input[type="reset"]:hover {
     background-color: #9f6ce0;
@@ -378,19 +406,24 @@ body.inscricao .Irodape {
     border-top: 3px solid #FFFF59;
     margin-top: 40px;
 }
+
 body.inscricao .Irodape a {
     color: #FFFF59;
     text-decoration: none;
     font-weight: bold;
 }
+
 body.inscricao .Irodape a:hover {
     text-decoration: underline;
 }
+
 body.inscricao .Irodape .Imissao {
     margin-top: 10px;
     font-style: italic;
     color: #fff9cc;
 }
+
+/* FORMULÁRIO DE AGENDAMENTO */
 
 body.agendamento * {
   box-sizing: border-box;
@@ -666,6 +699,9 @@ body.agendamento .fieldsetlaura .titulo {
 body.agendamento .logoaua{
     width: 60px;
 }
+
+/* PÁGINAS SOF */
+
 body.sof {
     background-color: #e6d9ff93;
     font-family: 'Poppins', sans-serif;
@@ -857,6 +893,9 @@ body.sof .texto_detalhe_sof {
     margin-bottom: 25px;
     line-height: 1.6;
 }
+
+/* ESTILOS GERAIS */
+
 * {
     font-family: poppins, sans-serif;
     box-sizing: border-box;
@@ -875,9 +914,7 @@ body.sof .texto_detalhe_sof {
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-
 }
-
 
 .logok {
     width: 12%;
@@ -941,7 +978,6 @@ button a {
 }
 
 .toc {
-  
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
@@ -995,7 +1031,6 @@ section span h2 {
     align-items: center;
     justify-content: space-between;
     padding: 50px;
-
 }
 
 .como-funciona .conteudo {
@@ -1012,7 +1047,6 @@ section span h2 {
     font-size: 1.1em;
     line-height: 1.6;
     text-align: justify;
-    
 }
 
 .como-funciona .imagem {
@@ -1025,6 +1059,7 @@ section span h2 {
     border-radius: 10px;
     margin-left: 50px;
 }
+
 @media (max-width: 768px) {
     .como-funciona {
         flex-direction: column;
@@ -1036,22 +1071,22 @@ section span h2 {
         margin-top: 30px;
     }
 }
+
 .projetos{
     text-align: center;
     padding: 50px 20px;
     margin-top: 10px;
     color: #8966b4;
-
 }
+
 .cards {
     display: flex;
     justify-content: space-around;
     margin-left: 10px;
     padding: 50px;
-    
 }
-.card{
 
+.card{
     background: #d9a9ec;
     border-radius: 25px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -1060,9 +1095,6 @@ section span h2 {
     flex: 1;
     margin-left: 50px; */
 }
-
-
-
 
 footer {
   padding: 50px 10%;
@@ -1142,6 +1174,8 @@ footer {
   font-size: 14px;
   color: #9aa1af;
 }
+
+/* FAQ */
 
 body.faq footer {
     background-color: #b287e660;
@@ -1417,6 +1451,7 @@ body.faq main {
     outline: 3px solid #c085fa;
     outline-offset: 2px;
 }
+
 @media (max-width: 600px) {
 
     .m-faq-container {
@@ -1470,5 +1505,4 @@ body.faq main {
     .estrelas label {
         font-size: 38px;
     }
-
 }
