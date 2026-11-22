@@ -19,9 +19,13 @@
 </head>
 
 <body>
-    <script>
-        bemvindo();
-    </script>
+    <div id="boas-vindas" class="boas-vindas">
+        <div class="mensagem">
+            <h2>Bem-vindo ao LUME! 💜</h2>
+            <p>É um prazer ter você aqui.</p>
+            <button onclick="fecharMensagem()">Continuar</button>
+        </div>
+    </div>
 
     <section class="banner" id="first">
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -152,8 +156,7 @@
                 <h4>Legal</h4>
                 <ul>
                     <li><a href="html/privacidade.html">Política de Privacidade</a></li>
-                    <li><a href="html/termo.html">Termos de Uso</a></li>     
-                    <li><a href="portfolios.html">Desenvolvedores</a></li>
+                    <li><a href="html/termo.html">Termos de Uso</a></li>
                 </ul>
             </div>
 
@@ -176,34 +179,36 @@
 
         <div class="footer-bottom">
             <p>© 2026 LUME - Todos os direitos reservados.</p>
+            <p>TELEFONE do Centro de Valorização da Vida: 188</p>
         </div>
     </footer>
     <div class="acessibilidade">
-    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
-        ♿
-    </button>
-    <div id="menuAcessibilidade" class="menu-acessibilidade">
-        <h2>Acessibilidade</h2>
-        <button id="aumentarFonte" onclick="aumentarFonte()">
-            A+ Aumentar fonte
+        <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
+            ♿
         </button>
-        <button id="diminuirFonte" onclick="diminuirFonte()">
-            A- Diminuir fonte
-        </button>
-        <button id="altoContraste" onclick="altoContraste()">
-            ◐ Alto contraste
-        </button>
-        <button id="cinza" onclick="escalaCinza()">
-            Escala de cinza
-        </button>
-        <button id="reduzirMovimento" onclick="reduzirMovimento()">
-            Reduzir animações
-        </button>
-        <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
-            ↻ Restaurar
-        </button>
+        <div id="menuAcessibilidade" class="menu-acessibilidade">
+            <h2>Acessibilidade</h2>
+            <button id="aumentarFonte" onclick="aumentarFonte()">
+                A+ Aumentar fonte
+            </button>
+            <button id="diminuirFonte" onclick="diminuirFonte()">
+                A- Diminuir fonte
+            </button>
+            <button id="altoContraste" onclick="altoContraste()">
+                ◐ Alto contraste
+            </button>
+            <button id="cinza" onclick="escalaCinza()">
+                Escala de cinza
+            </button>
+            <button id="reduzirMovimento" onclick="reduzirMovimento()">
+                Reduzir animações
+            </button>
+            <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
+                ↻ Restaurar
+            </button>
+        </div>
     </div>
-</div>
-</div>
+    </div>
 </body>
+
 </html>
