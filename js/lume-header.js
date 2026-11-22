@@ -119,4 +119,26 @@
         });
     }
 
+<<<<<<< Updated upstream
 })();
+=======
+var linksMenu = menu.querySelectorAll("a");
+
+linksMenu.forEach(function(link) {
+    link.addEventListener("click", function() {
+        menu.classList.remove("open");
+        botaoMenu.setAttribute("aria-expanded", "false");
+        botaoMenu.setAttribute("aria-label", "Abrir menu");
+    });
+});
+
+var paginaAtual = window.location.pathname;
+linksMenu.forEach(function(link) {
+    var endereco = new URL(link.href).pathname;
+
+    if (paginaAtual === endereco) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
+    }
+});
+>>>>>>> Stashed changes
