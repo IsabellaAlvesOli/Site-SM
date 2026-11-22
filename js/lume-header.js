@@ -1,5 +1,6 @@
 
 (function () {
+
     const script = document.currentScript;
     const root = script.getAttribute("data-root") || "./";
 
@@ -42,10 +43,13 @@
     document.body.insertAdjacentHTML("afterbegin", header);
 
     const links = document.querySelectorAll(".lume-nav a");
-    const paginaAtual = window.location.pathname;
-    const caminhoHome = new URL(root + "home.html", window.location.href).pathname;
+    const paginaAtual = window.location.pathname
+        .split("/")
+        .pop()
+        .toLowerCase();
 
     function destacarLink(linkAtivo) {
+
         links.forEach(function (link) {
             link.classList.remove("active");
             link.removeAttribute("aria-current");
@@ -57,63 +61,71 @@
         }
     }
 
-    if (paginaAtual === caminhoHome) {
+    /* IDENTIFICA A PÁGINA ATUAL */
+
+    if (paginaAtual === "home.html" || paginaAtual === "") {
 
         const comoFunciona = document.getElementById("function");
         const projetos = document.getElementById("project");
         const headerMenu = document.querySelector(".lume-header");
 
         function atualizarMenuAtivo() {
-            const posicao = window.scrollY + headerMenu.offsetHeight + 100;
 
-            let secaoAtual = "inicio";
+            const limite = headerMenu.offsetHeight + 100;
+            let linkAtivo = links[0];
 
-            if (projetos && posicao >= projetos.offsetTop) {
-                secaoAtual = "projetos";
-            } else if (comoFunciona && posicao >= comoFunciona.offsetTop) {
-                secaoAtual = "funciona";
+            if (
+                projetos &&
+                projetos.getBoundingClientRect().top <= limite
+            ) {
+                linkAtivo = links[2];
+            }
+            else if (
+                comoFunciona &&
+                comoFunciona.getBoundingClientRect().top <= limite
+            ) {
+                linkAtivo = links[1];
             }
 
-            links.forEach(function (link) {
-                const destino = new URL(link.href, window.location.href);
-
-                if (
-                    secaoAtual === "inicio" &&
-                    destino.pathname === caminhoHome &&
-                    destino.hash === ""
-                ) {
-                    destacarLink(link);
-                } else if (
-                    secaoAtual === "funciona" &&
-                    destino.pathname === caminhoHome &&
-                    destino.hash === "#function"
-                ) {
-                    destacarLink(link);
-                } else if (
-                    secaoAtual === "projetos" &&
-                    destino.pathname === caminhoHome &&
-                    destino.hash === "#project"
-                ) {
-                    destacarLink(link);
-                }
-            });
+            destacarLink(linkAtivo);
         }
 
         window.addEventListener("scroll", atualizarMenuAtivo);
         window.addEventListener("resize", atualizarMenuAtivo);
-        window.addEventListener("load", atualizarMenuAtivo);
 
         atualizarMenuAtivo();
 
     } else {
 
-        links.forEach(function (link) {
-            const destino = new URL(link.href, window.location.href);
+        let linkAtivo = null;
 
-            if (destino.pathname === paginaAtual && !destino.hash) {
-                destacarLink(link);
+        links.forEach(function (link) {
+
+            const destino = new URL(link.href);
+            const nomeDestino = destino.pathname
+                .split("/")
+                .pop()
+                .toLowerCase();
+
+            if (nomeDestino === paginaAtual) {
+                linkAtivo = link;
             }
+
         });
+
+        destacarLink(linkAtivo);
     }
+
+    /* FECHA O MENU NO CELULAR */
+
+    const menuToggle = document.getElementById("lume-menu-toggle");
+
+    links.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+            menuToggle.checked = false;
+        });
+
+    });
 
 })();
