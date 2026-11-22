@@ -12,8 +12,7 @@
                     <img src="${root}images/logo.png" alt="Lume">
                 </a>
 
-                <input type="checkbox" id="lume-menu-toggle" class="lume-menu-toggle">
-
+    
                 <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
                     <span></span>
                     <span></span>
@@ -43,10 +42,17 @@
     document.body.insertAdjacentHTML("afterbegin", header);
 
     const links = document.querySelectorAll(".lume-nav a");
-    const paginaAtual = window.location.pathname
-        .split("/")
-        .pop()
-        .toLowerCase();
+
+    const paginaAtual = window.location.pathname.toLowerCase();
+
+    function normalizarCaminho(caminho) {
+
+        if (caminho.length > 1 && caminho.endsWith("/")) {
+            caminho = caminho.slice(0, -1);
+        }
+
+        return caminho;
+    }
 
     function destacarLink(linkAtivo) {
 
@@ -56,14 +62,16 @@
         });
 
         if (linkAtivo) {
-            link.classList.add("active");
-            link.setAttribute("aria-current", "page");
+            linkAtivo.classList.add("active");
+            linkAtivo.setAttribute("aria-current", "page");
         }
     }
 
-    /* IDENTIFICA A PÁGINA ATUAL */
+    // IDENTIFICA A PÁGINA ATUAL
 
-    if (paginaAtual === "home.html" || paginaAtual === "") {
+    const paginaHome = paginaAtual.endsWith("/home.html") || paginaAtual === "/";
+
+    if (paginaHome) {
 
         const comoFunciona = document.getElementById("function");
         const projetos = document.getElementById("project");
@@ -72,6 +80,7 @@
         function atualizarMenuAtivo() {
 
             const limite = headerMenu.offsetHeight + 100;
+
             let linkAtivo = links[0];
 
             if (
@@ -101,13 +110,18 @@
 
         links.forEach(function (link) {
 
-            const destino = new URL(link.href);
-            const nomeDestino = destino.pathname
-                .split("/")
-                .pop()
-                .toLowerCase();
+            const destino = new URL(link.href, window.location.href);
 
-            if (nomeDestino === paginaAtual) {
+            const caminhoDestino = normalizarCaminho(
+                destino.pathname.toLowerCase()
+            );
+
+            const caminhoAtual = normalizarCaminho(paginaAtual);
+
+            if (
+                caminhoDestino === caminhoAtual &&
+                !destino.hash
+            ) {
                 linkAtivo = link;
             }
 
@@ -116,7 +130,7 @@
         destacarLink(linkAtivo);
     }
 
-    /* FECHA O MENU NO CELULAR */
+    // FECHA O MENU NO CELULAR
 
     const menuToggle = document.getElementById("lume-menu-toggle");
 
