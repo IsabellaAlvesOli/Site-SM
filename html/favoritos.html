@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Meus favoritos | Lume</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/acessibilidade.css">
+    <link rel="stylesheet" href="../css/lume-header.css">
+    <link rel="stylesheet" href="../css/favoritos.css">
+
+    <script src="../js/acessibilidade.js" defer></script>
+    <script src="../js/lume-header.js" data-root="../" defer></script>
+    <script src="../js/favoritos.js" defer></script>
+</head>
+
+<body class="favoritos">
+
+    <main class="favoritos-main">
+
+        <section class="favoritos-intro">
+            <span class="favoritos-subtitulo">SUA ÁREA PESSOAL</span>
+
+            <h1>Meus favoritos</h1>
+
+            <p>
+                Aqui ficam os artigos que você salvou na página de Blogs.
+                Acesse seus conteúdos preferidos sempre que quiser.
+            </p>
+        </section>
+
+        <section class="favoritos-container">
+
+            <div class="favoritos-cabecalho">
+                <div>
+                    <h2>Artigos salvos</h2>
+                    <p>Selecione os artigos que deseja remover da sua lista.</p>
+                </div>
+
+                <span id="quantidadeFavoritos" class="favoritos-contador">
+                    0 artigos
+                </span>
+            </div>
+
+            <div class="favoritos-tabela-container">
+
+                <table class="favoritos-tabela">
+
+                    <thead>
+                        <tr>
+                            <th class="coluna-checkbox">
+                                <input type="checkbox" id="selecionarTodos"
+                                    aria-label="Selecionar todos os artigos">
+                            </th>
+                            <th>Artigo</th>
+                            <th>Categoria</th>
+                            <th>Fonte</th>
+                            <th>Data de salvamento</th>
+                            <th>Acessar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="listaFavoritos"></tbody>
+
+                </table>
+
+                <div id="mensagemVazia" class="favoritos-vazio">
+                    <span>♡</span>
+                    <h3>Você ainda não salvou nenhum artigo</h3>
+                    <p>
+                        Acesse a página de Blogs e clique em
+                        "Salvar nos favoritos" nos conteúdos que deseja guardar.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="favoritos-acoes">
+
+                <span id="quantidadeSelecionados">
+                    Nenhum item selecionado
+                </span>
+
+                <button type="button" id="btnExcluirFavoritos"
+                    class="btn-excluir" disabled>
+                    Excluir selecionados
+                </button>
+
+            </div>
+
+        </section>
+
+        <a href="r_index.html" class="favoritos-voltar">
+            ← Voltar para os artigos
+        </a>
+
+        <footer class="favoritos-rodape">
+            <p>© Lume — Cuidar também é acolher.</p>
+        </footer>
+
+    </main>
+
+    <div class="acessibilidade">
+
+        <button id="btnAcessibilidade"
+            type="button"
+            onclick="abrirMenu()"
+            aria-label="Abrir opções de acessibilidade">
+            ♿
+        </button>
+
+        <div class="menu-acessibilidade" id="menuAcessibilidade">
+
+            <h2>Acessibilidade</h2>
+
+            <button type="button" onclick="aumentarFonte()">
+                Aumentar fonte
+            </button>
+
+            <button type="button" onclick="diminuirFonte()">
+                Diminuir fonte
+            </button>
+
+            <button type="button" onclick="altoContraste()">
+                Alto contraste
+            </button>
+
+            <button type="button" onclick="escalaCinza()">
+                Escala de cinza
+            </button>
+
+            <button type="button" onclick="reduzirMovimento()">
+                Reduzir movimento
+            </button>
+
+            <button type="button" onclick="restaurarAcessibilidade()">
+                Restaurar padrão
+            </button>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
