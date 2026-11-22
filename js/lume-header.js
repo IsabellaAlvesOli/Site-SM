@@ -43,15 +43,80 @@
     // Destaca a página atual no menu
     const links = document.querySelectorAll(".lume-nav a");
     const paginaAtual = window.location.pathname;
+    const caminhoHome = new URL(root + "home.html", window.location.href).pathname;
 
-    links.forEach(function (link) {
-        const destino = new URL(link.href, window.location.href);
+    function destacarLink(linkAtivo) {
+        links.forEach(function (link) {
+            link.classList.remove("active");
+            link.removeAttribute("aria-current");
+        });
 
-        if (destino.pathname === paginaAtual &&
-            !destino.hash) {
-            link.classList.add("active");
-            link.setAttribute("aria-current", "page");
+        if (linkAtivo) {
+            linkAtivo.classList.add("active");
+            linkAtivo.setAttribute("aria-current", "page");
         }
-    });
+    }
+
+    // Verifica se está na página inicial
+    if (paginaAtual === caminhoHome) {
+
+        const inicio = document.getElementById("first");
+        const comoFunciona = document.getElementById("function");
+        const projetos = document.getElementById("project");
+
+        const headerMenu = document.querySelector(".lume-header");
+
+        function atualizarMenuAtivo() {
+            const posicao = window.scrollY + headerMenu.offsetHeight + 100;
+
+            let secaoAtual = "inicio";
+
+            if (posicao >= projetos.offsetTop) {
+                secaoAtual = "projetos";
+            }
+            else if (posicao >= comoFunciona.offsetTop) {
+                secaoAtual = "funciona";
+            }
+
+            links.forEach(function (link) {
+                const destino = new URL(link.href, window.location.href);
+
+                if (secaoAtual == "inicio" &&
+                    destino.pathname === caminhoHome &&
+                    destino.hash == "") {
+                    destacarLink(link);
+                }
+
+                else if (secaoAtual == "funciona" &&
+                    destino.pathname === caminhoHome &&
+                    destino.hash == "#function") {
+                    destacarLink(link);
+                }
+
+                else if (secaoAtual == "projetos" &&
+                    destino.pathname === caminhoHome &&
+                    destino.hash == "#project") {
+                    destacarLink(link);
+                }
+            });
+        }
+
+        window.addEventListener("scroll", atualizarMenuAtivo);
+        window.addEventListener("resize", atualizarMenuAtivo);
+        window.addEventListener("load", atualizarMenuAtivo);
+
+        atualizarMenuAtivo();
+
+    } else {
+
+        // Nas outras páginas, destaca o link correspondente
+        links.forEach(function (link) {
+            const destino = new URL(link.href, window.location.href);
+
+            if (destino.pathname === paginaAtual && !destino.hash) {
+                destacarLink(link);
+            }
+        });
+    }
 
 })();
