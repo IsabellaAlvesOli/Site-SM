@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -71,7 +72,7 @@
                         </div>
                     </div>
 
-                    <!-- Nascimento e cidade -->
+                    <!-- Nascimento e CEP -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Inascimento">Data de nascimento:</label>
@@ -81,46 +82,78 @@
                         </div>
 
                         <div class="form-group col-md-6">
+                            <label for="Icep">CEP:</label>
+                            <input type="text" class="form-control" id="Icep" name="Icep"
+                                placeholder="00000-000" maxlength="9" inputmode="numeric"
+                                oninput="mascaraCEP(this)" required>
+                            <div class="invalid-feedback">Informe um CEP válido com 8 números.</div>
+                        </div>
+                    </div>
+
+                    <!-- Cidade e estado -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
                             <label for="Icidade">Cidade:</label>
                             <input type="text" class="form-control" id="Icidade" name="Icidade"
                                 placeholder="Digite sua cidade" oninput="validarCidade(this)" required>
                             <div class="invalid-feedback">Informe sua cidade.</div>
                         </div>
-                    </div>
 
-                    <!-- Estado e endereço -->
-                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Iestado">Estado:</label>
                             <select class="form-control" id="Iestado" name="Iestado" required>
                                 <option value="">Selecione seu estado</option>
-                                <option value="SP">São Paulo</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
                                 <option value="MS">Mato Grosso do Sul</option>
-                                <option value="PR">Paraná</option>
                                 <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
                                 <option value="RJ">Rio de Janeiro</option>
-                                <option value="Outro">Outro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
                             </select>
                             <div class="invalid-feedback">Selecione seu estado.</div>
                         </div>
+                    </div>
 
+                    <!-- Endereço e número -->
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Iendereco">Endereço:</label>
                             <input type="text" class="form-control" id="Iendereco" name="Iendereco"
                                 placeholder="Rua e bairro" required>
                             <div class="invalid-feedback">Informe seu endereço.</div>
                         </div>
-                    </div>
 
-                    <!-- Número e escolaridade -->
-                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Inumero">Número:</label>
                             <input type="number" class="form-control" id="Inumero" name="Inumero"
                                 min="1" placeholder="Número da residência" required>
                             <div class="invalid-feedback">Informe um número maior que zero.</div>
                         </div>
+                    </div>
 
+                    <!-- Escolaridade e data disponível -->
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Iescolaridade">Escolaridade:</label>
                             <select class="form-control" id="Iescolaridade" name="Iescolaridade" required>
@@ -133,17 +166,17 @@
                             </select>
                             <div class="invalid-feedback">Selecione sua escolaridade.</div>
                         </div>
-                    </div>
 
-                    <!-- Data disponível e horas -->
-                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="IdisponibilidadeData">Data disponível para começar:</label>
                             <input type="date" class="form-control" id="IdisponibilidadeData"
                                 name="IdisponibilidadeData" required>
                             <div class="invalid-feedback">Escolha hoje ou uma data futura.</div>
                         </div>
+                    </div>
 
+                    <!-- Horas disponíveis -->
+                    <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="Ihoras">Horas disponíveis por semana:</label>
                             <input type="number" class="form-control" id="Ihoras" name="Ihoras"

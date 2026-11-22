@@ -25,6 +25,7 @@
                     <a href="${root}home.html#project">Projetos</a>
                     <a href="${root}faq.html">FAQ</a>
                     <a href="${root}html/r_index.html">Blogs</a>
+                    <a href="${root}html/favoritos.html">Favoritos</a>
                     <a href="${root}html/index.html">Agendamento</a>
                     <a href="${root}html/index_sof.html">Voluntários</a>
                 </nav>
@@ -40,7 +41,6 @@
 
     document.body.insertAdjacentHTML("afterbegin", header);
 
-    // Destaca a página atual no menu
     const links = document.querySelectorAll(".lume-nav a");
     const paginaAtual = window.location.pathname;
     const caminhoHome = new URL(root + "home.html", window.location.href).pathname;
@@ -52,18 +52,15 @@
         });
 
         if (linkAtivo) {
-            linkAtivo.classList.add("active");
-            linkAtivo.setAttribute("aria-current", "page");
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
         }
     }
 
-    // Verifica se está na página inicial
     if (paginaAtual === caminhoHome) {
 
-        const inicio = document.getElementById("first");
         const comoFunciona = document.getElementById("function");
         const projetos = document.getElementById("project");
-
         const headerMenu = document.querySelector(".lume-header");
 
         function atualizarMenuAtivo() {
@@ -71,31 +68,32 @@
 
             let secaoAtual = "inicio";
 
-            if (posicao >= projetos.offsetTop) {
+            if (projetos && posicao >= projetos.offsetTop) {
                 secaoAtual = "projetos";
-            }
-            else if (posicao >= comoFunciona.offsetTop) {
+            } else if (comoFunciona && posicao >= comoFunciona.offsetTop) {
                 secaoAtual = "funciona";
             }
 
             links.forEach(function (link) {
                 const destino = new URL(link.href, window.location.href);
 
-                if (secaoAtual == "inicio" &&
+                if (
+                    secaoAtual === "inicio" &&
                     destino.pathname === caminhoHome &&
-                    destino.hash == "") {
+                    destino.hash === ""
+                ) {
                     destacarLink(link);
-                }
-
-                else if (secaoAtual == "funciona" &&
+                } else if (
+                    secaoAtual === "funciona" &&
                     destino.pathname === caminhoHome &&
-                    destino.hash == "#function") {
+                    destino.hash === "#function"
+                ) {
                     destacarLink(link);
-                }
-
-                else if (secaoAtual == "projetos" &&
+                } else if (
+                    secaoAtual === "projetos" &&
                     destino.pathname === caminhoHome &&
-                    destino.hash == "#project") {
+                    destino.hash === "#project"
+                ) {
                     destacarLink(link);
                 }
             });
@@ -109,7 +107,6 @@
 
     } else {
 
-        // Nas outras páginas, destaca o link correspondente
         links.forEach(function (link) {
             const destino = new URL(link.href, window.location.href);
 

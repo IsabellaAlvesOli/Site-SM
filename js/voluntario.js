@@ -52,6 +52,16 @@ function enviarInscricao() {
         limparErro(f.Inascimento);
     }
 
+    // CEP
+    let cep = f.Icep.value.replace(/\D/g, "");
+
+    if (cep.length != 8) {
+        mostrarErro(f.Icep, "Informe um CEP válido com 8 números.");
+        valido = false;
+    } else {
+        limparErro(f.Icep);
+    }
+
     // Cidade
     if (!validarCidade(f.Icidade)) {
         mostrarErro(f.Icidade, "Informe uma cidade válida, sem números.");
@@ -204,6 +214,7 @@ function enviarInscricao() {
         telefone: f.Itelefone.value,
         cpf: f.Icpf.value,
         nascimento: f.Inascimento.value,
+        cep: f.Icep.value,
         cidade: f.Icidade.value.trim(),
         estado: f.Iestado.value,
         endereco: f.Iendereco.value.trim(),
@@ -289,6 +300,81 @@ function mascaraCPF(campo) {
 }
 
 
+// Máscara do CEP
+function mascaraCEP(campo) {
+    let n = campo.value.replace(/\D/g, "").substring(0, 8);
+
+    if (n.length > 5) {
+        n = n.substring(0, 5) + "-" + n.substring(5);
+    }
+
+    campo.value = n;
+}
+
+
+// Consulta o CEP no ViaCEP
+function buscarCEP(campo) {
+    let cep = campo.value.replace(/\D/g, "");
+
+    if (cep == "") {
+        return;
+    }
+
+    if (cep.length != 8) {
+        mostrarErro(campo, "Informe um CEP válido com 8 números.");
+        return;
+    }
+
+    limparErro(campo);
+
+    let f = document.IformVoluntario;
+
+    fetch("https://viacep.com.br/ws/" + cep + "/json/")
+        .then(function(resposta) {
+            if (!resposta.ok) {
+                throw new Error("Erro na consulta do CEP.");
+            }
+
+            return resposta.json();
+        })
+        .then(function(dados) {
+
+            if (dados.erro) {
+                mostrarErro(campo, "CEP não encontrado. Verifique o número informado.");
+
+                f.Iendereco.value = "";
+                f.Icidade.value = "";
+                f.Iestado.value = "";
+
+                return;
+            }
+
+            let endereco = dados.logradouro || "";
+
+            if (dados.bairro) {
+                if (endereco != "") {
+                    endereco += " - ";
+                }
+
+                endereco += dados.bairro;
+            }
+
+            f.Iendereco.value = endereco;
+            f.Icidade.value = dados.localidade || "";
+            f.Iestado.value = dados.uf || "";
+
+            limparErro(f.Iendereco);
+            limparErro(f.Icidade);
+            limparErro(f.Iestado);
+            limparErro(campo);
+
+        })
+        .catch(function() {
+            mostrarErro(campo, "Não foi possível consultar o CEP. Tente novamente.");
+        });
+}
+
+
 // Verifica se o CPF é válido
 function validarCPF(cpf) {
     cpf = cpf.replace(/\D/g, "");
@@ -354,10 +440,16 @@ function limparErro(campo) {
 }
 
 
-// Limpa as mensagens e os destaques ao clicar em Limpar Campos
+// Eventos do formulário
 document.addEventListener("DOMContentLoaded", function() {
     let f = document.IformVoluntario;
 
+    // Consulta o CEP quando o usuário sair do campo
+    f.Icep.addEventListener("blur", function() {
+        buscarCEP(f.Icep);
+    });
+
+    // Limpa as mensagens e os destaques ao clicar em Limpar Campos
     f.addEventListener("reset", function() {
         let campos = f.querySelectorAll("input, select, textarea");
 
