@@ -276,3 +276,7 @@ body {
         animation: none;
     }
 }
+
+.lume-menu-toggle {
+    display: none !important;
+}

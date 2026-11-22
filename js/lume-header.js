@@ -1,84 +1,122 @@
 
-var scriptAtual = document.currentScript;
-var root = scriptAtual.getAttribute("data-root") || "./";
+(function () {
+    const script = document.currentScript;
+    const root = script.getAttribute("data-root") || "./";
 
-var cabecalho = `
-<header class="lume-header">
-    <div class="lume-header-inner">
+    const header = `
+        <header class="lume-header" aria-label="Cabeçalho principal do Lume">
+            <div class="lume-header-inner">
 
-        <a href="${root}home.html" class="lume-brand">
-            <img src="${root}images/logo.png" alt="Lume">
-        </a>
+                <a class="lume-brand" href="${root}home.html" aria-label="Lume - Página inicial">
+                    <img src="${root}images/logo.png" alt="Lume">
+                </a>
 
-        <input type="checkbox" id="lume-menu-toggle"
-            class="lume-menu-toggle" style="display:none;">
+                <input type="checkbox" id="lume-menu-toggle" class="lume-menu-toggle">
 
-        <button class="lume-menu-btn" type="button"
-            aria-label="Abrir menu"
-            aria-expanded="false"
-            aria-controls="lume-nav">
-            <span>☰</span>
-        </button>
+                <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
 
-        <nav class="lume-nav" id="lume-nav">
-            <a href="${root}home.html">Início</a>
-            <a href="${root}home.html#function">Como funciona</a>
-            <a href="${root}home.html#project">Projetos</a>
-            <a href="${root}faq.html">FAQ</a>
-            <a href="${root}html/r_index.html">Blogs</a>
-            <a href="${root}html/favoritos.html">Meus favoritos</a>
-            <a href="${root}html/index.html">Agendamento</a>
-            <a href="${root}html/index_sof.html">Voluntários</a>
-        </nav>
+                <nav class="lume-nav" aria-label="Navegação principal">
+                    <a href="${root}home.html">Início</a>
+                    <a href="${root}home.html#function">Como funciona</a>
+                    <a href="${root}home.html#project">Projetos</a>
+                    <a href="${root}faq.html">FAQ</a>
+                    <a href="${root}html/r_index.html">Blogs</a>
+                    <a href="${root}html/index.html">Agendamento</a>
+                    <a href="${root}html/index_sof.html">Voluntários</a>
+                </nav>
 
-        <div class="lume-auth-area">
-            <a href="${root}formularios.html" class="lume-cta">
-                Seja voluntário
-            </a>
+                <div class="lume-auth-area">
+                    <a class="lume-cta" href="${root}formularios.html">Ser voluntário</a>
+                    <a class="lume-login-link" href="${root}html/login.html">Entrar</a>
+                </div>
 
-            <a href="${root}html/login.html" class="lume-login-link">
-                Entrar
-            </a>
-        </div>
+            </div>
+        </header>
+    `;
 
-    </div>
-</header>
-`;
+    document.body.insertAdjacentHTML("afterbegin", header);
 
-document.body.insertAdjacentHTML("afterbegin", cabecalho);
+    // Destaca a página atual no menu
+    const links = document.querySelectorAll(".lume-nav a");
+    const paginaAtual = window.location.pathname;
+    const caminhoHome = new URL(root + "home.html", window.location.href).pathname;
 
-var botaoMenu = document.querySelector(".lume-menu-btn");
-var menu = document.querySelector(".lume-nav");
+    function destacarLink(linkAtivo) {
+        links.forEach(function (link) {
+            link.classList.remove("active");
+            link.removeAttribute("aria-current");
+        });
 
-botaoMenu.addEventListener("click", function() {
-    menu.classList.toggle("open");
+        if (linkAtivo) {
+            linkAtivo.classList.add("active");
+            linkAtivo.setAttribute("aria-current", "page");
+        }
+    }
 
-    if (menu.classList.contains("open")) {
-        botaoMenu.setAttribute("aria-expanded", "true");
-        botaoMenu.setAttribute("aria-label", "Fechar menu");
+    // Verifica se está na página inicial
+    if (paginaAtual === caminhoHome) {
+
+        const inicio = document.getElementById("first");
+        const comoFunciona = document.getElementById("function");
+        const projetos = document.getElementById("project");
+
+        const headerMenu = document.querySelector(".lume-header");
+
+        function atualizarMenuAtivo() {
+            const posicao = window.scrollY + headerMenu.offsetHeight + 100;
+
+            let secaoAtual = "inicio";
+
+            if (posicao >= projetos.offsetTop) {
+                secaoAtual = "projetos";
+            }
+            else if (posicao >= comoFunciona.offsetTop) {
+                secaoAtual = "funciona";
+            }
+
+            links.forEach(function (link) {
+                const destino = new URL(link.href, window.location.href);
+
+                if (secaoAtual == "inicio" &&
+                    destino.pathname === caminhoHome &&
+                    destino.hash == "") {
+                    destacarLink(link);
+                }
+
+                else if (secaoAtual == "funciona" &&
+                    destino.pathname === caminhoHome &&
+                    destino.hash == "#function") {
+                    destacarLink(link);
+                }
+
+                else if (secaoAtual == "projetos" &&
+                    destino.pathname === caminhoHome &&
+                    destino.hash == "#project") {
+                    destacarLink(link);
+                }
+            });
+        }
+
+        window.addEventListener("scroll", atualizarMenuAtivo);
+        window.addEventListener("resize", atualizarMenuAtivo);
+        window.addEventListener("load", atualizarMenuAtivo);
+
+        atualizarMenuAtivo();
+
     } else {
-        botaoMenu.setAttribute("aria-expanded", "false");
-        botaoMenu.setAttribute("aria-label", "Abrir menu");
+
+        // Nas outras páginas, destaca o link correspondente
+        links.forEach(function (link) {
+            const destino = new URL(link.href, window.location.href);
+
+            if (destino.pathname === paginaAtual && !destino.hash) {
+                destacarLink(link);
+            }
+        });
     }
-});
 
-var linksMenu = menu.querySelectorAll("a");
-
-linksMenu.forEach(function(link) {
-    link.addEventListener("click", function() {
-        menu.classList.remove("open");
-        botaoMenu.setAttribute("aria-expanded", "false");
-        botaoMenu.setAttribute("aria-label", "Abrir menu");
-    });
-});
-
-var paginaAtual = window.location.pathname;
-
-linksMenu.forEach(function(link) {
-    var endereco = new URL(link.href).pathname;
-
-    if (paginaAtual === endereco) {
-        link.classList.add("active");
-        link.setAttribute("aria-current", "page");
-    }
-});
+})();
