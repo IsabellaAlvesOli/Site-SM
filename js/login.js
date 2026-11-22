@@ -1,5 +1,7 @@
+
 document.addEventListener("DOMContentLoaded", () => {
 
+    // Mostrar e ocultar senha
     document.querySelectorAll(".password-toggle").forEach((button) => {
         button.addEventListener("click", () => {
             const input = document.getElementById(button.dataset.target);
@@ -11,6 +13,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
+    // Máscara de CPF
+    const campoCPF = document.getElementById("cadastroCPF");
+
+    if (campoCPF) {
+        campoCPF.addEventListener("input", () => {
+            campoCPF.value = mascaraCPF(campoCPF.value);
+        });
+    }
+
+
+    // Máscara de telefone
+    const campoTelefone = document.getElementById("cadastroTelefone");
+
+    if (campoTelefone) {
+        campoTelefone.addEventListener("input", () => {
+            campoTelefone.value = mascaraTelefone(campoTelefone.value);
+        });
+    }
+
+
+    // LOGIN
     const loginForm = document.getElementById("loginForm");
 
     if (loginForm) {
@@ -22,41 +45,20 @@ document.addEventListener("DOMContentLoaded", () => {
             const email = document.getElementById("loginEmail");
             const password = document.getElementById("loginPassword");
 
-            let ok = true;
-
             if (!email.value.trim()) {
-                err(
-                    email,
-                    "loginEmailError",
-                    "Digite seu e-mail."
-                );
+                err(email, "loginEmailError", "Digite seu e-mail.");
             } else if (!validEmail(email.value.trim())) {
-                err(
-                    email,
-                    "loginEmailError",
-                    "Digite um e-mail válido."
-                );
+                err(email, "loginEmailError", "Digite um e-mail válido.");
             }
 
             if (!password.value) {
-                err(
-                    password,
-                    "loginPasswordError",
-                    "Digite sua senha."
-                );
+                err(password, "loginPasswordError", "Digite sua senha.");
             } else if (password.value.length < 6) {
-                err(
-                    password,
-                    "loginPasswordError",
-                    "A senha deve ter pelo menos 6 caracteres."
-                );
+                err(password, "loginPasswordError",
+                    "A senha deve ter pelo menos 6 caracteres.");
             }
 
-            if (document.querySelectorAll(".input-error").length) {
-                ok = false;
-            }
-
-            if (!ok) {
+            if (loginForm.querySelectorAll(".input-error").length > 0) {
                 return;
             }
 
@@ -71,11 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 user.email === mail &&
                 user.password !== password.value
             ) {
-                msg(
-                    "Senha incorreta.",
-                    "error-message"
-                );
-
+                msg("Senha incorreta.", "error-message");
                 return;
             }
 
@@ -93,18 +91,18 @@ document.addEventListener("DOMContentLoaded", () => {
                 })
             );
 
-            msg(
-                "Login realizado! Entrando...",
-                "success-message"
-            );
+            msg("Login realizado! Entrando...", "success-message");
 
             setTimeout(() => {
-                location.href = window.location.pathname.includes("/html/") ? "../home.html" : "home.html";
+                location.href = window.location.pathname.includes("/html/")
+                    ? "../home.html"
+                    : "home.html";
             }, 600);
         });
     }
 
 
+    // CADASTRO
     const cadastroForm = document.getElementById("cadastroForm");
 
     if (cadastroForm) {
@@ -114,64 +112,59 @@ document.addEventListener("DOMContentLoaded", () => {
             clearErrors();
 
             const type = document.getElementById("userType");
+            const name = document.getElementById("cadastroNome");
+            const cpf = document.getElementById("cadastroCPF");
+            const telefone = document.getElementById("cadastroTelefone");
             const email = document.getElementById("cadastroEmail");
             const password = document.getElementById("cadastroPassword");
-            const confirmPassword =
-                document.getElementById("confirmPassword");
+            const confirmPassword = document.getElementById("confirmPassword");
 
             if (!type.value) {
-                err(
-                    type,
-                    "userTypeError",
-                    "Selecione uma opção."
-                );
+                err(type, "userTypeError", "Selecione uma opção.");
+            }
+
+            if (!name.value.trim()) {
+                err(name, "cadastroNomeError", "Digite seu nome completo.");
+            } else if (name.value.trim().length < 3) {
+                err(name, "cadastroNomeError",
+                    "O nome deve ter pelo menos 3 caracteres.");
+            }
+
+            if (!cpf.value.trim()) {
+                err(cpf, "cadastroCPFError", "Digite seu CPF.");
+            } else if (!validCPF(cpf.value)) {
+                err(cpf, "cadastroCPFError", "Digite um CPF válido.");
+            }
+
+            if (!telefone.value.trim()) {
+                err(telefone, "cadastroTelefoneError", "Digite seu telefone.");
+            } else if (!validTelefone(telefone.value)) {
+                err(telefone, "cadastroTelefoneError",
+                    "Digite um telefone válido com DDD.");
             }
 
             if (!email.value.trim()) {
-                err(
-                    email,
-                    "cadastroEmailError",
-                    "Digite seu e-mail."
-                );
+                err(email, "cadastroEmailError", "Digite seu e-mail.");
             } else if (!validEmail(email.value.trim())) {
-                err(
-                    email,
-                    "cadastroEmailError",
-                    "Digite um e-mail válido."
-                );
+                err(email, "cadastroEmailError", "Digite um e-mail válido.");
             }
 
             if (!password.value) {
-                err(
-                    password,
-                    "cadastroPasswordError",
-                    "Digite uma senha."
-                );
+                err(password, "cadastroPasswordError", "Digite uma senha.");
             } else if (password.value.length < 6) {
-                err(
-                    password,
-                    "cadastroPasswordError",
-                    "A senha deve ter pelo menos 6 caracteres."
-                );
+                err(password, "cadastroPasswordError",
+                    "A senha deve ter pelo menos 6 caracteres.");
             }
 
             if (!confirmPassword.value) {
-                err(
-                    confirmPassword,
-                    "confirmPasswordError",
-                    "Confirme sua senha."
-                );
+                err(confirmPassword, "confirmPasswordError",
+                    "Confirme sua senha.");
             } else if (password.value !== confirmPassword.value) {
-                err(
-                    confirmPassword,
-                    "confirmPasswordError",
-                    "As senhas não coincidem."
-                );
+                err(confirmPassword, "confirmPasswordError",
+                    "As senhas não coincidem.");
             }
 
-            if (
-                document.querySelectorAll(".input-error").length
-            ) {
+            if (cadastroForm.querySelectorAll(".input-error").length > 0) {
                 return;
             }
 
@@ -180,27 +173,28 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem(
                 "lumeUser",
                 JSON.stringify({
-                    name: mail.split("@")[0],
+                    name: name.value.trim(),
+                    cpf: cpf.value,
+                    telefone: telefone.value,
                     email: mail,
                     password: password.value,
                     type: type.value
                 })
             );
 
-            msg(
-                "Conta criada! Redirecionando...",
-                "success-message"
-            );
+            msg("Conta criada! Redirecionando...", "success-message");
 
             setTimeout(() => {
-                location.href = window.location.pathname.includes("/html/") ? "login.html" : "html/login.html";
+                location.href = window.location.pathname.includes("/html/")
+                    ? "login.html"
+                    : "html/login.html";
             }, 800);
         });
     }
 
 
-    const forgotPassword =
-        document.getElementById("forgotPassword");
+    // Recuperação demonstrativa de senha
+    const forgotPassword = document.getElementById("forgotPassword");
 
     if (forgotPassword) {
         forgotPassword.addEventListener("click", (event) => {
@@ -212,49 +206,122 @@ document.addEventListener("DOMContentLoaded", () => {
             );
         });
     }
+
 });
 
 
+// Máscara de CPF
+function mascaraCPF(valor) {
+    let numeros = valor.replace(/\D/g, "").substring(0, 11);
+
+    numeros = numeros.replace(/(\d{3})(\d)/, "$1.$2");
+    numeros = numeros.replace(/(\d{3})(\d)/, "$1.$2");
+    numeros = numeros.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+
+    return numeros;
+}
+
+
+// Máscara de telefone
+function mascaraTelefone(valor) {
+    let numeros = valor.replace(/\D/g, "").substring(0, 11);
+
+    if (numeros.length > 10) {
+        numeros = numeros.replace(/^(\d{2})(\d)/, "($1) $2");
+        numeros = numeros.replace(/(\d{5})(\d)/, "$1-$2");
+    } else {
+        numeros = numeros.replace(/^(\d{2})(\d)/, "($1) $2");
+        numeros = numeros.replace(/(\d{4})(\d)/, "$1-$2");
+    }
+
+    return numeros;
+}
+
+
+// Validar CPF
+function validCPF(cpf) {
+    cpf = cpf.replace(/\D/g, "");
+
+    if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) {
+        return false;
+    }
+
+    let soma = 0;
+
+    for (let i = 0; i < 9; i++) {
+        soma += parseInt(cpf.charAt(i)) * (10 - i);
+    }
+
+    let resto = (soma * 10) % 11;
+
+    if (resto === 10) {
+        resto = 0;
+    }
+
+    if (resto !== parseInt(cpf.charAt(9))) {
+        return false;
+    }
+
+    soma = 0;
+
+    for (let i = 0; i < 10; i++) {
+        soma += parseInt(cpf.charAt(i)) * (11 - i);
+    }
+
+    resto = (soma * 10) % 11;
+
+    if (resto === 10) {
+        resto = 0;
+    }
+
+    return resto === parseInt(cpf.charAt(10));
+}
+
+
+// Validar telefone
+function validTelefone(telefone) {
+    const numeros = telefone.replace(/\D/g, "");
+
+    return numeros.length === 10 || numeros.length === 11;
+}
+
+
+// Validar e-mail
 function validEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 
-function err(input, id, text) {
+// Mostrar erro no campo
+function err(input, id, texto) {
     input.classList.add("input-error");
-
-    document.getElementById(id).textContent = text;
+    document.getElementById(id).textContent = texto;
 }
 
 
+// Limpar mensagens e erros
 function clearErrors() {
-    document
-        .querySelectorAll(".error")
-        .forEach((element) => {
-            element.textContent = "";
-        });
+    document.querySelectorAll(".error").forEach((element) => {
+        element.textContent = "";
+    });
 
-    document
-        .querySelectorAll(".input-error")
-        .forEach((element) => {
-            element.classList.remove("input-error");
-        });
+    document.querySelectorAll(".input-error").forEach((element) => {
+        element.classList.remove("input-error");
+    });
 
-    const message = document.querySelector(".form-message");
-
-    if (message) {
+    document.querySelectorAll(".form-message").forEach((message) => {
         message.textContent = "";
         message.className = "form-message";
-    }
+    });
 }
 
 
+// Exibir mensagem geral
 function msg(text, className) {
     const message = document.querySelector(".form-message");
 
     if (message) {
         message.textContent = text;
-        message.className =
-            "form-message " + className;
+        message.className = "form-message " + className;
     }
 }

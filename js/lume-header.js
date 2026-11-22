@@ -1,3 +1,4 @@
+
 var scriptAtual = document.currentScript;
 var root = scriptAtual.getAttribute("data-root") || "./";
 
@@ -25,6 +26,7 @@ var cabecalho = `
             <a href="${root}home.html#project">Projetos</a>
             <a href="${root}faq.html">FAQ</a>
             <a href="${root}html/r_index.html">Blogs</a>
+            <a href="${root}html/favoritos.html">Meus favoritos</a>
             <a href="${root}html/index.html">Agendamento</a>
             <a href="${root}html/index_sof.html">Voluntários</a>
         </nav>

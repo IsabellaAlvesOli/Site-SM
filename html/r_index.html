@@ -11,9 +11,11 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/acessibilidade.css">
     <link rel="stylesheet" href="../css/lume-header.css">
+    <link rel="stylesheet" href="../css/favoritos.css">
 
     <script src="../js/acessibilidade.js" defer></script>
     <script src="../js/lume-header.js" data-root="../" defer></script>
+    <script src="../js/favoritos.js" defer></script>
 </head>
 
 <body class="blog">
@@ -61,13 +63,20 @@
                 a saúde mental e a importância do autocuidado.
             </p>
 
+            <a href="favoritos.html" class="blog-link-favoritos">
+                ♡ Ver meus favoritos
+            </a>
+
         </section>
 
         <section class="blog-lista">
 
-            <a class="blog-card"
-                href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-mental/saude-mental/"
-                target="_blank" rel="noopener noreferrer">
+            <article class="blog-card"
+                data-id="artigo1"
+                data-title="O que é saúde mental?"
+                data-category="Saúde mental"
+                data-source="Ministério da Saúde"
+                data-url="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-mental/saude-mental/">
 
                 <div class="blog-card-topo blog-lilas">
                     <span>01</span>
@@ -84,14 +93,25 @@
                         emocionais, sociais e físicos influenciam o bem-estar.
                     </p>
 
-                    <span class="blog-ler">Ler artigo →</span>
+                    <a class="blog-ler"
+                        href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/s/saude-mental/saude-mental/"
+                        target="_blank" rel="noopener noreferrer">
+                        Ler artigo →
+                    </a>
+
+                    <button type="button" class="blog-salvar">
+                        ♡ Salvar nos favoritos
+                    </button>
                 </div>
 
-            </a>
+            </article>
 
-            <a class="blog-card"
-                href="https://linhasdecuidado.saude.gov.br/portal/ansiedade/sou-paciente"
-                target="_blank" rel="noopener noreferrer">
+            <article class="blog-card"
+                data-id="artigo2"
+                data-title="Transtornos de ansiedade"
+                data-category="Ansiedade"
+                data-source="Ministério da Saúde"
+                data-url="https://linhasdecuidado.saude.gov.br/portal/ansiedade/sou-paciente">
 
                 <div class="blog-card-topo blog-rosa">
                     <span>02</span>
@@ -108,14 +128,25 @@
                         saudáveis e possibilidades de cuidado.
                     </p>
 
-                    <span class="blog-ler">Ler artigo →</span>
+                    <a class="blog-ler"
+                        href="https://linhasdecuidado.saude.gov.br/portal/ansiedade/sou-paciente"
+                        target="_blank" rel="noopener noreferrer">
+                        Ler artigo →
+                    </a>
+
+                    <button type="button" class="blog-salvar">
+                        ♡ Salvar nos favoritos
+                    </button>
                 </div>
 
-            </a>
+            </article>
 
-            <a class="blog-card"
-                href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/depressao"
-                target="_blank" rel="noopener noreferrer">
+            <article class="blog-card"
+                data-id="artigo3"
+                data-title="Depressão: informações e cuidados"
+                data-category="Depressão"
+                data-source="Ministério da Saúde"
+                data-url="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/depressao">
 
                 <div class="blog-card-topo blog-pessego">
                     <span>03</span>
@@ -132,14 +163,25 @@
                         da depressão.
                     </p>
 
-                    <span class="blog-ler">Ler artigo →</span>
+                    <a class="blog-ler"
+                        href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/d/depressao"
+                        target="_blank" rel="noopener noreferrer">
+                        Ler artigo →
+                    </a>
+
+                    <button type="button" class="blog-salvar">
+                        ♡ Salvar nos favoritos
+                    </button>
                 </div>
 
-            </a>
+            </article>
 
-            <a class="blog-card"
-                href="https://www.unicef.org/brazil/saude-mental-de-adolescentes"
-                target="_blank" rel="noopener noreferrer">
+            <article class="blog-card"
+                data-id="artigo4"
+                data-title="Saúde mental de adolescentes"
+                data-category="Juventude"
+                data-source="UNICEF"
+                data-url="https://www.unicef.org/brazil/saude-mental-de-adolescentes">
 
                 <div class="blog-card-topo blog-verde">
                     <span>04</span>
@@ -156,14 +198,25 @@
                         durante a adolescência e juventude.
                     </p>
 
-                    <span class="blog-ler">Ler artigo →</span>
+                    <a class="blog-ler"
+                        href="https://www.unicef.org/brazil/saude-mental-de-adolescentes"
+                        target="_blank" rel="noopener noreferrer">
+                        Ler artigo →
+                    </a>
+
+                    <button type="button" class="blog-salvar">
+                        ♡ Salvar nos favoritos
+                    </button>
                 </div>
 
-            </a>
+            </article>
 
-            <a class="blog-card"
-                href="https://www.unicef.org/brazil/relatorios/guia-de-autocuidado-ser-adolescente-e-jovem-que-se-cuida"
-                target="_blank" rel="noopener noreferrer">
+            <article class="blog-card"
+                data-id="artigo5"
+                data-title="Guia de autocuidado para jovens"
+                data-category="Autocuidado"
+                data-source="UNICEF"
+                data-url="https://www.unicef.org/brazil/relatorios/guia-de-autocuidado-ser-adolescente-e-jovem-que-se-cuida">
 
                 <div class="blog-card-topo blog-azul">
                     <span>05</span>
@@ -180,14 +233,25 @@
                         emocional, psicológico e físico.
                     </p>
 
-                    <span class="blog-ler">Ler artigo →</span>
+                    <a class="blog-ler"
+                        href="https://www.unicef.org/brazil/relatorios/guia-de-autocuidado-ser-adolescente-e-jovem-que-se-cuida"
+                        target="_blank" rel="noopener noreferrer">
+                        Ler artigo →
+                    </a>
+
+                    <button type="button" class="blog-salvar">
+                        ♡ Salvar nos favoritos
+                    </button>
                 </div>
 
-            </a>
+            </article>
 
-            <a class="blog-card"
-                href="https://www.unicef.org/brazil/innocenti/brazil/historias/falar-sobre-o-que-sentimos-e-o-primeiro-passo"
-                target="_blank" rel="noopener noreferrer">
+            <article class="blog-card"
+                data-id="artigo6"
+                data-title="Falar sobre o que sentimos é o primeiro passo"
+                data-category="Acolhimento"
+                data-source="UNICEF"
+                data-url="https://www.unicef.org/brazil/innocenti/brazil/historias/falar-sobre-o-que-sentimos-e-o-primeiro-passo">
 
                 <div class="blog-card-topo blog-rosa">
                     <span>06</span>
@@ -204,14 +268,25 @@
                         sentimentos e buscar acolhimento.
                     </p>
 
-                    <span class="blog-ler">Ler artigo →</span>
+                    <a class="blog-ler"
+                        href="https://www.unicef.org/brazil/innocenti/brazil/historias/falar-sobre-o-que-sentimos-e-o-primeiro-passo"
+                        target="_blank" rel="noopener noreferrer">
+                        Ler artigo →
+                    </a>
+
+                    <button type="button" class="blog-salvar">
+                        ♡ Salvar nos favoritos
+                    </button>
                 </div>
 
-            </a>
+            </article>
 
-            <a class="blog-card"
-                href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/covid-19/publicacoes-tecnicas/capacitacao/cuidados-com-a-saude-mental/"
-                target="_blank" rel="noopener noreferrer">
+            <article class="blog-card"
+                data-id="artigo7"
+                data-title="Cuidados com a saúde mental"
+                data-category="Bem-estar"
+                data-source="Ministério da Saúde"
+                data-url="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/covid-19/publicacoes-tecnicas/capacitacao/cuidados-com-a-saude-mental/">
 
                 <div class="blog-card-topo blog-lilas">
                     <span>07</span>
@@ -228,14 +303,25 @@
                         para cuidar da saúde mental no dia a dia.
                     </p>
 
-                    <span class="blog-ler">Ler artigo →</span>
+                    <a class="blog-ler"
+                        href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/covid-19/publicacoes-tecnicas/capacitacao/cuidados-com-a-saude-mental/"
+                        target="_blank" rel="noopener noreferrer">
+                        Ler artigo →
+                    </a>
+
+                    <button type="button" class="blog-salvar">
+                        ♡ Salvar nos favoritos
+                    </button>
                 </div>
 
-            </a>
+            </article>
 
-            <a class="blog-card"
-                href="https://www.unicef.org/brazil/relatorios/guia-de-promocao-da-saude-mental-de-jovens-no-mundo-do-trabalho"
-                target="_blank" rel="noopener noreferrer">
+            <article class="blog-card"
+                data-id="artigo8"
+                data-title="Saúde mental de jovens no trabalho"
+                data-category="Trabalho e juventude"
+                data-source="UNICEF"
+                data-url="https://www.unicef.org/brazil/relatorios/guia-de-promocao-da-saude-mental-de-jovens-no-mundo-do-trabalho">
 
                 <div class="blog-card-topo blog-pessego">
                     <span>08</span>
@@ -252,10 +338,18 @@
                         profissionais mais saudáveis para jovens.
                     </p>
 
-                    <span class="blog-ler">Ler artigo →</span>
+                    <a class="blog-ler"
+                        href="https://www.unicef.org/brazil/relatorios/guia-de-promocao-da-saude-mental-de-jovens-no-mundo-do-trabalho"
+                        target="_blank" rel="noopener noreferrer">
+                        Ler artigo →
+                    </a>
+
+                    <button type="button" class="blog-salvar">
+                        ♡ Salvar nos favoritos
+                    </button>
                 </div>
 
-            </a>
+            </article>
 
         </section>
 
