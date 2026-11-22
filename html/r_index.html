@@ -1,211 +1,721 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Blogs e Artigos | Lume</title>
+
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/acessibilidade.css">
-    <title>Blogs/Artigos</title>
-<link rel="stylesheet" href="../css/lume-header.css">
-<script src="../js/acessibilidade.js" defer></script>
+    <link rel="stylesheet" href="../css/lume-header.css">
 
+    <script src="../js/lume-header.js" data-root="../" defer></script>
+    <script src="../js/acessibilidade.js" defer></script>
+
+    <style>
+        body.blog {
+            margin: 0;
+            background: #fffaf5;
+            color: #4d4656;
+            font-family: Arial, sans-serif;
+        }
+
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 45px 25px 70px;
+        }
+
+        .blog-hero {
+            background: linear-gradient(135deg, #eee5fa, #f8e5ed);
+            border-radius: 25px;
+            padding: 55px 45px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 35px;
+            margin-bottom: 55px;
+        }
+
+        .blog-hero-texto {
+            max-width: 700px;
+        }
+
+        .blog-hero h1 {
+            color: #624a83;
+            font-size: 2.5rem;
+            margin: 0 0 18px;
+        }
+
+        .blog-hero h1 span {
+            color: #b96f91;
+        }
+
+        .blog-hero p {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .blog-botao {
+            display: inline-block;
+            padding: 13px 25px;
+            background: #8e70b7;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .blog-botao:hover {
+            background: #624a83;
+            color: white;
+        }
+
+        .blog-hero-icone {
+            font-size: 100px;
+            flex-shrink: 0;
+        }
+
+        .blog-secao-titulo {
+            text-align: center;
+            margin-bottom: 12px;
+            color: #624a83;
+            font-size: 2rem;
+        }
+
+        .blog-secao-descricao {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 35px;
+            line-height: 1.7;
+            color: #706879;
+        }
+
+        .blog-filtros {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+
+        .blog-filtro {
+            border: 1px solid #cbb7e9;
+            background: white;
+            color: #624a83;
+            border-radius: 22px;
+            padding: 9px 18px;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .blog-filtro:hover,
+        .blog-filtro.ativo {
+            background: #8e70b7;
+            color: white;
+        }
+
+        .blog-lista {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .blog-artigo {
+            background: white;
+            border: 1px solid #eee5f5;
+            border-radius: 18px;
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 15px rgba(98, 74, 131, 0.08);
+            transition: 0.3s;
+        }
+
+        .blog-artigo:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 22px rgba(98, 74, 131, 0.14);
+        }
+
+        .blog-artigo-topo {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 18px;
+        }
+
+        .blog-categoria {
+            display: inline-block;
+            background: #f2eafa;
+            color: #624a83;
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            font-weight: bold;
+        }
+
+        .blog-artigo-icone {
+            font-size: 30px;
+        }
+
+        .blog-artigo h3 {
+            color: #624a83;
+            font-size: 1.2rem;
+            line-height: 1.45;
+            margin: 0 0 13px;
+        }
+
+        .blog-artigo p {
+            color: #706879;
+            line-height: 1.65;
+            font-size: 0.94rem;
+            flex: 1;
+        }
+
+        .blog-fonte {
+            color: #8e70b7;
+            font-size: 0.85rem;
+            font-weight: bold;
+            margin-top: 12px;
+        }
+
+        .blog-data {
+            color: #918a96;
+            font-size: 0.8rem;
+            margin-top: 7px;
+        }
+
+        .blog-acoes {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .blog-ler {
+            text-align: center;
+            padding: 11px;
+            border-radius: 22px;
+            background: #8e70b7;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .blog-ler:hover {
+            background: #624a83;
+            color: white;
+        }
+
+        .blog-favoritar {
+            padding: 10px;
+            border-radius: 22px;
+            border: 1px solid #b96f91;
+            background: white;
+            color: #a65378;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .blog-favoritar:hover,
+        .blog-favoritar.salvo {
+            background: #f2c4d7;
+            color: #624a83;
+        }
+
+        .blog-aviso {
+            text-align: center;
+            min-height: 24px;
+            margin-top: 20px;
+            color: #624a83;
+            font-weight: bold;
+        }
+
+        .blog-ajuda {
+            margin-top: 55px;
+            padding: 30px;
+            background: #f2eafa;
+            border-radius: 18px;
+            text-align: center;
+        }
+
+        .blog-ajuda h2 {
+            color: #624a83;
+            margin-top: 0;
+        }
+
+        .blog-ajuda p {
+            line-height: 1.7;
+        }
+
+        @media (max-width: 950px) {
+            .blog-lista {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .blog-hero-icone {
+                font-size: 75px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .blog-container {
+                padding: 30px 16px 50px;
+            }
+
+            .blog-hero {
+                padding: 35px 22px;
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-hero-icone {
+                font-size: 65px;
+            }
+
+            .blog-lista {
+                grid-template-columns: 1fr;
+            }
+
+            .blog-secao-titulo {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
 </head>
+
 <body class="blog">
 
-    <header class="lume-header" aria-label="Cabeçalho principal do Lume">
-        <div class="lume-header-inner">
-            <a class="lume-brand" href="../home.html" aria-label="Lume - Página inicial">
-                <img src="../images/logo.png" alt="Lume">
-            </a>
+    <main class="blog-container">
 
-            <input type="checkbox" id="lume-menu-toggle" class="lume-menu-toggle">
+        <section class="blog-hero">
 
-            <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </label>
+            <div class="blog-hero-texto">
+                <h1>
+                    Cuidar da mente também é cuidar de <span>você.</span>
+                </h1>
 
-            <nav class="lume-nav" aria-label="Navegação principal">
-                <a href="../home.html">Início</a>
-                <a href="../home.html#function">Como funciona</a>
-                <a href="../home.html#project">Projetos</a>
-                <a href="../faq.html">FAQ</a>
-                <a href="r_index.html" class="active" aria-current="page">Blogs</a>
-                <a href="index.html">Agendamento</a>
-                <a href="index_sof.html">Voluntários</a>
-            </nav>
+                <p>
+                    Informação também é uma forma de cuidado. Explore conteúdos
+                    sobre saúde mental, ansiedade, autocuidado e bem-estar
+                    publicados por instituições e profissionais confiáveis.
+                </p>
 
-            <div class="lume-auth-area">
-                <a class="lume-cta" href="../formularios.html">Ser voluntário</a>
-                <a class="lume-login-link" href="login.html">Entrar</a>
+                <a href="#artigos" class="blog-botao">
+                    Explorar artigos
+                </a>
             </div>
-        </div>
-    </header>
 
-    <div class="r_container">
-        <div class="r_titulo">
-            <h1>Cuidando da sua <span style="color: rgb(107, 54, 157);">Saúde Mental</span></h1>
-        </div>
-        <div class="r_posicao r_esp1">
-            <img class="rimg" src="../r_img_blog/med.jpg" alt="">
-            <div class="r_texto">
-                <p>Nos últimos anos, a saúde mental tem ganhado cada vez mais espaço nas conversas do dia a dia. Em meio à correria, às pressões sociais e às responsabilidades, muitas pessoas enfrentam problemas como ansiedade, depressão, estresse crônico e esgotamento. Reconhecer a importância do autocuidado é essencial para lidar com esses desafios e promover bem-estar.</p>
-                <a href="#artigos">
-                    <button class="r_botao">Explorar Artigos</button>
-                </a>
-                
+            <div class="blog-hero-icone" aria-hidden="true">
+                🌷
             </div>
-        </div>
-        <div class="r_posicao r_espacamento r_esp1" id="artigos">
-            <div class="r_art">
-                <div class="r_barra"></div>
-                <a class="r_link" href="../pag_rafa/art1.html">
-                    <h2 class="ra">A Importância de Cuidar da Saúde Mental Todos os Dias</h2>
-                </a>
-                    
-                        <div class="r_posicao">
-                            <img class="rp" src="../r_img_blog/r_perfil.png" alt="">
-                            <div class="r_pos">
-                                <p class="r_tam1">Clara Mendes</p>
-                                <p class="r_tam2">Psicóloga e Educadora Emocional</p>
-                            </div>
-                        </div>
-            </div>
-            <div class="r_art">
-                <div class="r_barra"></div>
-                <a class="r_link" href="../pag_rafa/art2.html">
-                    <h2 class="ra">O Poder da Terapia: Falar é um Ato de Coragem</h2>
-                </a>
-                        <div class="r_posicao">
-                            <img class="rp" src="../r_img_blog/r_perfil.png" alt="">
-                            <div class="r_pos">
-                                <p class="r_tam1">Lucas Prado</p>
-                                <p class="r_tam2">Psicoterapeuta e Escritor</p>
-                            </div>
-                        </div>
-            </div>
-            <div class="r_art">
-                <div class="r_barra"></div>
-                <a class="r_link" href="../pag_rafa/art3.html">
-                    <h2 class="ra">Quando o Futuro Pesa Demais</h2>
-                </a>
-                        <div class="r_posicao">
-                            <img class="rp3" src="../r_img_blog/r_perfil.png" alt="">
-                            <div class="r_pos3">
-                                <p class="r_tam1">Beatriz Lemos</p>
-                                <p class="r_tam2">Psiquiatra e Pesquisadora em Saúde Mental Jovem</p>
-                            </div>
-                        </div>
-            </div>
-            <div class="r_art">
-                <div class="r_barra"></div>
-                <a class="r_link" href="../pag_rafa/art4.html">
-                    <h2 class="ra">Depressão Não É Tristeza — É Doença</h2>
-                </a>
-                        <div class="r_posicao">
-                            <img class="rp4" src="../r_img_blog/r_perfil.png" alt="">
-                            <div class="r_pos4">
-                                <p class="r_tam1">Rafael Nogueira</p>
-                                <p class="r_tam2">Médico e Ativista pela Consciência Emocional</p>
-                            </div>
-                        </div>
-            </div>
-        </div>
 
-        <div class="r_posicao r_espacamento r_esp2">
-            <div class="r_art">
-                <div class="r_barra"></div>
-                <a class="r_link" href="../pag_rafa/art5.html">
-                    <h2 class="ra">Redes Sociais e Saúde Mental: O Efeito do Comparar</h2>
-                </a>
-                        <div class="r_posicao">
-                            <img class="rp" src="../r_img_blog/r_perfil.png" alt="">
-                            <div class="r_pos5">
-                                <p class="r_tam1">Marina Castro</p>
-                                <p class="r_tam2">Jornalista Digital e Pesquisadora de Comportamento Online</p>
-                            </div>
-                        </div>
-            </div>
-            <div class="r_art">
-                <div class="r_barra"></div>
-                <a class="r_link" href="../pag_rafa/art6.html">
-                    <h2 class="ra">O Papel do Autocuidado na Saúde Mental</h2>
-                </a>
-                        <div class="r_posicao">
-                            <img class="rp" src="../r_img_blog/r_perfil.png" alt="">
-                            <div class="r_pos6">
-                                <p class="r_tam1">Juliana Azevedo</p>
-                                <p class="r_tam2">Enfermeira Holística e Educadora em Bem-Estar</p>
-                            </div>
-                        </div>
-            </div>
-            <div class="r_art">
-                <div class="r_barra"></div>
-                <a class="r_link" href="../pag_rafa/art7.html">
-                    <h2 class="ra">Saúde Mental dos Jovens: O Peso das Expectativas</h2>
-                </a>
-                        <div class="r_posicao">
-                            <img class="rp" src="../r_img_blog/r_perfil.png" alt="">
-                            <div class="r_pos">
-                                <p class="r_tam1">Pedro Carvalho</p>
-                                <p class="r_tam2">Educador e Mentor de Adolescentes</p>
-                            </div>
-                        </div>
-            </div>
-            <div class="r_art">
-                <div class="r_barra"></div>
-                <a class="r_link" href="../pag_rafa/art8.html">
-                    <h2 class="ra">Espiritualidade e Equilíbrio Emocional</h2>
-                </a>
-                        <div class="r_posicao">
-                            <img class="rp8" src="../r_img_blog/r_perfil.png" alt="">
-                            <div class="r_pos8">
-                                <p class="r_tam1">Helena Duarte</p>
-                                <p class="r_tam2">Missionária e Conselheira Espiritual</p>
-                            </div>
-                        </div>
-            </div>
-        </div>
+        </section>
 
-        <div>
-            <p>a</p>
-        </div>
-        
+        <section id="artigos">
+
+            <h2 class="blog-secao-titulo">Artigos e conteúdos</h2>
+
+            <p class="blog-secao-descricao">
+                Leia, aprenda e salve os conteúdos que deseja consultar
+                novamente. Todos os artigos abaixo direcionam para suas
+                publicações originais.
+            </p>
+
+            <div class="blog-filtros">
+                <button class="blog-filtro ativo" data-filtro="todos">
+                    Todos
+                </button>
+
+                <button class="blog-filtro" data-filtro="Jovens">
+                    Jovens
+                </button>
+
+                <button class="blog-filtro" data-filtro="Autocuidado">
+                    Autocuidado
+                </button>
+
+                <button class="blog-filtro" data-filtro="Ansiedade">
+                    Saúde emocional
+                </button>
+
+                <button class="blog-filtro" data-filtro="Informação">
+                    Informação
+                </button>
+            </div>
+
+            <div class="blog-lista" id="listaArtigos">
+
+                <!-- Os artigos serão carregados pelo JavaScript -->
+
+            </div>
+
+            <p class="blog-aviso" id="mensagemFavorito" aria-live="polite"></p>
+
+        </section>
+
+        <section class="blog-ajuda">
+            <h2>Você não precisa passar por tudo sozinho(a).</h2>
+
+            <p>
+                Buscar informação é um primeiro passo, mas ela não substitui
+                o acompanhamento de um profissional de saúde. Se estiver
+                enfrentando dificuldades, procure uma rede de apoio ou um
+                serviço de saúde.
+            </p>
+        </section>
+
+    </main>
 
     <div class="acessibilidade">
-    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
-        ♿
-    </button>
 
-    <div id="menuAcessibilidade" class="menu-acessibilidade">
-        <h2>Acessibilidade</h2>
-
-        <button id="aumentarFonte" onclick="aumentarFonte()">
-            A+ Aumentar fonte
+        <button id="btnAcessibilidade"
+            aria-label="Abrir opções de acessibilidade"
+            onclick="abrirMenu()">
+            ♿
         </button>
 
-        <button id="diminuirFonte" onclick="diminuirFonte()">
-            A- Diminuir fonte
-        </button>
+        <div id="menuAcessibilidade" class="menu-acessibilidade">
 
-        <button id="altoContraste" onclick="altoContraste()">
-            ◐ Alto contraste
-        </button>
+            <h2>Acessibilidade</h2>
 
-        <button id="cinza" onclick="escalaCinza()">
-            Escala de cinza
-        </button>
+            <button id="aumentarFonte" onclick="aumentarFonte()">
+                A+ Aumentar fonte
+            </button>
 
-        <button id="reduzirMovimento" onclick="reduzirMovimento()">
-            Reduzir animações
-        </button>
+            <button id="diminuirFonte" onclick="diminuirFonte()">
+                A- Diminuir fonte
+            </button>
 
-        <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
-            ↻ Restaurar
-        </button>
+            <button id="altoContraste" onclick="altoContraste()">
+                ◐ Alto contraste
+            </button>
+
+            <button id="cinza" onclick="escalaCinza()">
+                Escala de cinza
+            </button>
+
+            <button id="reduzirMovimento" onclick="reduzirMovimento()">
+                Reduzir animações
+            </button>
+
+            <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
+                ↻ Restaurar
+            </button>
+
+        </div>
     </div>
-</div>
-    </div>
+
+    <script>
+
+        // Lista de artigos publicados por fontes reais
+
+        const artigos = [
+
+            {
+                id: "unicef-saude-mental-jovens",
+                nome: "Saúde Mental de Adolescentes e Jovens",
+                categoria: "Jovens",
+                descricao: "Material com informações sobre saúde mental, primeiros socorros emocionais, comunicação, tecnologia e projetos de vida.",
+                fonte: "UNICEF Brasil",
+                url: "https://www.unicef.org/brazil/relatorios/saude-mental-de-adolescentes",
+                data: "Outubro de 2021",
+                icone: "🧠"
+            },
+
+            {
+                id: "unicef-guia-autocuidado",
+                nome: "Guia de Autocuidado: Ser adolescente e jovem que se cuida",
+                categoria: "Autocuidado",
+                descricao: "Publicação com orientações e estratégias para fortalecer o cuidado emocional e o bem-estar de adolescentes e jovens.",
+                fonte: "UNICEF Brasil",
+                url: "https://www.unicef.org/brazil/relatorios/guia-de-autocuidado-ser-adolescente-e-jovem-que-se-cuida",
+                data: "Novembro de 2020",
+                icone: "🌷"
+            },
+
+            {
+                id: "ministerio-pode-falar",
+                nome: "Projeto Pode Falar amplia o acesso ao cuidado em saúde mental",
+                categoria: "Jovens",
+                descricao: "Notícia sobre a plataforma que oferece acolhimento, escuta e orientação em saúde mental para pessoas de 13 a 24 anos.",
+                fonte: "Ministério da Saúde",
+                url: "https://www.gov.br/saude/pt-br/assuntos/noticias/2026/julho/projeto-pode-falar-chega-ao-meu-sus-digital-e-amplia-acesso-ao-cuidado-em-saude-mental",
+                data: "30 de julho de 2026",
+                icone: "💬"
+            },
+
+            {
+                id: "unicef-saude-trabalho",
+                nome: "Guia de Promoção da Saúde Mental de Jovens no Mundo do Trabalho",
+                categoria: "Jovens",
+                descricao: "Guia com reflexões e recomendações para promover ambientes de trabalho mais saudáveis para adolescentes e jovens.",
+                fonte: "UNICEF Brasil",
+                url: "https://www.unicef.org/brazil/relatorios/guia-de-promocao-da-saude-mental-de-jovens-no-mundo-do-trabalho",
+                data: "Setembro de 2026",
+                icone: "💼"
+            },
+
+            {
+                id: "hu-sofrimento-adolescencia",
+                nome: "Quando não é só uma fase: como reconhecer o sofrimento psíquico na adolescência",
+                categoria: "Ansiedade",
+                descricao: "Conteúdo sobre mudanças de comportamento, acolhimento dos jovens e reconhecimento de sinais de sofrimento emocional.",
+                fonte: "HU Brasil",
+                url: "https://www.gov.br/hubrasil/pt-br/comunicacao/noticias/quando-nao-e-so-uma-fase-veja-como-reconhecer-o-sofrimento-psiquico-na-adolescencia",
+                data: "10 de setembro de 2026",
+                icone: "💜"
+            },
+
+            {
+                id: "ibge-saude-mental-escolares",
+                nome: "PeNSE 2024: saúde mental entre meninas atinge nível crítico",
+                categoria: "Informação",
+                descricao: "Dados e informações da Pesquisa Nacional de Saúde do Escolar sobre saúde mental, sentimentos e bem-estar dos estudantes.",
+                fonte: "IBGE",
+                url: "https://educa.ibge.gov.br/jovens/materias-especiais/23240-saude-mental-entre-meninas-atinge-nivel-critico.html",
+                data: "2025",
+                icone: "📊"
+            },
+
+            {
+                id: "unicef-falar-sentimentos",
+                nome: "Falar sobre o que sentimos é o primeiro passo",
+                categoria: "Ansiedade",
+                descricao: "História de adolescentes que compartilham experiências e mostram a importância do acolhimento e do diálogo.",
+                fonte: "UNICEF Brasil",
+                url: "https://www.unicef.org/brazil/historias/falar-sobre-o-que-sentimos-e-o-primeiro-passo",
+                data: "25 de setembro de 2024",
+                icone: "💗"
+            },
+
+            {
+                id: "sbp-saude-adolescencia",
+                nome: "Saúde Mental na Adolescência: o que os pais podem fazer e quando procurar ajuda?",
+                categoria: "Informação",
+                descricao: "Orientações da Sociedade Brasileira de Pediatria sobre saúde mental na adolescência e a importância de procurar ajuda.",
+                fonte: "Sociedade Brasileira de Pediatria",
+                url: "https://www.sbp.com.br/pediatria-para-familias/comportamento/saude-mental-na-adolescencia-o-que-os-pais-podem-fazer-e-quando-devem-procurar-ajuda/",
+                data: "Novembro de 2025",
+                icone: "📖"
+            }
+
+        ];
+
+        const listaArtigos = document.getElementById("listaArtigos");
+        const mensagemFavorito = document.getElementById("mensagemFavorito");
+
+        // Recupera os favoritos salvos
+
+        function obterFavoritos() {
+
+            let favoritos = localStorage.getItem("lumeFavoritos");
+
+            if (favoritos) {
+                try {
+                    return JSON.parse(favoritos);
+                } catch (erro) {
+                    return [];
+                }
+            }
+
+            return [];
+
+        }
+
+        // Salva os favoritos no localStorage
+
+        function salvarListaFavoritos(favoritos) {
+
+            localStorage.setItem("lumeFavoritos", JSON.stringify(favoritos));
+
+        }
+
+        // Verifica se o artigo já está salvo
+
+        function artigoEstaSalvo(id) {
+
+            let favoritos = obterFavoritos();
+
+            return favoritos.some(function (artigo) {
+                return artigo.id === id;
+            });
+
+        }
+
+        // Mostra os artigos na tela
+
+        function mostrarArtigos(filtro) {
+
+            listaArtigos.innerHTML = "";
+
+            artigos.forEach(function (artigo) {
+
+                if (filtro !== "todos" && artigo.categoria !== filtro) {
+                    return;
+                }
+
+                let salvo = artigoEstaSalvo(artigo.id);
+
+                let card = document.createElement("article");
+                card.className = "blog-artigo";
+
+                card.innerHTML = `
+                    <div class="blog-artigo-topo">
+                        <span class="blog-categoria">${artigo.categoria}</span>
+                        <span class="blog-artigo-icone">${artigo.icone}</span>
+                    </div>
+
+                    <h3>${artigo.nome}</h3>
+
+                    <p>${artigo.descricao}</p>
+
+                    <span class="blog-fonte">${artigo.fonte}</span>
+
+                    <span class="blog-data">${artigo.data}</span>
+
+                    <div class="blog-acoes">
+
+                        <a class="blog-ler"
+                           href="${artigo.url}"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Ler artigo completo →
+                        </a>
+
+                        <button
+                            class="blog-favoritar ${salvo ? "salvo" : ""}"
+                            data-id="${artigo.id}">
+                            ${salvo ? "♥ Remover dos favoritos" : "♡ Salvar nos favoritos"}
+                        </button>
+
+                    </div>
+                `;
+
+                listaArtigos.appendChild(card);
+
+            });
+
+            if (listaArtigos.innerHTML === "") {
+                listaArtigos.innerHTML = "<p>Nenhum artigo encontrado.</p>";
+            }
+
+        }
+
+        // Adiciona ou remove um artigo dos favoritos
+
+        function alternarFavorito(id) {
+
+            let favoritos = obterFavoritos();
+
+            let artigo = artigos.find(function (item) {
+                return item.id === id;
+            });
+
+            if (!artigo) {
+                return;
+            }
+
+            let posicao = favoritos.findIndex(function (item) {
+                return item.id === id;
+            });
+
+            if (posicao === -1) {
+
+                favoritos.push({
+                    id: artigo.id,
+                    nome: artigo.nome,
+                    categoria: artigo.categoria,
+                    fonte: artigo.fonte,
+                    url: artigo.url,
+                    data: artigo.data
+                });
+
+                mensagemFavorito.textContent = "Artigo salvo nos seus favoritos!";
+
+            } else {
+
+                favoritos.splice(posicao, 1);
+
+                mensagemFavorito.textContent = "Artigo removido dos favoritos.";
+
+            }
+
+            salvarListaFavoritos(favoritos);
+
+            let filtroAtivo = document.querySelector(".blog-filtro.ativo");
+            let filtro = filtroAtivo ? filtroAtivo.dataset.filtro : "todos";
+
+            mostrarArtigos(filtro);
+
+        }
+
+        // Evento dos botões de favoritos
+
+        listaArtigos.addEventListener("click", function (evento) {
+
+            if (evento.target.classList.contains("blog-favoritar")) {
+
+                let id = evento.target.dataset.id;
+
+                alternarFavorito(id);
+
+            }
+
+        });
+
+        // Filtros dos artigos
+
+        let botoesFiltro = document.querySelectorAll(".blog-filtro");
+
+        botoesFiltro.forEach(function (botao) {
+
+            botao.addEventListener("click", function () {
+
+                botoesFiltro.forEach(function (item) {
+                    item.classList.remove("ativo");
+                });
+
+                botao.classList.add("ativo");
+
+                mostrarArtigos(botao.dataset.filtro);
+
+            });
+
+        });
+
+        // Atualiza os botões se os favoritos mudarem em outra aba
+
+        window.addEventListener("storage", function (evento) {
+
+            if (evento.key === "lumeFavoritos") {
+
+                let filtroAtivo = document.querySelector(".blog-filtro.ativo");
+                let filtro = filtroAtivo ? filtroAtivo.dataset.filtro : "todos";
+
+                mostrarArtigos(filtro);
+
+            }
+
+        });
+
+        // Carrega os artigos ao abrir a página
+
+        mostrarArtigos("todos");
+
+    </script>
+
 </body>
 </html>
