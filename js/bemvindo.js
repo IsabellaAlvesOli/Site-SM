@@ -1,3 +1,3 @@
-function bemvindo() {
-    alert("Bem-vindo ao LUME!");
+function fecharMensagem() {
+    document.getElementById("boas-vindas").style.display = "none";
 }
