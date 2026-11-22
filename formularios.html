@@ -1,13 +1,15 @@
-
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
+    <html lang="pt-br">
+
+    <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Voluntários - Apoio à Saúde Mental</title>
 
+    <!-- Bootstrap 4 -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+        crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./css/lume-header.css">
@@ -18,162 +20,245 @@
 
     <body class="inscricao">
 
-    <!-- HEADER SEM BOTÃO -->
-
     <!-- CONTEÚDO PRINCIPAL -->
     <section class="Iconteudo container">
-        <h2>Formulário de Inscrição de Voluntários</h2>
-        <p>Preencha o formulário abaixo para participar dos nossos projetos de apoio à saúde mental.</p>
 
-        <form name="IformVoluntario" class="Iformulario" onsubmit="return enviarInscricao()" novalidate>
+        <div class="card Icard-formulario">
 
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="Inome">Nome completo:</label>
-                    <input type="text" id="Inome" name="Inome" placeholder="Digite seu nome" oninput="validarNome(this)" required>
-                    <div class="invalid-feedback">Informe seu nome completo, usando pelo menos 3 caracteres.</div>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="Iemail">E-mail:</label>
-                    <input type="email" id="Iemail" name="Iemail" placeholder="exemplo@email.com" required>
-                    <div class="invalid-feedback">Informe um e-mail válido.</div>
-                </div>
+            <div class="card-header Icard-cabecalho">
+                <h2>Formulário de Inscrição de Voluntários</h2>
+                <p>Preencha o formulário abaixo para participar dos nossos projetos de apoio à saúde mental.</p>
             </div>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="Itelefone">Telefone:</label>
-                    <input type="tel" id="Itelefone" name="Itelefone" placeholder="(99) 99999-9999"
-                        inputmode="numeric" maxlength="15" oninput="mascaraTelefone(this)" required>
-                    <div class="invalid-feedback">Informe um telefone válido com DDD.</div>
-                </div>
+            <div class="card-body">
 
-                <div class="col-md-6">
-                    <label for="Icpf">CPF:</label>
-                    <input type="text" id="Icpf" name="Icpf" placeholder="000.000.000-00"
-                        maxlength="14" oninput="mascaraCPF(this)" required>
-                    <div class="invalid-feedback">Informe um CPF válido.</div>
-                </div>
-            </div>
+                <form name="IformVoluntario" class="Iformulario"
+                    onsubmit="return enviarInscricao()" novalidate>
 
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="Inascimento">Data de nascimento:</label>
-                    <input type="date" id="Inascimento" name="Inascimento" required>
-                    <div class="invalid-feedback">Informe uma data de nascimento anterior a hoje.</div>
-                </div>
+                    <!-- Nome e e-mail -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Inome">Nome completo:</label>
+                            <input type="text" class="form-control" id="Inome" name="Inome"
+                                placeholder="Digite seu nome" oninput="validarNome(this)" required>
+                            <div class="invalid-feedback">Informe seu nome completo, usando pelo menos 3 caracteres.</div>
+                        </div>
 
-                <div class="col-md-6">
-                    <label for="Icidade">Cidade:</label>
-                    <input type="text" id="Icidade" name="Icidade" placeholder="Digite sua cidade" oninput="validarCidade(this)" required>
-                    <div class="invalid-feedback">Informe sua cidade.</div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="Iestado">Estado:</label>
-                    <select id="Iestado" name="Iestado" required>
-                        <option value="">Selecione seu estado</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="PR">Paraná</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="Outro">Outro</option>
-                    </select>
-                    <div class="invalid-feedback">Selecione seu estado.</div>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="Iendereco">Endereço:</label>
-                    <input type="text" id="Iendereco" name="Iendereco" placeholder="Rua e bairro" required>
-                    <div class="invalid-feedback">Informe seu endereço.</div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="Inumero">Número:</label>
-                    <input type="number" id="Inumero" name="Inumero" min="1" placeholder="Número da residência" required>
-                    <div class="invalid-feedback">Informe um número maior que zero.</div>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="Iescolaridade">Escolaridade:</label>
-                    <select id="Iescolaridade" name="Iescolaridade" required>
-                        <option value="">Selecione</option>
-                        <option value="Ensino fundamental">Ensino Fundamental</option>
-                        <option value="Ensino médio">Ensino Médio</option>
-                        <option value="Ensino técnico">Ensino Técnico</option>
-                        <option value="Ensino superior">Ensino Superior</option>
-                        <option value="Pós-graduação">Pós-graduação</option>
-                    </select>
-                    <div class="invalid-feedback">Selecione sua escolaridade.</div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="IdisponibilidadeData">Data disponível para começar:</label>
-                    <input type="date" id="IdisponibilidadeData" name="IdisponibilidadeData" required>
-                    <div class="invalid-feedback">Escolha hoje ou uma data futura.</div>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="Ihoras">Horas disponíveis por semana:</label>
-                    <input type="number" id="Ihoras" name="Ihoras" min="1" max="40" placeholder="De 1 a 40 horas" required>
-                    <div class="invalid-feedback">Informe entre 1 e 40 horas.</div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <label>Áreas de Interesse:</label>
-                    <div class="Iareas">
-                        <label><input type="checkbox" name="Iarea" value="atendimento"> Atendimento e escuta emocional</label>
-                        <label><input type="checkbox" name="Iarea" value="campanhas"> Campanhas e eventos</label>
-                        <label><input type="checkbox" name="Iarea" value="comunicacao"> Comunicação e mídias</label>
-                        <label><input type="checkbox" name="Iarea" value="logistica"> Apoio logístico</label>
+                        <div class="form-group col-md-6">
+                            <label for="Iemail">E-mail:</label>
+                            <input type="email" class="form-control" id="Iemail" name="Iemail"
+                                placeholder="exemplo@email.com" required>
+                            <div class="invalid-feedback">Informe um e-mail válido.</div>
+                        </div>
                     </div>
-                    <div id="erroArea" class="mensagem-erro"></div>
-                </div>
 
-                <div class="col-md-6">
-                    <label>Disponibilidade:</label>
-                    <div class="Idisponibilidade">
-                        <label><input type="radio" name="Idisponibilidade" value="manha"> Manhã</label>
-                        <label><input type="radio" name="Idisponibilidade" value="tarde"> Tarde</label>
-                        <label><input type="radio" name="Idisponibilidade" value="noite"> Noite</label>
+                    <!-- Telefone e CPF -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Itelefone">Telefone:</label>
+                            <input type="tel" class="form-control" id="Itelefone" name="Itelefone"
+                                placeholder="(99) 99999-9999" inputmode="numeric"
+                                maxlength="15" oninput="mascaraTelefone(this)" required>
+                            <div class="invalid-feedback">Informe um telefone válido com DDD.</div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Icpf">CPF:</label>
+                            <input type="text" class="form-control" id="Icpf" name="Icpf"
+                                placeholder="000.000.000-00" maxlength="14"
+                                oninput="mascaraCPF(this)" required>
+                            <div class="invalid-feedback">Informe um CPF válido.</div>
+                        </div>
                     </div>
-                    <div id="erroDisponibilidade" class="mensagem-erro"></div>
-                </div>
+
+                    <!-- Nascimento e cidade -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Inascimento">Data de nascimento:</label>
+                            <input type="date" class="form-control" id="Inascimento"
+                                name="Inascimento" required>
+                            <div class="invalid-feedback">Informe uma data de nascimento anterior a hoje.</div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Icidade">Cidade:</label>
+                            <input type="text" class="form-control" id="Icidade" name="Icidade"
+                                placeholder="Digite sua cidade" oninput="validarCidade(this)" required>
+                            <div class="invalid-feedback">Informe sua cidade.</div>
+                        </div>
+                    </div>
+
+                    <!-- Estado e endereço -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Iestado">Estado:</label>
+                            <select class="form-control" id="Iestado" name="Iestado" required>
+                                <option value="">Selecione seu estado</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="PR">Paraná</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="Outro">Outro</option>
+                            </select>
+                            <div class="invalid-feedback">Selecione seu estado.</div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Iendereco">Endereço:</label>
+                            <input type="text" class="form-control" id="Iendereco" name="Iendereco"
+                                placeholder="Rua e bairro" required>
+                            <div class="invalid-feedback">Informe seu endereço.</div>
+                        </div>
+                    </div>
+
+                    <!-- Número e escolaridade -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Inumero">Número:</label>
+                            <input type="number" class="form-control" id="Inumero" name="Inumero"
+                                min="1" placeholder="Número da residência" required>
+                            <div class="invalid-feedback">Informe um número maior que zero.</div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Iescolaridade">Escolaridade:</label>
+                            <select class="form-control" id="Iescolaridade" name="Iescolaridade" required>
+                                <option value="">Selecione</option>
+                                <option value="Ensino fundamental">Ensino Fundamental</option>
+                                <option value="Ensino médio">Ensino Médio</option>
+                                <option value="Ensino técnico">Ensino Técnico</option>
+                                <option value="Ensino superior">Ensino Superior</option>
+                                <option value="Pós-graduação">Pós-graduação</option>
+                            </select>
+                            <div class="invalid-feedback">Selecione sua escolaridade.</div>
+                        </div>
+                    </div>
+
+                    <!-- Data disponível e horas -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="IdisponibilidadeData">Data disponível para começar:</label>
+                            <input type="date" class="form-control" id="IdisponibilidadeData"
+                                name="IdisponibilidadeData" required>
+                            <div class="invalid-feedback">Escolha hoje ou uma data futura.</div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Ihoras">Horas disponíveis por semana:</label>
+                            <input type="number" class="form-control" id="Ihoras" name="Ihoras"
+                                min="1" max="40" placeholder="De 1 a 40 horas" required>
+                            <div class="invalid-feedback">Informe entre 1 e 40 horas.</div>
+                        </div>
+                    </div>
+
+                    <!-- Áreas de interesse e disponibilidade -->
+                    <div class="form-row">
+
+                        <div class="form-group col-md-6">
+                            <label>Áreas de interesse:</label>
+
+                            <div class="Iareas">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="Iarea" value="atendimento">
+                                        Atendimento e escuta emocional
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="Iarea" value="campanhas">
+                                        Campanhas e eventos
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="Iarea" value="comunicacao">
+                                        Comunicação e mídias
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="checkbox"
+                                            name="Iarea" value="logistica">
+                                        Apoio logístico
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="erroArea" class="mensagem-erro"></div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label>Disponibilidade:</label>
+
+                            <div class="Idisponibilidade">
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio"
+                                            name="Idisponibilidade" value="manha">
+                                        Manhã
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio"
+                                            name="Idisponibilidade" value="tarde">
+                                        Tarde
+                                    </label>
+                                </div>
+
+                                <div class="form-check">
+                                    <label class="form-check-label">
+                                        <input class="form-check-input" type="radio"
+                                            name="Idisponibilidade" value="noite">
+                                        Noite
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div id="erroDisponibilidade" class="mensagem-erro"></div>
+                        </div>
+
+                    </div>
+
+                    <!-- Experiência e motivação -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Iexperiencia">Experiência ou formação na área:</label>
+                            <textarea class="form-control" id="Iexperiencia" name="Iexperiencia"
+                                rows="5" placeholder="Conte-nos sobre suas experiências..."
+                                required></textarea>
+                            <div class="invalid-feedback">Escreva pelo menos 10 caracteres.</div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="Imotivacao">Por que deseja ser voluntário?</label>
+                            <textarea class="form-control" id="Imotivacao" name="Imotivacao"
+                                rows="5" placeholder="Escreva sua motivação..."
+                                required></textarea>
+                            <div class="invalid-feedback">Escreva pelo menos 20 caracteres.</div>
+                        </div>
+                    </div>
+
+                    <!-- Botões -->
+                    <div class="Ibotoes">
+                        <button type="submit" class="btn Ibotao-enviar">Enviar Inscrição</button>
+                        <button type="reset" class="btn Ibotao-limpar">Limpar Campos</button>
+                    </div>
+
+                    <div id="mensagem" role="status" aria-live="polite"></div>
+
+                </form>
             </div>
-
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="Iexperiencia">Experiência ou formação na área:</label>
-                    <textarea id="Iexperiencia" name="Iexperiencia" rows="5"
-                        placeholder="Conte-nos sobre suas experiências..." required></textarea>
-                    <div class="invalid-feedback">Escreva pelo menos 10 caracteres.</div>
-                </div>
-
-                <div class="col-md-6">
-                    <label for="Imotivacao">Por que deseja ser voluntário?</label>
-                    <textarea id="Imotivacao" name="Imotivacao" rows="5"
-                        placeholder="Escreva sua motivação..." required></textarea>
-                    <div class="invalid-feedback">Escreva pelo menos 20 caracteres.</div>
-                </div>
-            </div>
-
-            <div class="Ibotoes">
-                <input type="submit" value="Enviar Inscrição">
-                <input type="reset" value="Limpar Campos">
-            </div>
-
-            <div id="mensagem" role="status" aria-live="polite"></div>
-        </form>
+        </div>
     </section>
 
     <!-- RODAPÉ -->
@@ -194,13 +279,16 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        integrity="sha384-ZMP7rVo3mI3ykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
 
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JMZQ5stwEULTy" crossorigin="anonymous"></script>
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JMZQ5stwEULTy"
+        crossorigin="anonymous"></script>
 
     </body>
-</html>
+    </html>
