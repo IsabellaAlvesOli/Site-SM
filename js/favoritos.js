@@ -1,8 +1,51 @@
 
 var chaveFavoritos = "lumeFavoritos";
 
-// Recupera os favoritos que já foram salvos no navegador
+// Recupera os favoritos salvos no navegador
 var favoritos = JSON.parse(localStorage.getItem(chaveFavoritos)) || [];
+
+// Cria artigos de exemplo usando um vetor estático
+if (favoritos.length === 0 && localStorage.getItem("lumeFavoritosDemoCarregados") !== "sim") {
+
+    favoritos = [
+        {
+            id: "artigo1",
+            nome: "A importância de cuidar da saúde mental",
+            categoria: "Saúde mental",
+            fonte: "Lume",
+            url: "r_index.html",
+            data: "22/11/2026"
+        },
+        {
+            id: "artigo2",
+            nome: "Como lidar com a ansiedade no dia a dia",
+            categoria: "Ansiedade",
+            fonte: "Lume",
+            url: "r_index.html",
+            data: "22/11/2026"
+        },
+        {
+            id: "artigo3",
+            nome: "A importância do autocuidado",
+            categoria: "Autocuidado",
+            fonte: "Lume",
+            url: "r_index.html",
+            data: "22/11/2026"
+        },
+        {
+            id: "artigo4",
+            nome: "Como reconhecer suas emoções",
+            categoria: "Emoções",
+            fonte: "Lume",
+            url: "r_index.html",
+            data: "22/11/2026"
+        }
+    ];
+
+    salvarFavoritos();
+
+    localStorage.setItem("lumeFavoritosDemoCarregados", "sim");
+}
 
 // Salva a lista atualizada no localStorage
 function salvarFavoritos() {

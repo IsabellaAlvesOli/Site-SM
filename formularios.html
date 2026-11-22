@@ -1,7 +1,8 @@
-<!DOCTYPE html>
-    <html lang="pt-br">
 
-    <head>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Voluntários - Apoio à Saúde Mental</title>
@@ -16,9 +17,9 @@
 
     <script src="./js/lume-header.js" data-root="./" defer></script>
     <script src="./js/voluntario.js" defer></script>
-    </head>
+</head>
 
-    <body class="inscricao">
+<body class="inscricao">
 
     <!-- CONTEÚDO PRINCIPAL -->
     <section class="Iconteudo container">
@@ -109,6 +110,17 @@
                             <input type="text" class="form-control" id="Iendereco" name="Iendereco"
                                 placeholder="Rua e bairro" required>
                             <div class="invalid-feedback">Informe seu endereço.</div>
+                        </div>
+                    </div>
+
+                    <!-- CEP -->
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="Icep">CEP:</label>
+                            <input type="text" class="form-control" id="Icep" name="Icep"
+                                placeholder="00000-000" maxlength="9"
+                                inputmode="numeric" oninput="mascaraCEP(this)" required>
+                            <div class="invalid-feedback">Informe um CEP válido com 8 números.</div>
                         </div>
                     </div>
 
@@ -290,5 +302,5 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JMZQ5stwEULTy"
         crossorigin="anonymous"></script>
 
-    </body>
-    </html>
+</body>
+</html>

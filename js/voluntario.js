@@ -76,6 +76,16 @@ function enviarInscricao() {
         limparErro(f.Iendereco);
     }
 
+    // CEP
+    let cep = f.Icep.value.replace(/\D/g, "");
+
+    if (cep.length != 8) {
+        mostrarErro(f.Icep, "Informe um CEP válido com 8 números.");
+        valido = false;
+    } else {
+        limparErro(f.Icep);
+    }
+
     // Número da residência
     if (f.Inumero.value == "" ||
         !Number.isInteger(Number(f.Inumero.value)) ||
@@ -207,6 +217,7 @@ function enviarInscricao() {
         cidade: f.Icidade.value.trim(),
         estado: f.Iestado.value,
         endereco: f.Iendereco.value.trim(),
+        cep: f.Icep.value,
         numero: f.Inumero.value,
         escolaridade: f.Iescolaridade.value,
         disponibilidadeData: f.IdisponibilidadeData.value,
@@ -283,6 +294,18 @@ function mascaraCPF(campo) {
             n.substring(6);
     } else if (n.length > 3) {
         n = n.substring(0, 3) + "." + n.substring(3);
+    }
+
+    campo.value = n;
+}
+
+
+// Máscara do CEP
+function mascaraCEP(campo) {
+    let n = campo.value.replace(/\D/g, "").substring(0, 8);
+
+    if (n.length > 5) {
+        n = n.substring(0, 5) + "-" + n.substring(5);
     }
 
     campo.value = n;
