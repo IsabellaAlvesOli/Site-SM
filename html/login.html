@@ -1,16 +1,19 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Entrar | Lume</title>
     <link rel="stylesheet" href="../css/login.css">
 </head>
 
 <body class="auth-page">
+
     <main class="auth-container">
         <section class="auth-card">
+
             <a class="brand" href="../home.html">
                 <span class="brand-mark">L</span>
                 <span>Lume</span>
@@ -22,7 +25,8 @@
                 <p>Acesse sua conta para continuar no Lume.</p>
             </div>
 
-            <form id="loginForm" onsubmit="return fazerLogin(this)">
+            <form id="loginForm" novalidate>
+
                 <div class="field">
                     <label for="loginEmail">E-mail</label>
                     <input
@@ -31,44 +35,44 @@
                         type="email"
                         placeholder="exemplo@email.com"
                         autocomplete="email"
-                        required
                     >
+                    <small class="error" id="loginEmailError"></small>
                 </div>
 
                 <div class="field">
+
                     <div class="label-row">
                         <label for="loginPassword">Senha</label>
-                        <a href="#"
-                           onclick="alert('A recuperação de senha é apenas demonstrativa neste projeto.'); return false;">
+                        <a href="#" id="forgotPassword">
                             Esqueci minha senha
                         </a>
                     </div>
 
                     <div class="password-wrapper">
                         <input
-                            type="checkbox"
-                            id="showLoginPassword"
-                            class="password-check"
-                        >
-                        <label for="showLoginPassword" class="password-toggle">
-                            Mostrar
-                        </label>
-
-                        <input
                             id="loginPassword"
                             name="loginPassword"
-                            type="text"
+                            type="password"
                             placeholder="Digite sua senha"
                             autocomplete="current-password"
-                            minlength="6"
-                            required
                         >
+
+                        <button
+                            type="button"
+                            class="password-toggle"
+                            data-target="loginPassword"
+                        >Mostrar</button>
                     </div>
+
+                    <small class="error" id="loginPasswordError"></small>
                 </div>
+
+                <p class="form-message" id="loginMessage" aria-live="polite"></p>
 
                 <button class="primary-button" type="submit">
                     Entrar
                 </button>
+
             </form>
 
             <p class="switch-auth">
@@ -79,10 +83,11 @@
             <a class="home-link" href="../home.html">
                 ← Voltar ao início do Lume
             </a>
+
         </section>
     </main>
 
     <script src="../js/login.js"></script>
-</body>
 
+</body>
 </html>

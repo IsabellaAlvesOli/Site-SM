@@ -1,6 +1,6 @@
+
 /* =========================================
    LOGIN E CADASTRO - LUME
-   Sem necessidade de DOM no JavaScript
    ========================================= */
 
 :root {
@@ -183,6 +183,44 @@ body.auth-page {
     font-size: .88rem;
 }
 
+.form-message.success {
+    color: var(--success);
+}
+
+.form-message.error {
+    color: var(--error);
+}
+
+/* Campo de senha e botão mostrar/ocultar */
+
+.password-wrapper {
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 86px;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 9px;
+    z-index: 2;
+    transform: translateY(-50%);
+    margin: 0;
+    padding: 7px;
+    border: none;
+    background: transparent;
+    color: var(--purple-dark);
+    font-size: .82rem;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.password-toggle:hover {
+    text-decoration: underline;
+}
+
 .primary-button {
     width: 100%;
     min-height: 49px;
@@ -206,53 +244,10 @@ body.auth-page {
 .home-link:focus-visible,
 .switch-auth a:focus-visible,
 .label-row a:focus-visible,
-.brand:focus-visible {
+.brand:focus-visible,
+.password-toggle:focus-visible {
     outline: 3px solid var(--yellow-light);
     outline-offset: 3px;
-}
-
-/* Campo de senha com mostrar/esconder usando somente HTML + CSS */
-
-.password-wrapper {
-    position: relative;
-}
-
-.password-wrapper input {
-    padding-right: 86px;
-}
-
-/*
-   O input de senha das versões sem DOM usa type="text".
-   Esta propriedade faz o navegador visualizá-lo como senha.
-*/
-.password-wrapper input[type="text"] {
-    -webkit-text-security: disc;
-}
-
-.password-check {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.password-toggle {
-    position: absolute !important;
-    top: 50%;
-    right: 9px;
-    z-index: 2;
-    transform: translateY(-50%);
-    margin: 0 !important;
-    padding: 7px !important;
-    color: var(--purple-dark) !important;
-    font-size: .82rem !important;
-    font-weight: 750 !important;
-    cursor: pointer;
-}
-
-.password-check:checked ~ input[type="text"] {
-    -webkit-text-security: none;
 }
 
 .switch-auth {
