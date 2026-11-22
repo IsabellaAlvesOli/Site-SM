@@ -1,154 +1,82 @@
-(function () {
-    'use strict';
+var scriptAtual = document.currentScript;
+var root = scriptAtual.getAttribute("data-root") || "./";
 
-    var s = document.currentScript;
-    var root = s && s.dataset.root || './';
+var cabecalho = `
+<header class="lume-header">
+    <div class="lume-header-inner">
 
-    var links = [
-        ['Início', root + 'home.html', 'home'],
-        ['Como funciona', root + 'home.html#function', 'function'],
-        ['Projetos', root + 'home.html#project', 'project'],
-        ['FAQ', root + 'faq.html', 'faq'],
-        ['Blogs', root + 'html/r_index.html', 'blog'],
-        ['Agendamento', root + 'html/index.html', 'booking'],
-        ['Voluntários', root + 'html/index_sof.html', 'volunteers']
-    ];
+        <a href="${root}home.html" class="lume-brand">
+            <img src="${root}images/logo.png" alt="Lume">
+        </a>
 
-    var h = document.createElement('header');
-    h.className = 'lume-header';
-    h.setAttribute('aria-label', 'Cabeçalho principal do Lume');
+        <input type="checkbox" id="lume-menu-toggle"
+            class="lume-menu-toggle" style="display:none;">
 
-    var i = document.createElement('div');
-    i.className = 'lume-header-inner';
+        <button class="lume-menu-btn" type="button"
+            aria-label="Abrir menu"
+            aria-expanded="false"
+            aria-controls="lume-nav">
+            <span>☰</span>
+        </button>
 
-    var b = document.createElement('a');
-    b.className = 'lume-brand';
-    b.href = root + 'home.html';
-    b.setAttribute('aria-label', 'Lume - Página inicial');
+        <nav class="lume-nav" id="lume-nav">
+            <a href="${root}home.html">Início</a>
+            <a href="${root}home.html#function">Como funciona</a>
+            <a href="${root}home.html#project">Projetos</a>
+            <a href="${root}faq.html">FAQ</a>
+            <a href="${root}html/r_index.html">Blogs</a>
+            <a href="${root}html/index.html">Agendamento</a>
+            <a href="${root}html/index_sof.html">Voluntários</a>
+        </nav>
 
-    var img = document.createElement('img');
-    img.src = root + 'images/logo.png';
-    img.alt = 'Lume';
-    b.appendChild(img);
+        <div class="lume-auth-area">
+            <a href="${root}formularios.html" class="lume-cta">
+                Seja voluntário
+            </a>
 
-    var n = document.createElement('nav');
-    n.className = 'lume-nav';
-    n.setAttribute('aria-label', 'Navegação principal');
+            <a href="${root}html/login.html" class="lume-login-link">
+                Entrar
+            </a>
+        </div>
 
-    links.forEach(function (x) {
-        var a = document.createElement('a');
-        a.href = x[1];
-        a.textContent = x[0];
-        a.dataset.page = x[2];
-        n.appendChild(a);
-    });
+    </div>
+</header>
+`;
 
-    var authArea = document.createElement('div');
-    authArea.className = 'lume-auth-area';
+document.body.insertAdjacentHTML("afterbegin", cabecalho);
 
-    var c = document.createElement('a');
-    c.className = 'lume-cta';
-    c.href = root + 'formularios.html';
-    c.textContent = 'Ser voluntário';
+var botaoMenu = document.querySelector(".lume-menu-btn");
+var menu = document.querySelector(".lume-nav");
 
-    var loginLink = document.createElement('a');
-    loginLink.className = 'lume-login-link';
-    loginLink.href = root + (root === './' ? 'html/login.html' : 'html/login.html');
-    loginLink.textContent = 'Entrar';
+botaoMenu.addEventListener("click", function() {
+    menu.classList.toggle("open");
 
-    var userArea = document.createElement('div');
-    userArea.className = 'lume-user-area';
-    userArea.hidden = true;
-
-    var userImg = document.createElement('img');
-    userImg.className = 'lume-user-avatar';
-    userImg.src = root + 'images/avatar-padrao.svg';
-    userImg.alt = 'Imagem padrão do usuário';
-
-    var userName = document.createElement('span');
-    userName.className = 'lume-user-name';
-
-    userArea.append(userImg, userName);
-    authArea.append(c, loginLink, userArea);
-
-    var m = document.createElement('button');
-    m.className = 'lume-menu-btn';
-    m.type = 'button';
-    m.setAttribute('aria-label', 'Abrir menu');
-    m.setAttribute('aria-expanded', 'false');
-    m.innerHTML = '&#9776;';
-
-    i.append(b, n, authArea, m);
-    h.appendChild(i);
-    document.body.insertBefore(h, document.body.firstChild);
-
-    var p = location.pathname.toLowerCase();
-    var cur = 'home';
-
-    if (p.endsWith('html/index.html')) cur = 'booking';
-    if (p.indexOf('html/index_sof') !== -1) cur = 'volunteers';
-    if (p.indexOf('faq.html') !== -1) cur = 'faq';
-    if (p.indexOf('r_index.html') !== -1) cur = 'blog';
-
-    n.querySelectorAll('a').forEach(function (a) {
-        if (a.dataset.page === cur) {
-            a.classList.add('active');
-            a.setAttribute('aria-current', 'page');
-        }
-    });
-
-    function updateUserArea() {
-        var session = null;
-        try {
-            session = JSON.parse(localStorage.getItem('lumeSession') || 'null');
-        } catch (error) {
-            session = null;
-        }
-
-        if (session && session.loggedIn) {
-            c.hidden = true;
-            loginLink.hidden = true;
-            userArea.hidden = false;
-            userName.textContent = session.name || 'Usuário';
-            userImg.src = root + 'images/avatar-padrao.svg';
-            userImg.alt = 'Imagem padrão de ' + (session.name || 'usuário');
-        } else {
-            c.hidden = false;
-            loginLink.hidden = false;
-            userArea.hidden = true;
-        }
+    if (menu.classList.contains("open")) {
+        botaoMenu.setAttribute("aria-expanded", "true");
+        botaoMenu.setAttribute("aria-label", "Fechar menu");
+    } else {
+        botaoMenu.setAttribute("aria-expanded", "false");
+        botaoMenu.setAttribute("aria-label", "Abrir menu");
     }
+});
 
-    updateUserArea();
+var linksMenu = menu.querySelectorAll("a");
 
-    function close() {
-        n.classList.remove('open');
-        m.setAttribute('aria-expanded', 'false');
-        m.setAttribute('aria-label', 'Abrir menu');
-        m.innerHTML = '&#9776;';
+linksMenu.forEach(function(link) {
+    link.addEventListener("click", function() {
+        menu.classList.remove("open");
+        botaoMenu.setAttribute("aria-expanded", "false");
+        botaoMenu.setAttribute("aria-label", "Abrir menu");
+    });
+});
+
+var paginaAtual = window.location.pathname;
+
+linksMenu.forEach(function(link) {
+    var endereco = new URL(link.href).pathname;
+
+    if (paginaAtual === endereco) {
+        link.classList.add("active");
+        link.setAttribute("aria-current", "page");
     }
-
-    m.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var o = n.classList.toggle('open');
-        m.setAttribute('aria-expanded', String(o));
-        m.setAttribute('aria-label', o ? 'Fechar menu' : 'Abrir menu');
-        m.innerHTML = o ? '&times;' : '&#9776;';
-    });
-
-    n.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', close);
-    });
-
-    document.addEventListener('click', function (e) {
-        if (!h.contains(e.target)) close();
-    });
-
-    function scroll() {
-        h.classList.toggle('scrolled', scrollY > 20);
-    }
-
-    addEventListener('scroll', scroll, { passive: true });
-    addEventListener('storage', updateUserArea);
-    scroll();
-})();
+});
