@@ -1,154 +1,57 @@
+
 (function () {
-    'use strict';
+    const script = document.currentScript;
+    const root = script.getAttribute("data-root") || "./";
 
-    var s = document.currentScript;
-    var root = s && s.dataset.root || './';
+    const header = `
+        <header class="lume-header" aria-label="Cabeçalho principal do Lume">
+            <div class="lume-header-inner">
 
-    var links = [
-        ['Início', root + 'home.html', 'home'],
-        ['Como funciona', root + 'home.html#function', 'function'],
-        ['Projetos', root + 'home.html#project', 'project'],
-        ['FAQ', root + 'faq.html', 'faq'],
-        ['Blogs', root + 'html/r_index.html', 'blog'],
-        ['Agendamento', root + 'html/index.html', 'booking'],
-        ['Voluntários', root + 'html/index_sof.html', 'volunteers']
-    ];
+                <a class="lume-brand" href="${root}home.html" aria-label="Lume - Página inicial">
+                    <img src="${root}images/logo.png" alt="Lume">
+                </a>
 
-    var h = document.createElement('header');
-    h.className = 'lume-header';
-    h.setAttribute('aria-label', 'Cabeçalho principal do Lume');
+                <input type="checkbox" id="lume-menu-toggle" class="lume-menu-toggle">
 
-    var i = document.createElement('div');
-    i.className = 'lume-header-inner';
+                <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
 
-    var b = document.createElement('a');
-    b.className = 'lume-brand';
-    b.href = root + 'home.html';
-    b.setAttribute('aria-label', 'Lume - Página inicial');
+                <nav class="lume-nav" aria-label="Navegação principal">
+                    <a href="${root}home.html">Início</a>
+                    <a href="${root}home.html#function">Como funciona</a>
+                    <a href="${root}home.html#project">Projetos</a>
+                    <a href="${root}faq.html">FAQ</a>
+                    <a href="${root}html/r_index.html">Blogs</a>
+                    <a href="${root}html/index.html">Agendamento</a>
+                    <a href="${root}html/index_sof.html">Voluntários</a>
+                </nav>
 
-    var img = document.createElement('img');
-    img.src = root + 'images/logo.png';
-    img.alt = 'Lume';
-    b.appendChild(img);
+                <div class="lume-auth-area">
+                    <a class="lume-cta" href="${root}formularios.html">Ser voluntário</a>
+                    <a class="lume-login-link" href="${root}html/login.html">Entrar</a>
+                </div>
 
-    var n = document.createElement('nav');
-    n.className = 'lume-nav';
-    n.setAttribute('aria-label', 'Navegação principal');
+            </div>
+        </header>
+    `;
 
-    links.forEach(function (x) {
-        var a = document.createElement('a');
-        a.href = x[1];
-        a.textContent = x[0];
-        a.dataset.page = x[2];
-        n.appendChild(a);
-    });
+    document.body.insertAdjacentHTML("afterbegin", header);
 
-    var authArea = document.createElement('div');
-    authArea.className = 'lume-auth-area';
+    // Destaca a página atual no menu
+    const links = document.querySelectorAll(".lume-nav a");
+    const paginaAtual = window.location.pathname;
 
-    var c = document.createElement('a');
-    c.className = 'lume-cta';
-    c.href = root + 'formularios.html';
-    c.textContent = 'Ser voluntário';
+    links.forEach(function (link) {
+        const destino = new URL(link.href, window.location.href);
 
-    var loginLink = document.createElement('a');
-    loginLink.className = 'lume-login-link';
-    loginLink.href = root + (root === './' ? 'html/login.html' : 'html/login.html');
-    loginLink.textContent = 'Entrar';
-
-    var userArea = document.createElement('div');
-    userArea.className = 'lume-user-area';
-    userArea.hidden = true;
-
-    var userImg = document.createElement('img');
-    userImg.className = 'lume-user-avatar';
-    userImg.src = root + 'images/avatar-padrao.svg';
-    userImg.alt = 'Imagem padrão do usuário';
-
-    var userName = document.createElement('span');
-    userName.className = 'lume-user-name';
-
-    userArea.append(userImg, userName);
-    authArea.append(c, loginLink, userArea);
-
-    var m = document.createElement('button');
-    m.className = 'lume-menu-btn';
-    m.type = 'button';
-    m.setAttribute('aria-label', 'Abrir menu');
-    m.setAttribute('aria-expanded', 'false');
-    m.innerHTML = '&#9776;';
-
-    i.append(b, n, authArea, m);
-    h.appendChild(i);
-    document.body.insertBefore(h, document.body.firstChild);
-
-    var p = location.pathname.toLowerCase();
-    var cur = 'home';
-
-    if (p.endsWith('html/index.html')) cur = 'booking';
-    if (p.indexOf('html/index_sof') !== -1) cur = 'volunteers';
-    if (p.indexOf('faq.html') !== -1) cur = 'faq';
-    if (p.indexOf('r_index.html') !== -1) cur = 'blog';
-
-    n.querySelectorAll('a').forEach(function (a) {
-        if (a.dataset.page === cur) {
-            a.classList.add('active');
-            a.setAttribute('aria-current', 'page');
+        if (destino.pathname === paginaAtual &&
+            !destino.hash) {
+            link.classList.add("active");
+            link.setAttribute("aria-current", "page");
         }
     });
 
-    function updateUserArea() {
-        var session = null;
-        try {
-            session = JSON.parse(localStorage.getItem('lumeSession') || 'null');
-        } catch (error) {
-            session = null;
-        }
-
-        if (session && session.loggedIn) {
-            c.hidden = true;
-            loginLink.hidden = true;
-            userArea.hidden = false;
-            userName.textContent = session.name || 'Usuário';
-            userImg.src = root + 'images/avatar-padrao.svg';
-            userImg.alt = 'Imagem padrão de ' + (session.name || 'usuário');
-        } else {
-            c.hidden = false;
-            loginLink.hidden = false;
-            userArea.hidden = true;
-        }
-    }
-
-    updateUserArea();
-
-    function close() {
-        n.classList.remove('open');
-        m.setAttribute('aria-expanded', 'false');
-        m.setAttribute('aria-label', 'Abrir menu');
-        m.innerHTML = '&#9776;';
-    }
-
-    m.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var o = n.classList.toggle('open');
-        m.setAttribute('aria-expanded', String(o));
-        m.setAttribute('aria-label', o ? 'Fechar menu' : 'Abrir menu');
-        m.innerHTML = o ? '&times;' : '&#9776;';
-    });
-
-    n.querySelectorAll('a').forEach(function (a) {
-        a.addEventListener('click', close);
-    });
-
-    document.addEventListener('click', function (e) {
-        if (!h.contains(e.target)) close();
-    });
-
-    function scroll() {
-        h.classList.toggle('scrolled', scrollY > 20);
-    }
-
-    addEventListener('scroll', scroll, { passive: true });
-    addEventListener('storage', updateUserArea);
-    scroll();
 })();

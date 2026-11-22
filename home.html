@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,56 +6,104 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
     <script src="./js/bemvindo.js"></script>
+
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./css/lume-header.css">
     <link rel="stylesheet" href="css/acessibilidade.css">
-    <script src="./js/lume-header.js" data-root="./" defer></script>
     <script src="js/acessibilidade.js" defer></script>
 </head>
 
 <body>
+
+    <header class="lume-header" aria-label="Cabeçalho principal do Lume">
+        <div class="lume-header-inner">
+
+            <a class="lume-brand" href="home.html" aria-label="Lume - Página inicial">
+                <img src="images/logo.png" alt="Lume">
+            </a>
+
+            <input type="checkbox" id="lume-menu-toggle" class="lume-menu-toggle">
+
+            <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="lume-nav" aria-label="Navegação principal">
+                <a href="home.html" class="active" aria-current="page">Início</a>
+                <a href="home.html#function">Como funciona</a>
+                <a href="home.html#project">Projetos</a>
+                <a href="faq.html">FAQ</a>
+                <a href="html/r_index.html">Blogs</a>
+                <a href="html/index.html">Agendamento</a>
+                <a href="html/index_sof.html">Voluntários</a>
+            </nav>
+
+            <div class="lume-auth-area">
+                <a class="lume-cta" href="formularios.html">Ser voluntário</a>
+                <a class="lume-login-link" href="html/login.html">Entrar</a>
+            </div>
+
+        </div>
+    </header>
+
     <script>
         bemvindo();
     </script>
 
     <section class="banner" id="first">
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+
             <div class="carousel-inner">
+
                 <div class="carousel-item active" data-bs-interval="10000">
                     <img src="imgs/banner.png" class="d-block w-100" alt="banner">
                 </div>
+
                 <div class="carousel-item" data-bs-interval="10000">
                     <img src="imgs/banner2.png" class="d-block w-100" alt="banner 2">
                 </div>
+
                 <div class="carousel-item">
                     <img src="imgs/banner3.png" class="d-block w-100 20000" alt="banner 3">
                 </div>
+
                 <div class="carousel-item">
                     <img src="imgs/banner4.png" class="d-block w-100" alt="banner 4">
                 </div>
+
             </div>
+
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Anterior</span>
             </button>
+
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
                 data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Próximo</span>
             </button>
+
         </div>
     </section>
+
     <section class="mission-section" id="second">
         <span>
             <h2>Nossa Missão</h2>
         </span>
+
         <p>Conectamos pessoas que precisam de apoio emocional a voluntários dispostos a ajudar, criando uma rede de
             suporte acessível e confiável. Junte-se a nós e faça parte dessa corrente de cuidado.</p>
     </section>
@@ -64,6 +113,7 @@
             <span>
                 <h2>Como funciona</h2>
             </span>
+
             <p>
                 Nossa plataforma conecta voluntários — psicólogos, terapeutas e grupos de apoio —
                 a pessoas que buscam acolhimento emocional. O processo é simples: você navega pelos perfis
@@ -73,9 +123,9 @@
                 Assim, criamos uma rede colaborativa que promove bem-estar e apoio mútuo.
             </p>
         </div>
+
         <div class="imagem">
             <img src="imgs/psi.png" alt="img ilustrativa">
-
         </div>
     </section>
 
@@ -136,25 +186,26 @@
 
             </div>
         </div>
-
     </section>
 
     <!-- footer -->
     <footer id="contact" class="footer">
+
         <div class="footer-container">
+
             <div class="footer-missao">
                 <h3>LUME</h3>
+
                 <p>Conectando vidas através do cuidado psicológico.
                     Juntos, construímos um mundo mais acolhedor e compreensivo.</p>
             </div>
 
             <div class="footer-legal">
                 <h4>Legal</h4>
+
                 <ul>
                     <li><a href="html/privacidade.html">Política de Privacidade</a></li>
                     <li><a href="html/termo.html">Termos de Uso</a></li>
-                    <!-- colocar o link do portifólio se não for na mesma página -->
-                    <li><a href="portfolios.html">Desenvolvedores</a></li>
                 </ul>
             </div>
 
@@ -167,44 +218,60 @@
 
             <div class="footer-sociais">
                 <h4>Redes Sociais</h4>
+
                 <div class="social-icons">
                     <a href=""><img src="imgs/facebook.png " alt="Facebook"></a>
                     <a href=""><img src="imgs/instagram.png" alt="Instagram"></a>
                     <a href=""><img src="imgs/twitter.png" alt="Twitter"></a>
                 </div>
             </div>
+
         </div>
 
         <div class="footer-bottom">
             <p>© 2026 LUME - Todos os direitos reservados.</p>
         </div>
+
     </footer>
+
     <div class="acessibilidade">
-    <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
-        ♿
-    </button>
-    <div id="menuAcessibilidade" class="menu-acessibilidade">
-        <h2>Acessibilidade</h2>
-        <button id="aumentarFonte" onclick="aumentarFonte()">
-            A+ Aumentar fonte
+
+        <button id="btnAcessibilidade" aria-label="Abrir opções de acessibilidade" onclick="abrirMenu()">
+            ♿
         </button>
-        <button id="diminuirFonte" onclick="diminuirFonte()">
-            A- Diminuir fonte
-        </button>
-        <button id="altoContraste" onclick="altoContraste()">
-            ◐ Alto contraste
-        </button>
-        <button id="cinza" onclick="escalaCinza()">
-            Escala de cinza
-        </button>
-        <button id="reduzirMovimento" onclick="reduzirMovimento()">
-            Reduzir animações
-        </button>
-        <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
-            ↻ Restaurar
-        </button>
+
+        <div id="menuAcessibilidade" class="menu-acessibilidade">
+
+            <h2>Acessibilidade</h2>
+
+            <button id="aumentarFonte" onclick="aumentarFonte()">
+                A+ Aumentar fonte
+            </button>
+
+            <button id="diminuirFonte" onclick="diminuirFonte()">
+                A- Diminuir fonte
+            </button>
+
+            <button id="altoContraste" onclick="altoContraste()">
+                ◐ Alto contraste
+            </button>
+
+            <button id="cinza" onclick="escalaCinza()">
+                Escala de cinza
+            </button>
+
+            <button id="reduzirMovimento" onclick="reduzirMovimento()">
+                Reduzir animações
+            </button>
+
+            <button id="restaurarAcessibilidade" onclick="restaurarAcessibilidade()">
+                ↻ Restaurar
+            </button>
+
+        </div>
+
     </div>
-</div>
-</div>
+
 </body>
+
 </html>

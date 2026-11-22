@@ -228,49 +228,6 @@ body.blog .r_espa{
 
 /* FORMULÁRIO DE INSCRIÇÃO */
 
-body.inscricao .headerk {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1em 5%;
-    background-color: rgb(244, 245, 233);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    z-index: 1000;
-}
-
-body.inscricao .logok {
-    width: 12%;
-    height: auto;
-}
-
-body.inscricao .navbar {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    align-items: center;
-    flex-grow: 1;
-}
-
-body.inscricao .navbar a {
-    font-size: 1.1em;
-    color: #8966b4;
-    margin: 0 1.5em;
-    font-weight: 500;
-    text-decoration: none;
-    transition: 0.3s ease;
-    border-bottom: 3px solid transparent;
-}
-
-body.inscricao .navbar a:hover,
-body.inscricao .navbar .ativo {
-    color: #8966b4;
-    border-bottom: 3px solid #8966b4;
-}
-
 body.inscricao {
     font-family: "Segoe UI", Tahoma, sans-serif;
     background-color: #f5f2fa;
@@ -279,25 +236,53 @@ body.inscricao {
     color: #333;
 }
 
+/* Área principal do formulário */
+
 body.inscricao .Iconteudo {
-    max-width: 700px;
-    margin: 40px auto;
-    background-color: white;
-    padding: 35px;
+    max-width: 1000px;
+    margin: 120px auto 40px;
+    padding: 20px;
+    background-color: transparent;
     border-radius: 12px;
-    box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    box-shadow: none;
 }
 
-body.inscricao .Iconteudo h2 {
+/* Card do formulário inspirado no template Bootstrap */
+
+body.inscricao .Icard-formulario {
+    display: block;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #d8c6fa;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+}
+
+body.inscricao .Icard-cabecalho {
+    background-color: #B287E6;
+    border-bottom: 3px solid #FFFF59;
+    padding: 25px;
+}
+
+body.inscricao .Icard-cabecalho h2 {
     text-align: center;
-    color: #4a3a72;
+    color: white;
+    font-size: 25px;
     margin-bottom: 10px;
 }
 
-body.inscricao .Iconteudo p {
+body.inscricao .Icard-cabecalho p {
     text-align: center;
-    color: #555;
+    color: white;
+    margin-bottom: 0;
 }
+
+body.inscricao .Icard-formulario .card-body {
+    padding: 30px;
+}
+
+/* Organização dos campos */
 
 body.inscricao .Iformulario {
     display: flex;
@@ -305,10 +290,27 @@ body.inscricao .Iformulario {
     gap: 15px;
 }
 
+body.inscricao .Iformulario .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -5px;
+    margin-left: -5px;
+}
+
+body.inscricao .Iformulario .form-group {
+    margin-bottom: 18px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
 body.inscricao .Iformulario label {
+    display: inline-block;
     font-weight: bold;
     color: #4a3a72;
+    margin-bottom: 8px;
 }
+
+/* Campos de texto do Bootstrap */
 
 body.inscricao .Iformulario input[type="text"],
 body.inscricao .Iformulario input[type="email"],
@@ -330,6 +332,12 @@ body.inscricao .Iformulario textarea {
     box-sizing: border-box;
 }
 
+body.inscricao .Iformulario textarea.form-control {
+    height: auto;
+    min-height: 120px;
+    resize: vertical;
+}
+
 body.inscricao .Iformulario input[type="date"] {
     appearance: none;
     -webkit-appearance: none;
@@ -344,6 +352,28 @@ body.inscricao .Iformulario textarea:focus {
     box-shadow: 0 0 6px #B287E6;
 }
 
+/* Estados de validação do Bootstrap */
+
+body.inscricao .Iformulario .form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: none;
+}
+
+body.inscricao .Iformulario .form-control.is-invalid:focus {
+    border-color: #dc3545;
+    box-shadow: 0 0 6px rgba(220, 53, 69, 0.3);
+}
+
+body.inscricao .Iformulario .invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: 5px;
+    color: #dc3545;
+    font-size: 13px;
+}
+
+/* Checkboxes das áreas de interesse */
+
 body.inscricao .Iareas {
     display: flex;
     flex-direction: column;
@@ -354,36 +384,68 @@ body.inscricao .Iareas {
     border: 1px solid #d8c6fa;
 }
 
-body.inscricao .Iareas label {
+body.inscricao .Iareas .form-check {
+    display: block;
+    margin-bottom: 5px;
+    padding-left: 1.5rem;
+}
+
+body.inscricao .Iareas .form-check-input {
+    margin-left: -1.25rem;
+}
+
+body.inscricao .Iareas .form-check-label {
     font-weight: normal;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 8px;
 }
 
+/* Opções de disponibilidade */
+
 body.inscricao .Idisponibilidade {
     display: flex;
-    gap: 25px;
+    flex-wrap: wrap;
+    gap: 15px;
     margin-top: 5px;
 }
 
-body.inscricao .Idisponibilidade label {
-    display: flex;
+body.inscricao .Idisponibilidade .form-check {
+    display: inline-block;
+    margin-right: 8px;
+    padding-left: 1.5rem;
+}
+
+body.inscricao .Idisponibilidade .form-check-input {
+    margin-left: -1.25rem;
+}
+
+body.inscricao .Idisponibilidade .form-check-label {
+    display: inline-flex;
     align-items: center;
     gap: 6px;
     font-weight: normal;
 }
 
+/* Mensagens de erro dos grupos */
+
+body.inscricao .mensagem-erro {
+    color: #dc3545;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+/* Botões */
+
 body.inscricao .Ibotoes {
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
     margin-top: 20px;
 }
 
-body.inscricao .Ibotoes input[type="submit"],
-body.inscricao .Ibotoes input[type="reset"] {
-    background-color: #B287E6;
-    color: white;
-    border: 2px solid #FFFF59;
+body.inscricao .Ibotoes button {
     padding: 10px 20px;
     border-radius: 8px;
     cursor: pointer;
@@ -391,11 +453,36 @@ body.inscricao .Ibotoes input[type="reset"] {
     transition: 0.3s;
 }
 
-body.inscricao .Ibotoes input[type="submit"]:hover,
-body.inscricao .Ibotoes input[type="reset"]:hover {
+body.inscricao .Ibotao-enviar {
+    background-color: #B287E6;
+    color: white;
+    border: 2px solid #FFFF59;
+}
+
+body.inscricao .Ibotao-limpar {
+    background-color: white;
+    color: #4a3a72;
+    border: 2px solid #B287E6;
+}
+
+body.inscricao .Ibotao-enviar:hover {
     background-color: #9f6ce0;
     border-color: #fff37f;
 }
+
+body.inscricao .Ibotao-limpar:hover {
+    background-color: #f1e8ff;
+}
+
+/* Mensagem de envio */
+
+body.inscricao #mensagem {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Rodapé */
 
 body.inscricao .Irodape {
     text-align: center;
@@ -421,6 +508,46 @@ body.inscricao .Irodape .Imissao {
     margin-top: 10px;
     font-style: italic;
     color: #fff9cc;
+}
+
+/* Responsividade do formulário */
+
+@media (max-width: 768px) {
+    body.inscricao .Iconteudo {
+        margin-top: 100px;
+        padding: 12px;
+    }
+
+    body.inscricao .Icard-formulario .card-body {
+        padding: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    body.inscricao .Iconteudo {
+        padding: 10px;
+        margin: 90px auto 20px;
+    }
+
+    body.inscricao .Icard-formulario .card-body {
+        padding: 15px;
+    }
+
+    body.inscricao .Icard-cabecalho {
+        padding: 20px;
+    }
+
+    body.inscricao .Icard-cabecalho h2 {
+        font-size: 21px;
+    }
+
+    body.inscricao .Ibotoes {
+        flex-direction: column;
+    }
+
+    body.inscricao .Ibotoes button {
+        width: 100%;
+    }
 }
 
 /* FORMULÁRIO DE AGENDAMENTO */
@@ -901,46 +1028,6 @@ body.sof .texto_detalhe_sof {
     box-sizing: border-box;
     border: none;
     text-decoration: none;
-}
-
-.headerk {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    padding: 1em 5% 1em;
-    background-color: rgb(244, 245, 233);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-}
-
-.logok {
-    width: 12%;
-    height: 0 auto;
-}
-
-.voluntário {
-    padding: 10px 15px;
-    background-color: #8966b4;
-    border: none;
-    border-radius: 20px;
-    font-size: 1.3em;
-}
-
-.navbar a {
-    font-size: 1.2em;
-    color: #8966b4;
-    margin-left: 2.2em;
-    font-weight: 60px;
-    transition: 0.3s ease;
-    border-bottom: 3px solid transparent;
-}
-
-.navbar a:hover {
-    color: #8966b4;
-    border-bottom: 3px solid #8966b4;
 }
 
 .mission-section {

@@ -3,6 +3,8 @@ function enviarInscricao() {
     let f = document.IformVoluntario;
     let valido = true;
 
+    document.getElementById("mensagem").textContent = "";
+
     // Nome
     if (!validarNome(f.Inome)) {
         mostrarErro(f.Inome, "Informe seu nome completo, usando pelo menos 3 caracteres.");
@@ -12,7 +14,7 @@ function enviarInscricao() {
     }
 
     // Email
-    if (!f.Iemail.value.trim() || !f.Iemail.checkValidity()) {
+    if (f.Iemail.value.trim() == "" || !f.Iemail.checkValidity()) {
         mostrarErro(f.Iemail, "Informe um e-mail válido.");
         valido = false;
     } else {
@@ -37,9 +39,10 @@ function enviarInscricao() {
         limparErro(f.Icpf);
     }
 
-    // Nascimento
+    // Data de nascimento
     let nascimento = f.Inascimento.value;
     let hoje = new Date();
+
     hoje.setHours(0, 0, 0, 0);
 
     if (!nascimento || new Date(nascimento + "T00:00:00") >= hoje) {
@@ -67,7 +70,7 @@ function enviarInscricao() {
 
     // Endereço
     if (f.Iendereco.value.trim().length < 3) {
-        mostrarErro(f.Iendereco, "Informe seu endereço.");
+        mostrarErro(f.Iendereco, "Informe um endereço com pelo menos 3 caracteres.");
         valido = false;
     } else {
         limparErro(f.Iendereco);
@@ -77,6 +80,7 @@ function enviarInscricao() {
     if (f.Inumero.value == "" ||
         !Number.isInteger(Number(f.Inumero.value)) ||
         Number(f.Inumero.value) < 1) {
+
         mostrarErro(f.Inumero, "Informe um número maior que zero.");
         valido = false;
     } else {
@@ -91,11 +95,12 @@ function enviarInscricao() {
         limparErro(f.Iescolaridade);
     }
 
-    // Data disponível
+    // Data disponível para começar
     let dataDisponivel = f.IdisponibilidadeData.value;
 
     if (!dataDisponivel ||
         new Date(dataDisponivel + "T00:00:00") < hoje) {
+
         mostrarErro(f.IdisponibilidadeData, "Escolha hoje ou uma data futura.");
         valido = false;
     } else {
@@ -109,6 +114,7 @@ function enviarInscricao() {
         !Number.isInteger(horas) ||
         horas < 1 ||
         horas > 40) {
+
         mostrarErro(f.Ihoras, "Informe entre 1 e 40 horas.");
         valido = false;
     } else {
@@ -127,9 +133,18 @@ function enviarInscricao() {
     if (areas.length == 0) {
         document.getElementById("erroArea").textContent =
             "Escolha pelo menos uma área de interesse.";
+
+        for (let i = 0; i < f.Iarea.length; i++) {
+            f.Iarea[i].classList.add("is-invalid");
+        }
+
         valido = false;
     } else {
         document.getElementById("erroArea").textContent = "";
+
+        for (let i = 0; i < f.Iarea.length; i++) {
+            f.Iarea[i].classList.remove("is-invalid");
+        }
     }
 
     // Disponibilidade
@@ -144,9 +159,18 @@ function enviarInscricao() {
     if (disponibilidade == "") {
         document.getElementById("erroDisponibilidade").textContent =
             "Escolha uma disponibilidade.";
+
+        for (let i = 0; i < f.Idisponibilidade.length; i++) {
+            f.Idisponibilidade[i].classList.add("is-invalid");
+        }
+
         valido = false;
     } else {
         document.getElementById("erroDisponibilidade").textContent = "";
+
+        for (let i = 0; i < f.Idisponibilidade.length; i++) {
+            f.Idisponibilidade[i].classList.remove("is-invalid");
+        }
     }
 
     // Experiência
@@ -165,10 +189,11 @@ function enviarInscricao() {
         limparErro(f.Imotivacao);
     }
 
-    // Impede envio se houver algum erro
+    // Impede o envio se houver algum erro
     if (!valido) {
         document.getElementById("mensagem").textContent =
             "Verifique os campos destacados e tente novamente.";
+
         return false;
     }
 
@@ -198,22 +223,10 @@ function enviarInscricao() {
 
     localStorage.setItem("voluntarios", JSON.stringify(lista));
 
-    document.getElementById("mensagem").textContent =
-        "Inscrição enviada com sucesso!";
-
-    alert("Inscrição enviada com sucesso!");
-
     f.reset();
 
-    // Limpa os erros após o envio
-    let campos = f.querySelectorAll("input, select, textarea");
-
-    for (let campo of campos) {
-        limparErro(campo);
-    }
-
-    document.getElementById("erroArea").textContent = "";
-    document.getElementById("erroDisponibilidade").textContent = "";
+    document.getElementById("mensagem").textContent =
+        "Inscrição enviada com sucesso!";
 
     return false;
 }
@@ -222,6 +235,7 @@ function enviarInscricao() {
 // Validação do nome
 function validarNome(campo) {
     campo.value = campo.value.replace(/[^A-Za-zÀ-ÿ\s'-]/g, "");
+
     return campo.value.trim().length >= 3;
 }
 
@@ -229,6 +243,7 @@ function validarNome(campo) {
 // Validação da cidade
 function validarCidade(campo) {
     campo.value = campo.value.replace(/[^A-Za-zÀ-ÿ\s'-]/g, "");
+
     return campo.value.trim().length >= 2;
 }
 
@@ -339,11 +354,53 @@ function limparErro(campo) {
 }
 
 
-// Impede números no nome e na cidade enquanto digita
-document.getElementById("Inome").addEventListener("input", function() {
-    validarNome(this);
-});
+// Limpa as mensagens e os destaques ao clicar em Limpar Campos
+document.addEventListener("DOMContentLoaded", function() {
+    let f = document.IformVoluntario;
 
-document.getElementById("Icidade").addEventListener("input", function() {
-    validarCidade(this);
+    f.addEventListener("reset", function() {
+        let campos = f.querySelectorAll("input, select, textarea");
+
+        for (let campo of campos) {
+            limparErro(campo);
+        }
+
+        document.getElementById("erroArea").textContent = "";
+        document.getElementById("erroDisponibilidade").textContent = "";
+        document.getElementById("mensagem").textContent = "";
+
+        for (let i = 0; i < f.Iarea.length; i++) {
+            f.Iarea[i].classList.remove("is-invalid");
+        }
+
+        for (let i = 0; i < f.Idisponibilidade.length; i++) {
+            f.Idisponibilidade[i].classList.remove("is-invalid");
+        }
+    });
+
+    // Remove o erro das áreas quando uma opção for selecionada
+    for (let i = 0; i < f.Iarea.length; i++) {
+        f.Iarea[i].addEventListener("change", function() {
+            if (this.checked) {
+                document.getElementById("erroArea").textContent = "";
+
+                for (let j = 0; j < f.Iarea.length; j++) {
+                    f.Iarea[j].classList.remove("is-invalid");
+                }
+            }
+        });
+    }
+
+    // Remove o erro da disponibilidade quando uma opção for selecionada
+    for (let i = 0; i < f.Idisponibilidade.length; i++) {
+        f.Idisponibilidade[i].addEventListener("change", function() {
+            if (this.checked) {
+                document.getElementById("erroDisponibilidade").textContent = "";
+
+                for (let j = 0; j < f.Idisponibilidade.length; j++) {
+                    f.Idisponibilidade[j].classList.remove("is-invalid");
+                }
+            }
+        });
+    }
 });

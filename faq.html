@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -9,13 +10,44 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/acessibilidade.css">
     <link rel="stylesheet" href="./css/lume-header.css">
-
-    <script src="./js/lume-header.js" data-root="./" defer></script>
     <script src="js/acessibilidade.js" defer></script>
     <script src="js/faq.js" defer></script>
 </head>
 
 <body class="faq">
+
+    <header class="lume-header" aria-label="Cabeçalho principal do Lume">
+        <div class="lume-header-inner">
+
+            <a class="lume-brand" href="home.html" aria-label="Lume - Página inicial">
+                <img src="images/logo.png" alt="Lume">
+            </a>
+
+            <input type="checkbox" id="lume-menu-toggle" class="lume-menu-toggle">
+
+            <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+
+            <nav class="lume-nav" aria-label="Navegação principal">
+                <a href="home.html">Início</a>
+                <a href="home.html#function">Como funciona</a>
+                <a href="home.html#project">Projetos</a>
+                <a href="faq.html" class="active" aria-current="page">FAQ</a>
+                <a href="html/r_index.html">Blogs</a>
+                <a href="html/index.html">Agendamento</a>
+                <a href="html/index_sof.html">Voluntários</a>
+            </nav>
+
+            <div class="lume-auth-area">
+                <a class="lume-cta" href="formularios.html">Ser voluntário</a>
+                <a class="lume-login-link" href="html/login.html">Entrar</a>
+            </div>
+
+        </div>
+    </header>
 
     <main>
 
@@ -123,38 +155,39 @@
 
                 <div class="janela-avaliacao">
 
-    <div class="caixa-avaliacao">
+                    <div class="caixa-avaliacao">
 
-        <label for="mostrarAvaliacao" class="fechar-avaliacao">
-            ×
-        </label>
+                        <label for="mostrarAvaliacao" class="fechar-avaliacao">
+                            ×
+                        </label>
 
-        <h2>Avaliar FAQ</h2>
+                        <h2>Avaliar FAQ</h2>
 
-        <p>Como você avalia esta página?</p>
+                        <p>Como você avalia esta página?</p>
 
-        <div class="estrelas">
+                        <div class="estrelas">
 
-            <input type="radio" name="avaliacao" id="estrela1">
-            <label for="estrela1" onclick="avaliarFAQ(1)">★</label>
+                            <input type="radio" name="avaliacao" id="estrela1">
+                            <label for="estrela1" onclick="avaliarFAQ(1)">★</label>
 
-            <input type="radio" name="avaliacao" id="estrela2">
-            <label for="estrela2" onclick="avaliarFAQ(2)">★</label>
+                            <input type="radio" name="avaliacao" id="estrela2">
+                            <label for="estrela2" onclick="avaliarFAQ(2)">★</label>
 
-            <input type="radio" name="avaliacao" id="estrela3">
-            <label for="estrela3" onclick="avaliarFAQ(3)">★</label>
+                            <input type="radio" name="avaliacao" id="estrela3">
+                            <label for="estrela3" onclick="avaliarFAQ(3)">★</label>
 
-            <input type="radio" name="avaliacao" id="estrela4">
-            <label for="estrela4" onclick="avaliarFAQ(4)">★</label>
+                            <input type="radio" name="avaliacao" id="estrela4">
+                            <label for="estrela4" onclick="avaliarFAQ(4)">★</label>
 
-            <input type="radio" name="avaliacao" id="estrela5">
-            <label for="estrela5" onclick="avaliarFAQ(5)">★</label>
+                            <input type="radio" name="avaliacao" id="estrela5">
+                            <label for="estrela5" onclick="avaliarFAQ(5)">★</label>
 
-        </div>
+                        </div>
 
-    </div>
+                    </div>
 
-</div>
+                </div>
+
             </section>
 
         </div>

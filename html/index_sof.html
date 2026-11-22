@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -5,6 +6,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lume — Profissionais</title>
+
   <style>
     :root {
       --lilac: #cbb7e9;
@@ -20,7 +22,7 @@
     }
 
     * {
-      box-sizing: border-box
+      box-sizing: border-box;
     }
 
     body.lume-sof {
@@ -31,41 +33,10 @@
       background: linear-gradient(135deg, #fbf5ff 0%, #fff9f1 55%, #fff3f7 100%);
     }
 
-    .lume-nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 18px 7%;
-      background: rgba(255, 255, 255, .9);
-      border-bottom: 1px solid #eadff0;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      backdrop-filter: blur(10px);
-    }
-
-    .lume-brand {
-      font-size: 25px;
-      font-weight: 800;
-      color: var(--purple-dark);
-      text-decoration: none
-    }
-
-    .lume-brand span {
-      color: var(--pink-dark)
-    }
-
-    .lume-link {
-      color: var(--purple-dark);
-      text-decoration: none;
-      font-weight: 700
-    }
-
     .lume-container {
       width: min(1100px, 92%);
       margin: 0 auto;
-      padding: 58px 0
+      padding: 58px 0;
     }
 
     .lume-eyebrow {
@@ -74,28 +45,28 @@
       border-radius: 30px;
       background: var(--yellow);
       font-weight: 700;
-      font-size: 13px
+      font-size: 13px;
     }
 
     .lume-title {
       font-size: clamp(30px, 5vw, 48px);
       line-height: 1.1;
       margin: 16px 0 12px;
-      color: var(--purple-dark)
+      color: var(--purple-dark);
     }
 
     .lume-subtitle {
       max-width: 720px;
       line-height: 1.65;
       font-size: 17px;
-      color: #716979
+      color: #716979;
     }
 
     .lume-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin-top: 35px
+      margin-top: 35px;
     }
 
     .lume-card {
@@ -104,11 +75,11 @@
       border-radius: 25px;
       padding: 25px;
       box-shadow: var(--shadow);
-      transition: .2s
+      transition: .2s;
     }
 
     .lume-card:hover {
-      transform: translateY(-4px)
+      transform: translateY(-4px);
     }
 
     .lume-photo {
@@ -117,39 +88,39 @@
       border-radius: 50%;
       overflow: hidden;
       margin: 0 auto 18px;
-      border: 6px solid var(--pink)
+      border: 6px solid var(--pink);
     }
 
     .lume-photo img {
       width: 100%;
       height: 100%;
-      object-fit: cover
+      object-fit: cover;
     }
 
     .lume-card h2 {
       margin: 5px 0;
       color: var(--purple-dark);
-      text-align: center
+      text-align: center;
     }
 
     .lume-role {
       text-align: center;
       color: var(--pink-dark);
       font-weight: 700;
-      margin: 8px 0
+      margin: 8px 0;
     }
 
     .lume-desc {
       line-height: 1.55;
       color: #6d6673;
-      min-height: 75px
+      min-height: 75px;
     }
 
     .lume-actions {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 20px
+      margin-top: 20px;
     }
 
     .lume-btn {
@@ -161,21 +132,21 @@
       text-decoration: none;
       border: 0;
       font-weight: 800;
-      cursor: pointer
+      cursor: pointer;
     }
 
     .lume-primary {
       background: var(--purple);
-      color: white
+      color: white;
     }
 
     .lume-primary:hover {
-      background: var(--purple-dark)
+      background: var(--purple-dark);
     }
 
     .lume-secondary {
       background: #f7edf5;
-      color: var(--purple-dark)
+      color: var(--purple-dark);
     }
 
     .lume-wide-action {
@@ -187,16 +158,16 @@
       justify-content: space-between;
       align-items: center;
       gap: 18px;
-      flex-wrap: wrap
+      flex-wrap: wrap;
     }
 
     .lume-wide-action h3 {
       margin: 0;
-      color: var(--purple-dark)
+      color: var(--purple-dark);
     }
 
     .lume-wide-action p {
-      margin: 5px 0 0
+      margin: 5px 0 0;
     }
 
     .lume-back {
@@ -204,14 +175,14 @@
       margin-bottom: 25px;
       color: var(--purple-dark);
       font-weight: 700;
-      text-decoration: none
+      text-decoration: none;
     }
 
     .profile {
       display: grid;
       grid-template-columns: 330px 1fr;
       gap: 32px;
-      align-items: start
+      align-items: start;
     }
 
     .profile-side {
@@ -220,13 +191,13 @@
       border-radius: 28px;
       padding: 30px;
       box-shadow: var(--shadow);
-      border: 1px solid #eee3f2
+      border: 1px solid #eee3f2;
     }
 
     .profile-side .lume-photo {
       width: 190px;
       height: 190px;
-      border-width: 8px
+      border-width: 8px;
     }
 
     .profile-main {
@@ -234,36 +205,36 @@
       border-radius: 28px;
       padding: 35px;
       box-shadow: var(--shadow);
-      border: 1px solid #eee3f2
+      border: 1px solid #eee3f2;
     }
 
     .profile-main h1 {
       color: var(--purple-dark);
       font-size: 38px;
-      margin: 0 0 5px
+      margin: 0 0 5px;
     }
 
     .info-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
-      margin: 25px 0
+      margin: 25px 0;
     }
 
     .info {
       background: #fcf7fb;
       border-radius: 18px;
-      padding: 17px
+      padding: 17px;
     }
 
     .info strong {
       display: block;
       color: var(--purple-dark);
-      margin-bottom: 5px
+      margin-bottom: 5px;
     }
 
     .profile-main p {
-      line-height: 1.7
+      line-height: 1.7;
     }
 
     .highlight {
@@ -271,14 +242,14 @@
       border-left: 5px solid var(--yellow);
       padding: 17px 18px;
       border-radius: 14px;
-      margin: 20px 0
+      margin: 20px 0;
     }
 
     .booking-layout {
       display: grid;
       grid-template-columns: 1fr 360px;
       gap: 25px;
-      align-items: start
+      align-items: start;
     }
 
     .booking-card {
@@ -286,23 +257,23 @@
       border: 1px solid #eee3f2;
       border-radius: 26px;
       padding: 30px;
-      box-shadow: var(--shadow)
+      box-shadow: var(--shadow);
     }
 
     .booking-card h1 {
       color: var(--purple-dark);
-      margin-top: 0
+      margin-top: 0;
     }
 
     .field {
-      margin: 18px 0
+      margin: 18px 0;
     }
 
     .field label {
       display: block;
       font-weight: 700;
       margin-bottom: 8px;
-      color: var(--purple-dark)
+      color: var(--purple-dark);
     }
 
     .field input,
@@ -314,13 +285,13 @@
       border-radius: 12px;
       font: inherit;
       color: var(--ink);
-      background: #fff
+      background: #fff;
     }
 
     .slots {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px
+      gap: 10px;
     }
 
     .slot {
@@ -329,24 +300,24 @@
       border-radius: 12px;
       text-align: center;
       cursor: pointer;
-      background: #fff
+      background: #fff;
     }
 
     .slot input {
-      margin-right: 6px
+      margin-right: 6px;
     }
 
     .slot:has(input:checked) {
       background: var(--pink);
       border-color: var(--pink-dark);
-      font-weight: 700
+      font-weight: 700;
     }
 
     .selected {
       background: #f6effb;
       padding: 17px;
       border-radius: 16px;
-      margin-bottom: 20px
+      margin-bottom: 20px;
     }
 
     .success {
@@ -355,78 +326,116 @@
       border: 1px solid #b8dcb5;
       padding: 15px;
       border-radius: 14px;
-      margin-top: 15px
+      margin-top: 15px;
     }
 
     .small-note {
       font-size: 13px;
-      color: #7b7380
+      color: #7b7380;
     }
 
-    @media(max-width:800px) {
+    @media (max-width: 800px) {
 
       .lume-grid,
       .profile,
       .booking-layout {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
       }
 
       .info-grid {
-        grid-template-columns: 1fr
+        grid-template-columns: 1fr;
       }
 
       .slots {
-        grid-template-columns: 1fr
-      }
-
-      .lume-nav {
-        padding: 16px 4%
+        grid-template-columns: 1fr;
       }
     }
   </style>
+
   <link rel="stylesheet" href="../css/lume-header.css">
   <script src="../js/lume-header.js" data-root="../" defer></script>
 </head>
 
 <body class="lume-sof">
+
   <main class="lume-container">
+
     <span class="lume-eyebrow">Cuidado que acolhe</span>
+
     <h1 class="lume-title">Encontre o profissional ideal para você</h1>
-    <p class="lume-subtitle">Conheça os psicólogos e terapeutas da Lume. Veja suas especialidades, experiência e
-      horários, ou comece seu agendamento sem escolher um profissional agora.</p>
+
+    <p class="lume-subtitle">
+      Conheça os psicólogos e terapeutas da Lume. Veja suas especialidades, experiência e
+      horários, ou comece seu agendamento sem escolher um profissional agora.
+    </p>
+
     <section class="lume-grid">
+
       <div class="lume-card">
-        <div class="lume-photo"><img src="../images/Ana.png" alt="Foto de Ana Souza"></div>
+        <div class="lume-photo">
+          <img src="../images/Ana.png" alt="Foto de Ana Souza">
+        </div>
+
         <h2>Ana Souza</h2>
         <p class="lume-role">Psicóloga Clínica</p>
-        <p class="lume-desc">Especialista em terapia cognitivo-comportamental, com foco em ansiedade e autoestima.</p>
-        <div class="lume-actions"><a class="lume-btn lume-secondary" href="index_sof1.html">Ver perfil</a><a
-            class="lume-btn lume-primary" href="index.html?profissional=Ana%20Souza">Agendar</a></div>
+        <p class="lume-desc">
+          Especialista em terapia cognitivo-comportamental, com foco em ansiedade e autoestima.
+        </p>
+
+        <div class="lume-actions">
+          <a class="lume-btn lume-secondary" href="index_sof1.html">Ver perfil</a>
+          <a class="lume-btn lume-primary" href="index.html?profissional=Ana%20Souza">Agendar</a>
+        </div>
       </div>
+
       <div class="lume-card">
-        <div class="lume-photo"><img src="../images/Bruno.png" alt="Foto de Bruno Lima"></div>
+        <div class="lume-photo">
+          <img src="../images/Bruno.png" alt="Foto de Bruno Lima">
+        </div>
+
         <h2>Bruno Lima</h2>
         <p class="lume-role">Terapeuta de Grupo</p>
-        <p class="lume-desc">Conduz grupos de apoio para jovens e adultos, promovendo acolhimento e escuta ativa.</p>
-        <div class="lume-actions"><a class="lume-btn lume-secondary" href="index_sof2.html">Ver perfil</a><a
-            class="lume-btn lume-primary" href="index.html?profissional=Bruno%20Lima">Agendar</a></div>
+        <p class="lume-desc">
+          Conduz grupos de apoio para jovens e adultos, promovendo acolhimento e escuta ativa.
+        </p>
+
+        <div class="lume-actions">
+          <a class="lume-btn lume-secondary" href="index_sof2.html">Ver perfil</a>
+          <a class="lume-btn lume-primary" href="index.html?profissional=Bruno%20Lima">Agendar</a>
+        </div>
       </div>
+
       <div class="lume-card">
-        <div class="lume-photo"><img src="../images/Camila.png" alt="Foto de Camila Torres"></div>
+        <div class="lume-photo">
+          <img src="../images/Camila.png" alt="Foto de Camila Torres">
+        </div>
+
         <h2>Camila Torres</h2>
         <p class="lume-role">Psicóloga Infantil</p>
-        <p class="lume-desc">Atua com crianças e adolescentes, com foco em desenvolvimento emocional e resiliência.</p>
-        <div class="lume-actions"><a class="lume-btn lume-secondary" href="index_sof3.html">Ver perfil</a><a
-            class="lume-btn lume-primary" href="index.html?profissional=Camila%20Torres">Agendar</a></div>
+        <p class="lume-desc">
+          Atua com crianças e adolescentes, com foco em desenvolvimento emocional e resiliência.
+        </p>
+
+        <div class="lume-actions">
+          <a class="lume-btn lume-secondary" href="index_sof3.html">Ver perfil</a>
+          <a class="lume-btn lume-primary" href="index.html?profissional=Camila%20Torres">Agendar</a>
+        </div>
       </div>
+
     </section>
+
     <section class="lume-wide-action">
       <div>
         <h3>Ainda não sabe com quem agendar?</h3>
-        <p>Comece escolhendo uma data e um horário. O profissional pode ser definido na próxima etapa.</p>
-      </div><a class="lume-btn lume-primary" href="index.html">Começar agendamento →</a>
-    </section>
-  </main>
-</body>
+        <p>
+          Comece escolhendo uma data e um horário. O profissional pode ser definido na próxima etapa.
+        </p>
+      </div>
 
+      <a class="lume-btn lume-primary" href="index.html">Começar agendamento →</a>
+    </section>
+
+  </main>
+
+</body>
 </html>
