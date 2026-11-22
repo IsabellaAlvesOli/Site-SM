@@ -5,7 +5,6 @@ function enviarInscricao() {
 
     document.getElementById("mensagem").textContent = "";
 
-    // Validação dos campos
     let campos = [
         f.Inome,
         f.Iemail,
@@ -82,7 +81,6 @@ function enviarInscricao() {
         }
     }
 
-    // Impede o envio se houver algum erro
     if (!valido) {
         document.getElementById("mensagem").textContent =
             "Verifique os campos destacados e tente novamente.";
@@ -132,21 +130,18 @@ function validarCampo(campo) {
     let valor = campo.value.trim();
     let mensagem = "";
 
-    // Nome
     if (campo == f.Inome) {
         if (!validarNome(campo)) {
             mensagem = "Informe seu nome completo, usando pelo menos 3 caracteres.";
         }
     }
 
-    // Email
     else if (campo == f.Iemail) {
         if (!validarEmail(valor)) {
             mensagem = "Informe um e-mail válido.";
         }
     }
-
-    // Telefone
+    
     else if (campo == f.Itelefone) {
         let telefone = campo.value.replace(/\D/g, "");
 
@@ -155,42 +150,36 @@ function validarCampo(campo) {
         }
     }
 
-    // CPF
     else if (campo == f.Icpf) {
         if (!validarCPF(campo.value)) {
             mensagem = "Informe um CPF válido.";
         }
     }
 
-    // Data de nascimento: mínimo de 18 anos
     else if (campo == f.Inascimento) {
         if (!campo.value || !validarIdade(campo.value)) {
             mensagem = "Você precisa ter pelo menos 18 anos para se inscrever.";
         }
     }
 
-    // Cidade
     else if (campo == f.Icidade) {
         if (!validarCidade(campo)) {
             mensagem = "Informe uma cidade válida, sem números.";
         }
     }
 
-    // Estado
     else if (campo == f.Iestado) {
         if (campo.value == "") {
             mensagem = "Selecione seu estado.";
         }
     }
 
-    // Endereço
     else if (campo == f.Iendereco) {
         if (valor.length < 3) {
             mensagem = "Informe um endereço com pelo menos 3 caracteres.";
         }
     }
 
-    // CEP
     else if (campo == f.Icep) {
         let cep = campo.value.replace(/\D/g, "");
 
@@ -199,7 +188,6 @@ function validarCampo(campo) {
         }
     }
 
-    // Número
     else if (campo == f.Inumero) {
         let numero = Number(campo.value);
 
@@ -210,21 +198,18 @@ function validarCampo(campo) {
         }
     }
 
-    // Escolaridade
     else if (campo == f.Iescolaridade) {
         if (campo.value == "") {
             mensagem = "Selecione sua escolaridade.";
         }
     }
 
-    // Data disponível: hoje até um ano no futuro
     else if (campo == f.IdisponibilidadeData) {
         if (!campo.value || !validarDataDisponivel(campo.value)) {
             mensagem = "Escolha uma data entre hoje e os próximos 12 meses.";
         }
     }
 
-    // Horas disponíveis
     else if (campo == f.Ihoras) {
         let horas = Number(campo.value);
 
@@ -236,14 +221,12 @@ function validarCampo(campo) {
         }
     }
 
-    // Experiência
     else if (campo == f.Iexperiencia) {
         if (valor.length < 10) {
             mensagem = "Escreva pelo menos 10 caracteres.";
         }
     }
 
-    // Motivação
     else if (campo == f.Imotivacao) {
         if (valor.length < 20) {
             mensagem = "Escreva pelo menos 20 caracteres.";
@@ -257,6 +240,77 @@ function validarCampo(campo) {
         limparErro(campo);
         return true;
     }
+}
+
+
+// Consulta o CEP no ViaCEP
+function buscarCEP(campo) {
+    let cep = campo.value.replace(/\D/g, "");
+
+    if (cep == "") {
+        return;
+    }
+
+    if (cep.length != 8) {
+        mostrarErro(campo, "Informe um CEP válido com 8 números.");
+        return;
+    }
+
+    limparErro(campo);
+
+    let f = document.IformVoluntario;
+
+    // Indica que a consulta está acontecendo
+    campo.classList.remove("is-invalid");
+    campo.classList.add("is-valid");
+
+    fetch("https://viacep.com.br/ws/" + cep + "/json/")
+        .then(function(resposta) {
+            if (!resposta.ok) {
+                throw new Error("Erro na consulta do CEP.");
+            }
+
+            return resposta.json();
+        })
+        .then(function(dados) {
+            if (dados.erro) {
+                mostrarErro(campo, "CEP não encontrado. Verifique o número informado.");
+                campo.classList.remove("is-valid");
+
+                f.Iendereco.value = "";
+                f.Icidade.value = "";
+                f.Iestado.value = "";
+
+                return;
+            }
+
+            // Preenche os campos automaticamente
+            let endereco = dados.logradouro;
+
+            if (dados.bairro != "") {
+                if (endereco != "") {
+                    endereco += " - ";
+                }
+
+                endereco += dados.bairro;
+            }
+
+            f.Iendereco.value = endereco;
+            f.Icidade.value = dados.localidade;
+            f.Iestado.value = dados.uf;
+
+            // Remove possíveis erros dos campos preenchidos
+            limparErro(f.Iendereco);
+            limparErro(f.Icidade);
+            limparErro(f.Iestado);
+
+            campo.classList.remove("is-invalid");
+            campo.classList.add("is-valid");
+        })
+        .catch(function() {
+            mostrarErro(campo, "Não foi possível consultar o CEP. Tente novamente.");
+            campo.classList.remove("is-valid");
+        });
 }
 
 
@@ -289,7 +343,6 @@ function validarIdade(dataNascimento) {
     }
 
     let idade = hoje.getFullYear() - nascimento.getFullYear();
-
     let mes = hoje.getMonth() - nascimento.getMonth();
 
     if (mes < 0 ||
@@ -381,6 +434,9 @@ function mascaraCEP(campo) {
     }
 
     campo.value = n;
+
+    // Se o CEP for alterado, remove a validação anterior
+    campo.classList.remove("is-valid");
 }
 
 
@@ -428,6 +484,7 @@ function validarCPF(cpf) {
 // Mostra o erro no campo
 function mostrarErro(campo, mensagem) {
     campo.classList.add("is-invalid");
+    campo.classList.remove("is-valid");
 
     let feedback = campo.nextElementSibling;
 
@@ -449,7 +506,7 @@ function limparErro(campo) {
 }
 
 
-// Configura a validação em tempo real
+// Configura as validações e a consulta do CEP
 document.addEventListener("DOMContentLoaded", function() {
     let f = document.IformVoluntario;
 
@@ -491,6 +548,11 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
+    // Consulta o ViaCEP quando sair do campo CEP
+    f.Icep.addEventListener("blur", function() {
+        buscarCEP(f.Icep);
+    });
+
     // Áreas de interesse
     for (let i = 0; i < f.Iarea.length; i++) {
         f.Iarea[i].addEventListener("change", function() {
@@ -523,6 +585,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         for (let i = 0; i < todosCampos.length; i++) {
             limparErro(todosCampos[i]);
+            todosCampos[i].classList.remove("is-valid");
         }
 
         document.getElementById("erroArea").textContent = "";
