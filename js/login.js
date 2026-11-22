@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    // Mostrar e ocultar senha
+  
     document.querySelectorAll(".password-toggle").forEach((button) => {
         button.addEventListener("click", () => {
             const input = document.getElementById(button.dataset.target);
@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    // Máscara de CPF
     const campoCPF = document.getElementById("cadastroCPF");
 
     if (campoCPF) {
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Máscara de telefone
     const campoTelefone = document.getElementById("cadastroTelefone");
 
     if (campoTelefone) {
@@ -33,7 +31,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // LOGIN
     const loginForm = document.getElementById("loginForm");
 
     if (loginForm) {
@@ -102,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // CADASTRO
     const cadastroForm = document.getElementById("cadastroForm");
 
     if (cadastroForm) {
@@ -193,7 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    // Recuperação demonstrativa de senha
+
     const forgotPassword = document.getElementById("forgotPassword");
 
     if (forgotPassword) {
@@ -210,7 +206,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Máscara de CPF
 function mascaraCPF(valor) {
     let numeros = valor.replace(/\D/g, "").substring(0, 11);
 
@@ -222,7 +217,6 @@ function mascaraCPF(valor) {
 }
 
 
-// Máscara de telefone
 function mascaraTelefone(valor) {
     let numeros = valor.replace(/\D/g, "").substring(0, 11);
 
@@ -238,7 +232,6 @@ function mascaraTelefone(valor) {
 }
 
 
-// Validar CPF
 function validCPF(cpf) {
     cpf = cpf.replace(/\D/g, "");
 
@@ -278,7 +271,6 @@ function validCPF(cpf) {
 }
 
 
-// Validar telefone
 function validTelefone(telefone) {
     const numeros = telefone.replace(/\D/g, "");
 
@@ -286,20 +278,15 @@ function validTelefone(telefone) {
 }
 
 
-// Validar e-mail
 function validEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-
-// Mostrar erro no campo
 function err(input, id, texto) {
     input.classList.add("input-error");
     document.getElementById(id).textContent = texto;
 }
 
-
-// Limpar mensagens e erros
 function clearErrors() {
     document.querySelectorAll(".error").forEach((element) => {
         element.textContent = "";
@@ -315,8 +302,6 @@ function clearErrors() {
     });
 }
 
-
-// Exibir mensagem geral
 function msg(text, className) {
     const message = document.querySelector(".form-message");
 
