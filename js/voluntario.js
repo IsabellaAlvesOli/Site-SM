@@ -5,130 +5,29 @@ function enviarInscricao() {
 
     document.getElementById("mensagem").textContent = "";
 
-    // Nome
-    if (!validarNome(f.Inome)) {
-        mostrarErro(f.Inome, "Informe seu nome completo, usando pelo menos 3 caracteres.");
-        valido = false;
-    } else {
-        limparErro(f.Inome);
-    }
+    // Validação dos campos
+    let campos = [
+        f.Inome,
+        f.Iemail,
+        f.Itelefone,
+        f.Icpf,
+        f.Inascimento,
+        f.Icidade,
+        f.Iestado,
+        f.Iendereco,
+        f.Icep,
+        f.Inumero,
+        f.Iescolaridade,
+        f.IdisponibilidadeData,
+        f.Ihoras,
+        f.Iexperiencia,
+        f.Imotivacao
+    ];
 
-    // Email
-    if (f.Iemail.value.trim() == "" || !f.Iemail.checkValidity()) {
-        mostrarErro(f.Iemail, "Informe um e-mail válido.");
-        valido = false;
-    } else {
-        limparErro(f.Iemail);
-    }
-
-    // Telefone
-    let telefone = f.Itelefone.value.replace(/\D/g, "");
-
-    if (telefone.length != 10 && telefone.length != 11) {
-        mostrarErro(f.Itelefone, "Informe um telefone válido com DDD.");
-        valido = false;
-    } else {
-        limparErro(f.Itelefone);
-    }
-
-    // CPF
-    if (!validarCPF(f.Icpf.value)) {
-        mostrarErro(f.Icpf, "Informe um CPF válido.");
-        valido = false;
-    } else {
-        limparErro(f.Icpf);
-    }
-
-    // Data de nascimento
-    let nascimento = f.Inascimento.value;
-    let hoje = new Date();
-
-    hoje.setHours(0, 0, 0, 0);
-
-    if (!nascimento || new Date(nascimento + "T00:00:00") >= hoje) {
-        mostrarErro(f.Inascimento, "Informe uma data de nascimento anterior a hoje.");
-        valido = false;
-    } else {
-        limparErro(f.Inascimento);
-    }
-
-    // Cidade
-    if (!validarCidade(f.Icidade)) {
-        mostrarErro(f.Icidade, "Informe uma cidade válida, sem números.");
-        valido = false;
-    } else {
-        limparErro(f.Icidade);
-    }
-
-    // Estado
-    if (f.Iestado.value == "") {
-        mostrarErro(f.Iestado, "Selecione seu estado.");
-        valido = false;
-    } else {
-        limparErro(f.Iestado);
-    }
-
-    // Endereço
-    if (f.Iendereco.value.trim().length < 3) {
-        mostrarErro(f.Iendereco, "Informe um endereço com pelo menos 3 caracteres.");
-        valido = false;
-    } else {
-        limparErro(f.Iendereco);
-    }
-
-    // CEP
-    let cep = f.Icep.value.replace(/\D/g, "");
-
-    if (cep.length != 8) {
-        mostrarErro(f.Icep, "Informe um CEP válido com 8 números.");
-        valido = false;
-    } else {
-        limparErro(f.Icep);
-    }
-
-    // Número da residência
-    if (f.Inumero.value == "" ||
-        !Number.isInteger(Number(f.Inumero.value)) ||
-        Number(f.Inumero.value) < 1) {
-
-        mostrarErro(f.Inumero, "Informe um número maior que zero.");
-        valido = false;
-    } else {
-        limparErro(f.Inumero);
-    }
-
-    // Escolaridade
-    if (f.Iescolaridade.value == "") {
-        mostrarErro(f.Iescolaridade, "Selecione sua escolaridade.");
-        valido = false;
-    } else {
-        limparErro(f.Iescolaridade);
-    }
-
-    // Data disponível para começar
-    let dataDisponivel = f.IdisponibilidadeData.value;
-
-    if (!dataDisponivel ||
-        new Date(dataDisponivel + "T00:00:00") < hoje) {
-
-        mostrarErro(f.IdisponibilidadeData, "Escolha hoje ou uma data futura.");
-        valido = false;
-    } else {
-        limparErro(f.IdisponibilidadeData);
-    }
-
-    // Horas semanais
-    let horas = Number(f.Ihoras.value);
-
-    if (f.Ihoras.value == "" ||
-        !Number.isInteger(horas) ||
-        horas < 1 ||
-        horas > 40) {
-
-        mostrarErro(f.Ihoras, "Informe entre 1 e 40 horas.");
-        valido = false;
-    } else {
-        limparErro(f.Ihoras);
+    for (let i = 0; i < campos.length; i++) {
+        if (!validarCampo(campos[i])) {
+            valido = false;
+        }
     }
 
     // Áreas de interesse
@@ -183,22 +82,6 @@ function enviarInscricao() {
         }
     }
 
-    // Experiência
-    if (f.Iexperiencia.value.trim().length < 10) {
-        mostrarErro(f.Iexperiencia, "Escreva pelo menos 10 caracteres.");
-        valido = false;
-    } else {
-        limparErro(f.Iexperiencia);
-    }
-
-    // Motivação
-    if (f.Imotivacao.value.trim().length < 20) {
-        mostrarErro(f.Imotivacao, "Escreva pelo menos 20 caracteres.");
-        valido = false;
-    } else {
-        limparErro(f.Imotivacao);
-    }
-
     // Impede o envio se houver algum erro
     if (!valido) {
         document.getElementById("mensagem").textContent =
@@ -240,6 +123,195 @@ function enviarInscricao() {
         "Inscrição enviada com sucesso!";
 
     return false;
+}
+
+
+// Validação individual dos campos
+function validarCampo(campo) {
+    let f = document.IformVoluntario;
+    let valor = campo.value.trim();
+    let mensagem = "";
+
+    // Nome
+    if (campo == f.Inome) {
+        if (!validarNome(campo)) {
+            mensagem = "Informe seu nome completo, usando pelo menos 3 caracteres.";
+        }
+    }
+
+    // Email
+    else if (campo == f.Iemail) {
+        if (!validarEmail(valor)) {
+            mensagem = "Informe um e-mail válido.";
+        }
+    }
+
+    // Telefone
+    else if (campo == f.Itelefone) {
+        let telefone = campo.value.replace(/\D/g, "");
+
+        if (telefone.length != 10 && telefone.length != 11) {
+            mensagem = "Informe um telefone válido com DDD.";
+        }
+    }
+
+    // CPF
+    else if (campo == f.Icpf) {
+        if (!validarCPF(campo.value)) {
+            mensagem = "Informe um CPF válido.";
+        }
+    }
+
+    // Data de nascimento: mínimo de 18 anos
+    else if (campo == f.Inascimento) {
+        if (!campo.value || !validarIdade(campo.value)) {
+            mensagem = "Você precisa ter pelo menos 18 anos para se inscrever.";
+        }
+    }
+
+    // Cidade
+    else if (campo == f.Icidade) {
+        if (!validarCidade(campo)) {
+            mensagem = "Informe uma cidade válida, sem números.";
+        }
+    }
+
+    // Estado
+    else if (campo == f.Iestado) {
+        if (campo.value == "") {
+            mensagem = "Selecione seu estado.";
+        }
+    }
+
+    // Endereço
+    else if (campo == f.Iendereco) {
+        if (valor.length < 3) {
+            mensagem = "Informe um endereço com pelo menos 3 caracteres.";
+        }
+    }
+
+    // CEP
+    else if (campo == f.Icep) {
+        let cep = campo.value.replace(/\D/g, "");
+
+        if (cep.length != 8) {
+            mensagem = "Informe um CEP válido com 8 números.";
+        }
+    }
+
+    // Número
+    else if (campo == f.Inumero) {
+        let numero = Number(campo.value);
+
+        if (campo.value == "" ||
+            !Number.isInteger(numero) ||
+            numero < 1) {
+            mensagem = "Informe um número maior que zero.";
+        }
+    }
+
+    // Escolaridade
+    else if (campo == f.Iescolaridade) {
+        if (campo.value == "") {
+            mensagem = "Selecione sua escolaridade.";
+        }
+    }
+
+    // Data disponível: hoje até um ano no futuro
+    else if (campo == f.IdisponibilidadeData) {
+        if (!campo.value || !validarDataDisponivel(campo.value)) {
+            mensagem = "Escolha uma data entre hoje e os próximos 12 meses.";
+        }
+    }
+
+    // Horas disponíveis
+    else if (campo == f.Ihoras) {
+        let horas = Number(campo.value);
+
+        if (campo.value == "" ||
+            !Number.isInteger(horas) ||
+            horas < 1 ||
+            horas > 40) {
+            mensagem = "Informe entre 1 e 40 horas.";
+        }
+    }
+
+    // Experiência
+    else if (campo == f.Iexperiencia) {
+        if (valor.length < 10) {
+            mensagem = "Escreva pelo menos 10 caracteres.";
+        }
+    }
+
+    // Motivação
+    else if (campo == f.Imotivacao) {
+        if (valor.length < 20) {
+            mensagem = "Escreva pelo menos 20 caracteres.";
+        }
+    }
+
+    if (mensagem != "") {
+        mostrarErro(campo, mensagem);
+        return false;
+    } else {
+        limparErro(campo);
+        return true;
+    }
+}
+
+
+// Validação do e-mail
+function validarEmail(email) {
+    let formato = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+    if (!formato.test(email)) {
+        return false;
+    }
+
+    if (email.includes("..") || email.startsWith(".") ||
+        email.endsWith(".")) {
+        return false;
+    }
+
+    return true;
+}
+
+
+// Verifica se a pessoa tem pelo menos 18 anos
+function validarIdade(dataNascimento) {
+    let nascimento = new Date(dataNascimento + "T00:00:00");
+    let hoje = new Date();
+
+    hoje.setHours(0, 0, 0, 0);
+
+    if (nascimento >= hoje) {
+        return false;
+    }
+
+    let idade = hoje.getFullYear() - nascimento.getFullYear();
+
+    let mes = hoje.getMonth() - nascimento.getMonth();
+
+    if (mes < 0 ||
+        (mes == 0 && hoje.getDate() < nascimento.getDate())) {
+        idade--;
+    }
+
+    return idade >= 18;
+}
+
+
+// Verifica se a data de início está entre hoje e 12 meses
+function validarDataDisponivel(data) {
+    let dataEscolhida = new Date(data + "T00:00:00");
+    let hoje = new Date();
+
+    hoje.setHours(0, 0, 0, 0);
+
+    let limite = new Date(hoje);
+    limite.setFullYear(limite.getFullYear() + 1);
+
+    return dataEscolhida >= hoje && dataEscolhida <= limite;
 }
 
 
@@ -312,7 +384,7 @@ function mascaraCEP(campo) {
 }
 
 
-// Verifica se o CPF é válido
+// Validação do CPF
 function validarCPF(cpf) {
     cpf = cpf.replace(/\D/g, "");
 
@@ -377,15 +449,80 @@ function limparErro(campo) {
 }
 
 
-// Limpa as mensagens e os destaques ao clicar em Limpar Campos
+// Configura a validação em tempo real
 document.addEventListener("DOMContentLoaded", function() {
     let f = document.IformVoluntario;
 
-    f.addEventListener("reset", function() {
-        let campos = f.querySelectorAll("input, select, textarea");
+    let campos = [
+        f.Inome,
+        f.Iemail,
+        f.Itelefone,
+        f.Icpf,
+        f.Inascimento,
+        f.Icidade,
+        f.Iestado,
+        f.Iendereco,
+        f.Icep,
+        f.Inumero,
+        f.Iescolaridade,
+        f.IdisponibilidadeData,
+        f.Ihoras,
+        f.Iexperiencia,
+        f.Imotivacao
+    ];
 
-        for (let campo of campos) {
-            limparErro(campo);
+    for (let i = 0; i < campos.length; i++) {
+        let campo = campos[i];
+
+        campo.addEventListener("blur", function() {
+            validarCampo(campo);
+        });
+
+        campo.addEventListener("input", function() {
+            if (campo.classList.contains("is-invalid")) {
+                validarCampo(campo);
+            }
+        });
+
+        campo.addEventListener("change", function() {
+            if (campo.classList.contains("is-invalid")) {
+                validarCampo(campo);
+            }
+        });
+    }
+
+    // Áreas de interesse
+    for (let i = 0; i < f.Iarea.length; i++) {
+        f.Iarea[i].addEventListener("change", function() {
+            if (this.checked) {
+                document.getElementById("erroArea").textContent = "";
+
+                for (let j = 0; j < f.Iarea.length; j++) {
+                    f.Iarea[j].classList.remove("is-invalid");
+                }
+            }
+        });
+    }
+
+    // Disponibilidade
+    for (let i = 0; i < f.Idisponibilidade.length; i++) {
+        f.Idisponibilidade[i].addEventListener("change", function() {
+            if (this.checked) {
+                document.getElementById("erroDisponibilidade").textContent = "";
+
+                for (let j = 0; j < f.Idisponibilidade.length; j++) {
+                    f.Idisponibilidade[j].classList.remove("is-invalid");
+                }
+            }
+        });
+    }
+
+    // Limpar formulário
+    f.addEventListener("reset", function() {
+        let todosCampos = f.querySelectorAll("input, select, textarea");
+
+        for (let i = 0; i < todosCampos.length; i++) {
+            limparErro(todosCampos[i]);
         }
 
         document.getElementById("erroArea").textContent = "";
@@ -400,30 +537,4 @@ document.addEventListener("DOMContentLoaded", function() {
             f.Idisponibilidade[i].classList.remove("is-invalid");
         }
     });
-
-    // Remove o erro das áreas quando uma opção for selecionada
-    for (let i = 0; i < f.Iarea.length; i++) {
-        f.Iarea[i].addEventListener("change", function() {
-            if (this.checked) {
-                document.getElementById("erroArea").textContent = "";
-
-                for (let j = 0; j < f.Iarea.length; j++) {
-                    f.Iarea[j].classList.remove("is-invalid");
-                }
-            }
-        });
-    }
-
-    // Remove o erro da disponibilidade quando uma opção for selecionada
-    for (let i = 0; i < f.Idisponibilidade.length; i++) {
-        f.Idisponibilidade[i].addEventListener("change", function() {
-            if (this.checked) {
-                document.getElementById("erroDisponibilidade").textContent = "";
-
-                for (let j = 0; j < f.Idisponibilidade.length; j++) {
-                    f.Idisponibilidade[j].classList.remove("is-invalid");
-                }
-            }
-        });
-    }
 });
