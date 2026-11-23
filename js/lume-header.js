@@ -12,14 +12,16 @@
                     <img src="${root}images/logo.png" alt="Lume">
                 </a>
 
-    
-                <label for="lume-menu-toggle" class="lume-menu-btn" aria-label="Abrir menu">
+                <button type="button" class="lume-menu-btn"
+                    aria-label="Abrir menu"
+                    aria-expanded="false"
+                    aria-controls="lume-nav">
                     <span></span>
                     <span></span>
                     <span></span>
-                </label>
+                </button>
 
-                <nav class="lume-nav" aria-label="Navegação principal">
+                <nav class="lume-nav" id="lume-nav" aria-label="Navegação principal">
                     <a href="${root}home.html">Início</a>
                     <a href="${root}home.html#function">Como funciona</a>
                     <a href="${root}home.html#project">Projetos</a>
@@ -42,7 +44,8 @@
     document.body.insertAdjacentHTML("afterbegin", header);
 
     const links = document.querySelectorAll(".lume-nav a");
-
+    const menuBotao = document.querySelector(".lume-menu-btn");
+    const menu = document.querySelector(".lume-nav");
     const paginaAtual = window.location.pathname.toLowerCase();
 
     function normalizarCaminho(caminho) {
@@ -66,6 +69,55 @@
             linkAtivo.setAttribute("aria-current", "page");
         }
     }
+
+    // ABRE E FECHA O MENU NO CELULAR
+
+    function fecharMenu() {
+        menu.classList.remove("open");
+        menuBotao.setAttribute("aria-expanded", "false");
+        menuBotao.setAttribute("aria-label", "Abrir menu");
+    }
+
+    menuBotao.addEventListener("click", function () {
+
+        const menuAberto = menu.classList.toggle("open");
+
+        menuBotao.setAttribute("aria-expanded", menuAberto);
+
+        if (menuAberto) {
+            menuBotao.setAttribute("aria-label", "Fechar menu");
+        } else {
+            menuBotao.setAttribute("aria-label", "Abrir menu");
+        }
+
+    });
+
+    links.forEach(function (link) {
+
+        link.addEventListener("click", function () {
+            fecharMenu();
+        });
+
+    });
+
+    document.addEventListener("click", function (evento) {
+
+        if (
+            !menu.contains(evento.target) &&
+            !menuBotao.contains(evento.target)
+        ) {
+            fecharMenu();
+        }
+
+    });
+
+    document.addEventListener("keydown", function (evento) {
+
+        if (evento.key === "Escape") {
+            fecharMenu();
+        }
+
+    });
 
     // IDENTIFICA A PÁGINA ATUAL
 
@@ -129,17 +181,5 @@
 
         destacarLink(linkAtivo);
     }
-
-    // FECHA O MENU NO CELULAR
-
-    const menuToggle = document.getElementById("lume-menu-toggle");
-
-    links.forEach(function (link) {
-
-        link.addEventListener("click", function () {
-            menuToggle.checked = false;
-        });
-
-    });
 
 })();

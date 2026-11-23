@@ -64,82 +64,62 @@
                 </p>
 
                 <details class="m-faq-item">
-
-                    <summary>
-                        Como funciona a plataforma?
-                    </summary>
-
+                    <summary>Como funciona a plataforma?</summary>
                     <p>
                         A plataforma conecta pessoas em busca de acolhimento emocional com voluntários cadastrados,
                         como psicólogos, terapeutas e grupos de apoio. Você pode navegar, conhecer os perfis e
                         agendar um horário disponível diretamente pela página do voluntário.
                     </p>
-
                 </details>
 
                 <details class="m-faq-item">
-
-                    <summary>
-                        Os atendimentos são gratuitos?
-                    </summary>
-
+                    <summary>Os atendimentos são gratuitos?</summary>
                     <p>
                         Sim. Este é um projeto acadêmico e todos os atendimentos disponibilizados pelos voluntários
                         aqui são gratuitos e voluntários. Não há cobrança ou intermediação financeira pela
                         plataforma.
                     </p>
-
                 </details>
 
                 <details class="m-faq-item">
-
-                    <summary>
-                        Como faço para me cadastrar como voluntário?
-                    </summary>
-
+                    <summary>Como faço para me cadastrar como voluntário?</summary>
                     <p>
                         Clique em “Ser voluntário”. Você será direcionado a um formulário para
                         informar seus dados profissionais, disponibilidade e formas de contato. Após o envio, seu
                         perfil poderá ficar disponível para pessoas que buscam atendimento.
                     </p>
-
                 </details>
 
                 <details class="m-faq-item">
-
-                    <summary>
-                        O site garante o anonimato dos usuários?
-                    </summary>
-
+                    <summary>O site garante o anonimato dos usuários?</summary>
                     <p>
                         Sim. Não solicitamos dados sensíveis para navegação e você pode usar um apelido ao realizar
                         o contato inicial. Os dados compartilhados diretamente com o voluntário ficam sob
                         responsabilidade das partes, sem armazenamento público pela plataforma.
                     </p>
-
                 </details>
 
                 <details class="m-faq-item">
-
-                    <summary>
-                        Há atendimento para emergências psicológicas?
-                    </summary>
-
+                    <summary>Há atendimento para emergências psicológicas?</summary>
                     <p>
                         Não. Em casos de risco imediato, busque ajuda de emergência na sua região ou ligue para o
                         CVV (188) ou serviços locais equivalentes. A plataforma é destinada a acolhimento não
                         emergencial e orientação inicial.
                     </p>
 
-                    <button class="m-faq-emergencia" onclick="avisoEmergencia()">
+                    <button class="m-faq-emergencia" id="btnEmergencia" type="button">
                         Ver orientação para emergências
                     </button>
 
+                    <p id="mensagemEmergencia" class="m-faq-resposta" hidden aria-live="polite">
+                        Em casos de risco imediato, procure um serviço de emergência da sua região ou ligue para
+                        o CVV pelo número 188.
+                    </p>
                 </details>
 
                 <div class="m-faq-botoes">
 
-                    <button onclick="procurarPergunta()">
+                    <button id="btnPesquisar" type="button">
                         Pesquisar pergunta
                     </button>
 
@@ -147,10 +127,39 @@
                         Avaliar FAQ
                     </label>
 
-                    <button onclick="contatoVoluntario()">
+                    <button id="btnContato" type="button">
                         Quero falar com um voluntário
                     </button>
 
+                </div>
+
+                <div id="areaPesquisa" class="m-faq-interacao" hidden>
+                    <label for="campoPesquisa">
+                        Digite uma palavra para procurar nas perguntas:
+                    </label>
+
+                    <input type="text" id="campoPesquisa"
+                        placeholder="Ex.: plataforma, gratuito, voluntário...">
+
+                    <button type="button" id="confirmarPesquisa">
+                        Pesquisar
+                    </button>
+
+                    <p id="resultadoPesquisa" aria-live="polite"></p>
+                </div>
+
+                <div id="areaContato" class="m-faq-interacao" hidden>
+                    <label for="campoNome">
+                        Digite seu nome para continuar:
+                    </label>
+
+                    <input type="text" id="campoNome" placeholder="Seu nome">
+
+                    <button type="button" id="confirmarContato">
+                        Continuar
+                    </button>
+
+                    <p id="resultadoContato" aria-live="polite"></p>
                 </div>
 
                 <input type="checkbox" id="mostrarAvaliacao" class="controle-avaliacao">
@@ -170,21 +179,23 @@
                         <div class="estrelas">
 
                             <input type="radio" name="avaliacao" id="estrela1">
-                            <label for="estrela1" onclick="avaliarFAQ(1)">★</label>
+                            <label for="estrela1" data-nota="1">★</label>
 
                             <input type="radio" name="avaliacao" id="estrela2">
-                            <label for="estrela2" onclick="avaliarFAQ(2)">★</label>
+                            <label for="estrela2" data-nota="2">★</label>
 
                             <input type="radio" name="avaliacao" id="estrela3">
-                            <label for="estrela3" onclick="avaliarFAQ(3)">★</label>
+                            <label for="estrela3" data-nota="3">★</label>
 
                             <input type="radio" name="avaliacao" id="estrela4">
-                            <label for="estrela4" onclick="avaliarFAQ(4)">★</label>
+                            <label for="estrela4" data-nota="4">★</label>
 
                             <input type="radio" name="avaliacao" id="estrela5">
-                            <label for="estrela5" onclick="avaliarFAQ(5)">★</label>
+                            <label for="estrela5" data-nota="5">★</label>
 
                         </div>
+
+                        <p id="mensagemAvaliacao" aria-live="polite"></p>
 
                     </div>
 
@@ -197,9 +208,7 @@
     </main>
 
     <footer>
-
         <p>&copy; 2026 - Todos os direitos reservados</p>
-
     </footer>
 
     <div class="acessibilidade">

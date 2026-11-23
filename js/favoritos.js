@@ -2,132 +2,18 @@
 var chaveFavoritos = "lumeFavoritos";
 
 // Recupera os favoritos salvos no navegador
-var favoritos = JSON.parse(localStorage.getItem(chaveFavoritos)) || [];
+var favoritos = [];
 
-// Cria artigos de exemplo usando um vetor estático
-if (favoritos.length === 0 && localStorage.getItem("lumeFavoritosDemoCarregados") !== "sim") {
-
-    favoritos = [
-        {
-            id: "artigo1",
-            nome: "A importância de cuidar da saúde mental",
-            categoria: "Saúde mental",
-            fonte: "Lume",
-            url: "r_index.html",
-            data: "22/11/2026"
-        },
-        {
-            id: "artigo2",
-            nome: "Como lidar com a ansiedade no dia a dia",
-            categoria: "Ansiedade",
-            fonte: "Lume",
-            url: "r_index.html",
-            data: "22/11/2026"
-        },
-        {
-            id: "artigo3",
-            nome: "A importância do autocuidado",
-            categoria: "Autocuidado",
-            fonte: "Lume",
-            url: "r_index.html",
-            data: "22/11/2026"
-        },
-        {
-            id: "artigo4",
-            nome: "Como reconhecer suas emoções",
-            categoria: "Emoções",
-            fonte: "Lume",
-            url: "r_index.html",
-            data: "22/11/2026"
-        }
-    ];
-
-    salvarFavoritos();
-
-    localStorage.setItem("lumeFavoritosDemoCarregados", "sim");
+try {
+    favoritos = JSON.parse(localStorage.getItem(chaveFavoritos)) || [];
+} catch (erro) {
+    favoritos = [];
 }
 
 // Salva a lista atualizada no localStorage
 function salvarFavoritos() {
+
     localStorage.setItem(chaveFavoritos, JSON.stringify(favoritos));
-}
-
-// Verifica quais artigos já estão salvos e atualiza os botões
-function atualizarBotoes() {
-
-    var botoes = document.querySelectorAll(".blog-salvar");
-
-    for (var i = 0; i < botoes.length; i++) {
-
-        var artigo = botoes[i].closest(".blog-card");
-        var id = artigo.dataset.id;
-
-        var encontrado = false;
-
-        for (var j = 0; j < favoritos.length; j++) {
-            if (favoritos[j].id === id) {
-                encontrado = true;
-            }
-        }
-
-        if (encontrado) {
-            botoes[i].innerHTML = "♥ Salvo nos favoritos";
-            botoes[i].classList.add("salvo");
-        } else {
-            botoes[i].innerHTML = "♡ Salvar nos favoritos";
-            botoes[i].classList.remove("salvo");
-        }
-    }
-}
-
-// Adiciona ou remove um artigo dos favoritos
-function configurarBotoes() {
-
-    var botoes = document.querySelectorAll(".blog-salvar");
-
-    for (var i = 0; i < botoes.length; i++) {
-
-        botoes[i].addEventListener("click", function () {
-
-            var artigo = this.closest(".blog-card");
-            var id = artigo.dataset.id;
-            var encontrado = false;
-
-            for (var j = 0; j < favoritos.length; j++) {
-
-                if (favoritos[j].id === id) {
-                    encontrado = true;
-                }
-
-            }
-
-            if (encontrado) {
-
-                favoritos = favoritos.filter(function (item) {
-                    return item.id !== id;
-                });
-
-            } else {
-
-                var novoFavorito = {
-                    id: id,
-                    nome: artigo.dataset.title,
-                    categoria: artigo.dataset.category,
-                    fonte: artigo.dataset.source,
-                    url: artigo.dataset.url,
-                    data: new Date().toLocaleDateString("pt-BR")
-                };
-
-                favoritos.push(novoFavorito);
-
-            }
-
-            salvarFavoritos();
-            atualizarBotoes();
-
-        });
-
-    }
 
 }
 
@@ -181,6 +67,7 @@ function carregarFavoritos() {
                 </td>
             </tr>
         `;
+
     }
 
     quantidade.innerHTML =
@@ -195,6 +82,7 @@ function carregarFavoritos() {
     selecionarTodos.checked = false;
 
     atualizarSelecionados();
+
 }
 
 // Atualiza a quantidade de artigos selecionados
@@ -232,6 +120,7 @@ function atualizarSelecionados() {
     selecionarTodos.checked =
         checkboxes.length > 0 &&
         totalSelecionados === checkboxes.length;
+
 }
 
 // Seleciona ou desmarca todos os artigos
@@ -305,14 +194,11 @@ function configurarExclusao() {
 
 }
 
-// Verifica em qual página o usuário está
-if (document.querySelector(".blog-lista")) {
-    configurarBotoes();
-    atualizarBotoes();
-}
-
+// Inicializa as funções da página de favoritos
 if (document.getElementById("listaFavoritos")) {
+
     carregarFavoritos();
     configurarSelecao();
     configurarExclusao();
+
 }
